@@ -1,7 +1,7 @@
 <?php
 function __autoload($classes) {
 
-    $diretorios = array('controller/','model/');
+    $diretorios = array('Controller/','Model/');
 
     foreach ($diretorios as $valor) {
         if (file_exists($valor . $classes . '.class.php')) {
