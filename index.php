@@ -1,6 +1,7 @@
 <?php
 session_start();
-require_once("inc/Config.inc.php");
+require 'bootstrap.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -40,23 +41,23 @@ require_once("inc/Config.inc.php");
 
     <form class="form-signin" action="" method="post">
         <?php
-        $loginController = new LoginController();
         if (isset($_POST['btn_logar'])) {
-
-
-            $usuario = $_POST["usuario"];
+            $email = $_POST["usuario"];
             $senha = $_POST["senha"];
 
-            if ($loginController->validarAcesso($usuario, $senha) == 1) {
+
+            $loginRepository = $entityManager->getRepository('App\Models\Entity\Login');
+
+            $existeLogin = $loginRepository->findBy(array('email' => $email, 'senha' => $senha));
+
+            if ($existeLogin) {
                 $_SESSION['usuario'] = $usuario;
-                header("Location: view/viewMaster/pagina_principal.php");
-            } else if ($loginController->validarAcesso($usuario, $senha) == 2) {
-                $_SESSION['usuario'] = $usuario;
-                header("Location: view/viewSubs/pagina_principal.php");
+                header("Location: view/SubView/dashboard.html");
             } else {
                 echo "<p class='alert-danger'>Usuário ou Senha inválidos!</p>";
             }
         }
+
         ?>
 
 
