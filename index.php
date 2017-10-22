@@ -1,6 +1,8 @@
 <?php
 session_start();
 require 'bootstrap.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use App\Models\Entity\Login;
 
 ?>
 <!DOCTYPE html>
@@ -43,21 +45,75 @@ require 'bootstrap.php';
         <?php
         if (isset($_POST['btn_logar'])) {
             $email = $_POST["usuario"];
-            $senha = $_POST["senha"];
+            $senha = base64_encode($_POST["senha"]);
 
 
             $loginRepository = $entityManager->getRepository('App\Models\Entity\Login');
 
-            $existeLogin = $loginRepository->findBy(array('email' => $email, 'senha' => $senha));
+            $existeLogin = $loginRepository->findBy(array('login' => $email, 'senha' => $senha));
+            $existeEmail = $loginRepository->findBy(array('email' => $email, 'senha' => $senha));
 
             if ($existeLogin) {
                 $_SESSION['usuario'] = $usuario;
                 header("Location: view/SubView/dashboard.html");
-            } else {
+            }
+            if($existeEmail){
+                $_SESSION['usuario'] = $usuario;
+                header("Location: view/SubView/dashboard.html");
+            }
+            else{
                 echo "<p class='alert-danger'>Usuário ou Senha inválidos!</p>";
             }
         }
 
+
+        if (isset($_POST['btn_esqueceu'])) {
+            $email = $_POST["email_esqueceu"];
+
+            //Gerar senha randomica
+            $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            $novaSenha =  substr(str_shuffle($chars),0,8);
+
+
+
+            $loginRepository = $entityManager->getRepository('App\Models\Entity\Login');
+
+            $login = $loginRepository->findBy(array('email' => $email));
+
+
+            $id = $login[0] -> id_login;
+
+            $loginUser = new Login();
+            $loginUser = $loginRepository->find($id);
+            $loginUser->setSenha($novaSenha);
+
+            var_dump($novaSenha);
+
+            $entityManager->merge($loginUser);
+            $entityManager->flush();
+            var_dump($loginUser);
+
+            $mail = new PHPMailer(true);
+            $mail->isSMTP();
+            $mail->SMTPDebug = 0;
+            $mail->Host = 'smtp.gmail.com';
+            $mail->Port = 587;
+            $mail->SMTPSecure = 'tls';
+            $mail->SMTPAuth = true;
+            $mail->Username = "projetocitycare@gmail.com";
+            $mail->Password = "citycare123";
+            $mail->setFrom("projetocitycare@gmail.com", 'City Care');
+            $mail->addAddress($email);
+            $mail->Subject = 'Nova Senha';
+            $mail->Body =$novaSenha;
+
+            if (!$mail->send()) {
+                echo "<p class='alert-danger'>Email Invalido!</p>";
+            }
+
+
+
+        }
         ?>
 
 
@@ -84,8 +140,9 @@ require 'bootstrap.php';
             </div>
 
         </div>
-
+    </form>
         <!-- Modal -->
+    <form id="form_esqueceu" method="post">
         <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal"
              class="modal fade">
             <div class="modal-dialog">
@@ -96,20 +153,22 @@ require 'bootstrap.php';
                     </div>
                     <div class="modal-body">
                         <p>Enter your e-mail address below to reset your password.</p>
-                        <input type="text" name="email" placeholder="Email" autocomplete="off"
+
+                        <input type="text" name="email_esqueceu" placeholder="Email" autocomplete="off"
                                class="form-control placeholder-no-fix">
 
                     </div>
                     <div class="modal-footer">
                         <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-                        <button class="btn btn-success" type="button">Submit</button>
+                        <button class="btn btn-success" name="btn_esqueceu" type="submit">Submit</button>
                     </div>
                 </div>
             </div>
         </div>
+    </form>
         <!-- modal -->
 
-    </form>
+
 
 </div>
 
