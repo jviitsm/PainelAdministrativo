@@ -1,6 +1,12 @@
 <?php
 session_start();
-require 'bootstrap.php';
+
+require_once("../../bootstrap.php");
+
+
+
+
+
 
 ?>
 <!doctype html>
@@ -10,7 +16,7 @@ require 'bootstrap.php';
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Light Bootstrap Dashboard by Creative Tim</title>
+	<title>City Care</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -51,7 +57,7 @@ require 'bootstrap.php';
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    Creative Tim
+                   City Care
                 </a>
             </div>
 
@@ -151,8 +157,8 @@ require 'bootstrap.php';
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                           <a href="">
-                               <p>Account</p>
+                           <a href="user.html">
+                               <p> <?php echo $_SESSION["usuario"]; ?></p>
                             </a>
                         </li>
                         <li class="dropdown">
@@ -173,7 +179,7 @@ require 'bootstrap.php';
                               </ul>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="">
                                 <p>Log out</p>
                             </a>
                         </li>

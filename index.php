@@ -54,12 +54,12 @@ use App\Models\Entity\Login;
             $existeEmail = $loginRepository->findBy(array('email' => $email, 'senha' => $senha));
 
             if ($existeLogin) {
-                $_SESSION['usuario'] = $usuario;
-                header("Location: view/SubView/dashboard.html");
+                $_SESSION["usuario"] = $email;
+                header("Location: view/SubView/dashboard.php ");
             }
-            if($existeEmail){
-                $_SESSION['usuario'] = $usuario;
-                header("Location: view/SubView/dashboard.html");
+            else if($existeEmail){
+                $_SESSION["usuario"] = $usuario;
+                header("Location: view/SubView/dashboard.php");
             }
             else{
                 echo "<p class='alert-danger'>Usuário ou Senha inválidos!</p>";
