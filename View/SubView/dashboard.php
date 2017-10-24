@@ -3,10 +3,10 @@ session_start();
 
 require_once("../../bootstrap.php");
 
-
-
-
-
+if (!isset($_SESSION['usuario'])){
+    header("Location: ../../index.php");
+    session_destroy();
+}
 
 ?>
 <!doctype html>
