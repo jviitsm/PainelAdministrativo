@@ -1,12 +1,14 @@
 <?php
+require_once("../../bootstrap.php");
 session_start();
 
-require_once("../../bootstrap.php");
+
 
 if (!isset($_SESSION['usuario'])){
     header("Location: ../../index.php");
     session_destroy();
 }
+
 
 ?>
 <!doctype html>
@@ -169,6 +171,35 @@ if (!isset($_SESSION['usuario'])){
         </nav>
 
 
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 form-box">
+                    <a>Total de Denuncias:
+                        <?php
+
+                       ##Codigo para buscar e mostrar no banco o total de denuncias que estão cadastradas na cidade da empresa logada
+
+                        $denunciaRepository = $entityManager->getRepository('App\Models\Entity\Denuncia');
+
+                        $user = $_SESSION["array"];
+
+                        $id = $user[0] -> id_login;
+
+                        $cidadaoRepository = $entityManager->getRepository('App\Models\Entity\Cidadao');
+
+                        $cidadao = $cidadaoRepository->findBy(array('fk_login_cidadao' => $id));
+
+                        $cidade = $cidadao[0] -> cidade;
+
+                        $denuncias = $denunciaRepository->findBy(array('cidade' => $cidade));
+
+                        echo count($denuncias);
+
+                    ?>
+                    </a>
+                </div>
+            </div>
+        </div>
 
 
 

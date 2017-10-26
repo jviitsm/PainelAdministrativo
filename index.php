@@ -18,10 +18,12 @@ if (isset($_POST['btn_logar'])) {
 
     if ($existeLogin) {
         $_SESSION["usuario"] = $email;
+        $_SESSION["array"] = $existeLogin;
         header("Location: view/SubView/dashboard.php ");
     }
     else if($existeEmail){
         $_SESSION["usuario"] = $usuario;
+        $_SESSION["array"] = $existeEmail;
         header("Location: view/SubView/dashboard.php");
     }
     else{
