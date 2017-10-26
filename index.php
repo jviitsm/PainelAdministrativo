@@ -45,6 +45,7 @@ if (isset($_POST['btn_esqueceu'])) {
 
     $login = $loginRepository->findBy(array('email' => $email));
 
+    if($login){
 
     $id = $login[0] -> id_login;
 
@@ -73,11 +74,15 @@ if (isset($_POST['btn_esqueceu'])) {
     $mail->Body =$novaSenha;
 
     if (!$mail->send()) {
-        echo "<p class='alert-danger'>Email Invalido!</p>";
+        echo "<p class='alert alert-danger'>Email Invalido!</p>";
     }
     else
     {
-        echo "<p class='alert-danger'>Email Enviado com Sucesso!</p>";
+        echo "<p class='alert alert-success'>Email Enviado com Sucesso!</p>";
+    }
+    }
+    else{
+        echo "<p class='alert alert-danger'>Email Invalido!</p>";
     }
 }
 ?>

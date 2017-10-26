@@ -196,10 +196,12 @@ if (!isset($_SESSION['usuario'])){
                         echo count($denuncias);
 
                     ?>
+                        ,na cidade <?php echo $cidade; ?>
                     </a>
                 </div>
             </div>
         </div>
+
 
 
 
