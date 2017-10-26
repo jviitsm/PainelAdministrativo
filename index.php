@@ -77,14 +77,11 @@ if (isset($_POST['btn_esqueceu'])) {
     {
         echo "<p class='alert-danger'>Email Enviado com Sucesso!</p>";
     }
-
-
-
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
     <head>
 
@@ -144,7 +141,7 @@ if (isset($_POST['btn_esqueceu'])) {
 			                        	<label class="sr-only" for="form-password">Password</label>
 			                        	<input type="password" name="senha" placeholder="Senha" class="form-password form-control" id="senha">
 			                        </div>
-			                        <button type="submit" name="btn_logar" class="btn">Sign in!</button>
+			                        <button type="submit" name="btn_logar" class="btn">Realizar Login</button>
 			                    </form>
                                 <span class="pull-right">
                                      <a data-toggle="modal" href="#myModal"> Esqueceu sua senha?</a>
