@@ -69,37 +69,37 @@ if (!isset($_SESSION['usuario'])){
                     </a>
                 </li>
                 <li>
-                    <a href="user.html">
+                    <a href="user.php">
                         <i class="pe-7s-user"></i>
                         <p>Perfil de Usuário</p>
                     </a>
                 </li>
                 <li>
-                    <a href="table.html">
+                    <a href="table.php">
                         <i class="pe-7s-note2"></i>
                         <p>Denuncias</p>
                     </a>
                 </li>
                 <li>
-                    <a href="typography.html">
+                    <a href="typography.php">
                         <i class="pe-7s-news-paper"></i>
                         <p>Typography</p>
                     </a>
                 </li>
                 <li>
-                    <a href="icons.html">
+                    <a href="icons.php">
                         <i class="pe-7s-science"></i>
                         <p>Icons</p>
                     </a>
                 </li>
                 <li>
-                    <a href="maps.html">
+                    <a href="maps.php">
                         <i class="pe-7s-map-marker"></i>
                         <p>Mapa</p>
                     </a>
                 </li>
                 <li>
-                    <a href="notifications.html">
+                    <a href="notifications.php">
                         <i class="pe-7s-bell"></i>
                         <p>Notificações</p>
                     </a>
@@ -153,7 +153,7 @@ if (!isset($_SESSION['usuario'])){
                     <ul class="nav navbar-nav navbar-right">
 
                         <li>
-                           <a href="user.html">
+                           <a href="user.php">
                                <p> <?php echo $_SESSION["usuario"]; ?></p>
                             </a>
                         </li>

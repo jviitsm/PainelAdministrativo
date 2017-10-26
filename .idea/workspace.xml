@@ -2,18 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f331daf-bc84-4df0-9d7a-7f2ace1edbe5" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/View/SubView/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/View/SubView/icons.html" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/View/SubView/maps.html" afterPath="$PROJECT_DIR$/View/SubView/maps.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/dashboard.php" afterPath="$PROJECT_DIR$/View/SubView/dashboard.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/icons.html" afterPath="$PROJECT_DIR$/View/SubView/icons.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/maps.html" afterPath="$PROJECT_DIR$/View/SubView/maps.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/notifications.html" afterPath="$PROJECT_DIR$/View/SubView/notifications.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/table.html" afterPath="$PROJECT_DIR$/View/SubView/table.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/template.html" afterPath="$PROJECT_DIR$/View/SubView/template.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/typography.html" afterPath="$PROJECT_DIR$/View/SubView/typography.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/user.html" afterPath="$PROJECT_DIR$/View/SubView/user.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/style.css" afterPath="$PROJECT_DIR$/assets/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,19 +20,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="dashboard.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/View/SubView/dashboard.php">
+      <file leaf-file-name="notifications.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/View/SubView/notifications.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="65" column="44" lean-forward="false" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="44" />
-              <folding>
-                <marker date="1508988711440" expanded="true" signature="2190:2219" ph="..." />
-                <marker date="1508988711440" expanded="true" signature="2399:2428" ph="..." />
-                <marker date="1508988711440" expanded="true" signature="2602:2631" ph="..." />
-                <marker date="1508988711440" expanded="true" signature="2816:2845" ph="..." />
-                <marker date="1508988711440" expanded="true" signature="3017:3046" ph="..." />
-                <marker date="1508988711440" expanded="true" signature="3219:3248" ph="..." />
-              </folding>
+            <state relative-caret-position="177">
+              <caret line="164" column="0" lean-forward="true" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -56,12 +45,19 @@
       <find>welcome</find>
       <find>sidebar-</find>
       <find>out</find>
-      <find>account</find>
       <find>backgro</find>
       <find>tasks</find>
       <find>&lt;?php</find>
-      <find>dropdown</find>
       <find>citycare</find>
+      <find>dashboard</find>
+      <find>search</find>
+      <find>dropdown</find>
+      <find>$usuario</find>
+      <find>php ec</find>
+      <find>accoun</find>
+      <find>acco</find>
+      <find>account</find>
+      <find>echo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -99,14 +95,21 @@
         <option value="$PROJECT_DIR$/index.css" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/assets/css/style.css" />
+        <option value="$PROJECT_DIR$/View/SubView/template.html" />
         <option value="$PROJECT_DIR$/View/SubView/icons.html" />
         <option value="$PROJECT_DIR$/View/SubView/maps.html" />
-        <option value="$PROJECT_DIR$/View/SubView/notifications.html" />
         <option value="$PROJECT_DIR$/View/SubView/table.html" />
-        <option value="$PROJECT_DIR$/View/SubView/template.html" />
-        <option value="$PROJECT_DIR$/View/SubView/user.html" />
         <option value="$PROJECT_DIR$/View/SubView/typography.html" />
+        <option value="$PROJECT_DIR$/View/SubView/user.html" />
         <option value="$PROJECT_DIR$/View/SubView/dashboard.php" />
+        <option value="$PROJECT_DIR$/View/SubView/icons.php" />
+        <option value="$PROJECT_DIR$/View/SubView/maps.php" />
+        <option value="$PROJECT_DIR$/View/SubView/notifications.html" />
+        <option value="$PROJECT_DIR$/View/SubView/table.php" />
+        <option value="$PROJECT_DIR$/View/SubView/template.php" />
+        <option value="$PROJECT_DIR$/View/SubView/typography.php" />
+        <option value="$PROJECT_DIR$/View/SubView/user.php" />
+        <option value="$PROJECT_DIR$/View/SubView/notifications.php" />
       </list>
     </option>
   </component>
@@ -117,7 +120,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="5" />
     <option name="y" value="2" />
     <option name="width" value="697" />
@@ -237,7 +240,7 @@
       <workItem from="1508814475737" duration="1206000" />
       <workItem from="1508883580829" duration="21000" />
       <workItem from="1508959861550" duration="2128000" />
-      <workItem from="1508986115479" duration="2417000" />
+      <workItem from="1508986115479" duration="3088000" />
     </task>
     <task id="LOCAL-00001" summary="Login Implementado">
       <created>1508351545761</created>
@@ -274,14 +277,21 @@
       <option name="project" value="LOCAL" />
       <updated>1508961961320</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Alteração do layout das telas">
+      <created>1508988742485</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1508988742485</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32294000" />
+    <option name="totallyTimeSpent" value="32965000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22401172" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -393,6 +403,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-102">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -447,6 +458,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-90133">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -493,74 +505,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/icons.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="50" column="20" lean-forward="true" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/maps.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="50" column="44" lean-forward="false" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/notifications.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="50" column="44" lean-forward="false" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/table.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="49" column="44" lean-forward="false" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="48" column="44" lean-forward="false" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="49" column="44" lean-forward="false" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/typography.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="49" column="44" lean-forward="false" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/SubView/dashboard.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="65" column="44" lean-forward="false" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="44" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="2" />
           <folding>
-            <marker date="1508988711440" expanded="true" signature="2190:2219" ph="..." />
-            <marker date="1508988711440" expanded="true" signature="2399:2428" ph="..." />
-            <marker date="1508988711440" expanded="true" signature="2602:2631" ph="..." />
-            <marker date="1508988711440" expanded="true" signature="2816:2845" ph="..." />
-            <marker date="1508988711440" expanded="true" signature="3017:3046" ph="..." />
-            <marker date="1508988711440" expanded="true" signature="3219:3248" ph="..." />
+            <marker date="1508989237796" expanded="true" signature="2190:2219" ph="..." />
+            <marker date="1508989237796" expanded="true" signature="2398:2427" ph="..." />
+            <marker date="1508989237796" expanded="true" signature="2600:2629" ph="..." />
+            <marker date="1508989237796" expanded="true" signature="2813:2842" ph="..." />
+            <marker date="1508989237796" expanded="true" signature="3013:3042" ph="..." />
+            <marker date="1508989237796" expanded="true" signature="3214:3243" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/icons.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/maps.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1768">
+          <caret line="104" column="10" lean-forward="false" selection-start-line="104" selection-start-column="10" selection-end-line="104" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="2" lean-forward="false" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/typography.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="2" lean-forward="false" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="2" lean-forward="false" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="148" column="21" lean-forward="false" selection-start-line="148" selection-start-column="21" selection-end-line="163" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/notifications.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="164" column="0" lean-forward="true" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

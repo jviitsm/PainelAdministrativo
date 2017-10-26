@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+require_once("../../bootstrap.php");
+
+if (!isset($_SESSION['usuario'])){
+    header("Location: ../../index.php");
+    session_destroy();
+}
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -54,37 +65,37 @@
                     </a>
                 </li>
                 <li>
-                    <a href="user.html">
+                    <a href="user.php">
                         <i class="pe-7s-user"></i>
                         <p>Perfil de Usuário</p>
                     </a>
                 </li>
                 <li>
-                    <a href="table.html">
+                    <a href="table.php">
                         <i class="pe-7s-note2"></i>
                         <p>Denuncias</p>
                     </a>
                 </li>
                 <li>
-                    <a href="typography.html">
+                    <a href="typography.php">
                         <i class="pe-7s-news-paper"></i>
                         <p>Typography</p>
                     </a>
                 </li>
                 <li>
-                    <a href="icons.html">
+                    <a href="icons.php">
                         <i class="pe-7s-science"></i>
                         <p>Icons</p>
                     </a>
                 </li>
                 <li>
-                    <a href="maps.html">
+                    <a href="maps.php">
                         <i class="pe-7s-map-marker"></i>
                         <p>Mapa</p>
                     </a>
                 </li>
                 <li>
-                    <a href="notifications.html">
+                    <a href="notifications.php">
                         <i class="pe-7s-bell"></i>
                         <p>Notificações</p>
                     </a>
@@ -108,12 +119,7 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">Dashboard</p>
-                            </a>
-                        </li>
+
                         <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="fa fa-globe"></i>
@@ -142,33 +148,16 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                           <a href="">
-                               <p>Account</p>
+                            <a href="user.php">
+                                <p> <?php echo $_SESSION["usuario"]; ?></p>
                             </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <p>
-										Dropdown
-										<b class="caret"></b>
-									</p>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                              </ul>
                         </li>
                         <li>
-                            <a href="#">
-                                <p>Log out</p>
+                            <a href="">
+                                <p>Sair</p>
                             </a>
                         </li>
-						<li class="separator hidden-lg hidden-md"></li>
+                        <li class="separator hidden-lg hidden-md"></li>
                     </ul>
                 </div>
             </div>
