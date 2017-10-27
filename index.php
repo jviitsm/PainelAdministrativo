@@ -1,4 +1,5 @@
 <?php
+require 'bootstrap.php';
 session_start();
 require 'bootstrap.php';
 use PHPMailer\PHPMailer\PHPMailer;
@@ -22,7 +23,7 @@ if (isset($_POST['btn_logar'])) {
         header("Location: view/SubView/dashboard.php ");
     }
     else if($existeEmail){
-        $_SESSION["usuario"] = $usuario;
+        $_SESSION["usuario"] = $email;
         $_SESSION["array"] = $existeEmail;
         header("Location: view/SubView/dashboard.php");
     }
@@ -51,6 +52,7 @@ if (isset($_POST['btn_esqueceu'])) {
 
     $loginUser = new Login();
     $loginUser = $loginRepository->find($id);
+
     $loginUser->setSenha($novaSenha);
 
 
@@ -72,6 +74,7 @@ if (isset($_POST['btn_esqueceu'])) {
     $mail->addAddress($email);
     $mail->Subject = 'Nova Senha';
     $mail->Body =$novaSenha;
+
 
     if (!$mail->send()) {
         echo "<p class='alert alert-danger'>Email Invalido!</p>";
@@ -176,8 +179,8 @@ if (isset($_POST['btn_esqueceu'])) {
 
                             </div>
                             <div class="modal-footer">
-                                <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-                                <button class="btn btn-success" name="btn_esqueceu" type="submit">Submit</button>
+                                <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
+                                <button class="btn btn-success" name="btn_esqueceu" type="submit">Enviar</button>
                             </div>
                         </div>
                     </div>

@@ -43,6 +43,9 @@ if (!isset($_SESSION['usuario'])){
 
 </head>
 <body>
+<!--   Core JS Files   -->
+<script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+
 
 <div class="wrapper">
     <div class="sidebar" data-color="#DCDCDC" data-image="assets/img/sidebar-5.jpg">
@@ -162,17 +165,23 @@ if (!isset($_SESSION['usuario'])){
             </div>
         </nav>
 
+        <!-- MAPA -->
+        <div id="mapa" style="height: 600px; width: 1100px">
+        </div>
 
-        <div id="map"></div>
+        <!-- Maps API Javascript -->
+        <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_smlZV61EJc1y0ZqgG6CqjzfT1ApoHrQ"></script>
 
-    </div>
-</div>
+        <!-- Arquivo de inicialização do mapa -->
+        <script src="mapa.js"></script>
+
+
 
 
 </body>
 
         <!--   Core JS Files   -->
-    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 	<!--  Checkbox, Radio & Switch Plugins -->
@@ -185,7 +194,7 @@ if (!isset($_SESSION['usuario'])){
     <script src="assets/js/bootstrap-notify.js"></script>
 
     <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_smlZV61EJc1y0ZqgG6CqjzfT1ApoHrQ"></script>
+
 
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 	<script src="assets/js/light-bootstrap-dashboard.js"></script>
