@@ -16,12 +16,13 @@ if (!isset($_SESSION['usuario'])){
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Light Bootstrap Dashboard by Creative Tim</title>
+	<title>City Care</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-
+    <!--  Google Maps Plugin    -->
+    <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_smlZV61EJc1y0ZqgG6CqjzfT1ApoHrQ"></script>
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -31,6 +32,7 @@ if (!isset($_SESSION['usuario'])){
     <!--  Light Bootstrap Table core CSS    -->
     <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
 
+    <link rel="stylesheet" type="text/css" href="assets/css/estilo.css">
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="assets/css/demo.css" rel="stylesheet" />
@@ -43,10 +45,18 @@ if (!isset($_SESSION['usuario'])){
 
 </head>
 <body>
+<!--   SCRIPTS  -->
 <!--   Core JS Files   -->
 <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="assets/js/jquery.min.js"></script>
+<!-- Caixa de informação -->
+<script src="assets/js/infobox.js"></script>
+<!-- Agrupamento dos marcadores -->
+<script src="assets/js/markerclusterer.js"></script>
 
 
+
+<!--  BODY  -->
 <div class="wrapper">
     <div class="sidebar" data-color="#DCDCDC" data-image="assets/img/sidebar-5.jpg">
 
@@ -165,18 +175,15 @@ if (!isset($_SESSION['usuario'])){
             </div>
         </nav>
 
+
+
+
         <!-- MAPA -->
         <div id="mapa" style="height: 600px; width: 1100px">
         </div>
 
-        <!-- Maps API Javascript -->
-        <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_smlZV61EJc1y0ZqgG6CqjzfT1ApoHrQ"></script>
-
         <!-- Arquivo de inicialização do mapa -->
         <script src="mapa.js"></script>
-
-
-
 
 </body>
 
@@ -192,9 +199,6 @@ if (!isset($_SESSION['usuario'])){
 
     <!--  Notifications Plugin    -->
     <script src="assets/js/bootstrap-notify.js"></script>
-
-    <!--  Google Maps Plugin    -->
-
 
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 	<script src="assets/js/light-bootstrap-dashboard.js"></script>
