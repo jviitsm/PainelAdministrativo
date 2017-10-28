@@ -1,7 +1,8 @@
 <?php
+require_once("../../bootstrap.php");
 session_start();
 
-require_once("../../bootstrap.php");
+
 
 if (!isset($_SESSION['usuario'])){
     header("Location: ../../index.php");
@@ -57,7 +58,7 @@ if (!isset($_SESSION['usuario'])){
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li>
                     <a href="dashboard.php">
                         <i class="pe-7s-graph"></i>
                         <p>Painel Administrativo</p>
@@ -69,7 +70,7 @@ if (!isset($_SESSION['usuario'])){
                         <p>Perfil de Usuário</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="table.php">
                         <i class="pe-7s-note2"></i>
                         <p>Denuncias</p>
@@ -152,7 +153,7 @@ if (!isset($_SESSION['usuario'])){
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="sair.php">
                                 <p>Sair</p>
                             </a>
                         </li>
@@ -163,176 +164,70 @@ if (!isset($_SESSION['usuario'])){
         </nav>
 
 
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Striped Table with Hover</h4>
-                                <p class="category">Here is a subtitle for this table</p>
-                            </div>
-                            <div class="content table-responsive table-full-width">
-                                <table class="table table-hover table-striped">
+        <!--  Tabela De Denuncias    -->
+
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        Denuncias Ativas
+                    </header>
+                    <div class="panel-body">
+                        <section id="unseen">
+                                <table class="table table-bordered table-striped table-condensed">
                                     <thead>
-                                        <th>ID</th>
-                                    	<th>Name</th>
-                                    	<th>Salary</th>
-                                    	<th>Country</th>
-                                    	<th>City</th>
+                                    <tr>
+
+                                        <th>Descrição</th>
+                                        <th >Categoria</th>
+                                        <th >Latitude</th>
+                                        <th >Longetude</th>
+                                        <th >Data</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                        	<td>1</td>
-                                        	<td>Dakota Rice</td>
-                                        	<td>$36,738</td>
-                                        	<td>Niger</td>
-                                        	<td>Oud-Turnhout</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>2</td>
-                                        	<td>Minerva Hooper</td>
-                                        	<td>$23,789</td>
-                                        	<td>Curaçao</td>
-                                        	<td>Sinaai-Waas</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>3</td>
-                                        	<td>Sage Rodriguez</td>
-                                        	<td>$56,142</td>
-                                        	<td>Netherlands</td>
-                                        	<td>Baileux</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>4</td>
-                                        	<td>Philip Chaney</td>
-                                        	<td>$38,735</td>
-                                        	<td>Korea, South</td>
-                                        	<td>Overland Park</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>5</td>
-                                        	<td>Doris Greene</td>
-                                        	<td>$63,542</td>
-                                        	<td>Malawi</td>
-                                        	<td>Feldkirchen in Kärnten</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>6</td>
-                                        	<td>Mason Porter</td>
-                                        	<td>$78,615</td>
-                                        	<td>Chile</td>
-                                        	<td>Gloucester</td>
-                                        </tr>
+                                    <div>
+                                        <?php
+                                        //Variavel que contem o repositorio denuncia
+                                        $denunciaRepository = $entityManager->getRepository('App\Models\Entity\Denuncia');
+
+                                        //Recuperando dados do user logado
+                                        $user = $_SESSION["array"];
+
+
+                                        $id = $user[0] -> id_login;
+
+                                        $empresaRepository = $entityManager->getRepository('App\Models\Entity\Empresa');
+
+                                        $empresa = $empresaRepository->findBy(array('fk_login_empresa' => $id));
+
+                                        //Recuperando a cidade do user que esta logado
+                                        $cidade = $empresa[0] -> cidade;
+
+                                        //BUscando denuncias  da cidade do user logado
+                                        $denuncias = $denunciaRepository->findBy(array('cidade' => $cidade, 'status_denuncia' =>1 ));
+
+                                        foreach ($denuncias as $lista){
+                                        echo "<tr>";
+                                        echo "<td>$lista->descricao_denuncia</td>";
+                                        echo "<td>{$lista->fk_categoria_denuncia->descricao_categoria}</td>";
+                                        echo "<td>$lista->latitude_denuncia</td>";
+                                        echo "<td>$lista->longitude_denuncia</td>";
+                                        echo "<td>$lista->data_denuncia</td>";
+                                        }
+                                        ?>
+                                    </div>
                                     </tbody>
                                 </table>
-
-                            </div>
-                        </div>
+                        </section>
                     </div>
-
-
-                    <div class="col-md-12">
-                        <div class="card card-plain">
-                            <div class="header">
-                                <h4 class="title">Table on Plain Background</h4>
-                                <p class="category">Here is a subtitle for this table</p>
-                            </div>
-                            <div class="content table-responsive table-full-width">
-                                <table class="table table-hover">
-                                    <thead>
-                                        <th>ID</th>
-                                    	<th>Name</th>
-                                    	<th>Salary</th>
-                                    	<th>Country</th>
-                                    	<th>City</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                        	<td>1</td>
-                                        	<td>Dakota Rice</td>
-                                        	<td>$36,738</td>
-                                        	<td>Niger</td>
-                                        	<td>Oud-Turnhout</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>2</td>
-                                        	<td>Minerva Hooper</td>
-                                        	<td>$23,789</td>
-                                        	<td>Curaçao</td>
-                                        	<td>Sinaai-Waas</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>3</td>
-                                        	<td>Sage Rodriguez</td>
-                                        	<td>$56,142</td>
-                                        	<td>Netherlands</td>
-                                        	<td>Baileux</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>4</td>
-                                        	<td>Philip Chaney</td>
-                                        	<td>$38,735</td>
-                                        	<td>Korea, South</td>
-                                        	<td>Overland Park</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>5</td>
-                                        	<td>Doris Greene</td>
-                                        	<td>$63,542</td>
-                                        	<td>Malawi</td>
-                                        	<td>Feldkirchen in Kärnten</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>6</td>
-                                        	<td>Mason Porter</td>
-                                        	<td>$78,615</td>
-                                        	<td>Chile</td>
-                                        	<td>Gloucester</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
+                </section>
             </div>
         </div>
+        </section>
+        </section>
 
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Company
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Portfolio
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                               Blog
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <p class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
-                </p>
-            </div>
-        </footer>
+
 
 
     </div>

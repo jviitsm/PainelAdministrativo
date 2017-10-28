@@ -1,5 +1,6 @@
 <?php
 require_once("../../bootstrap.php");
+session_cache_expire(10);
 session_start();
 
 
@@ -8,6 +9,7 @@ if (!isset($_SESSION['usuario'])){
     header("Location: ../../index.php");
     session_destroy();
 }
+
 
 
 ?>
@@ -160,7 +162,7 @@ if (!isset($_SESSION['usuario'])){
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="sair.php">
                                 <p>Sair</p>
                             </a>
                         </li>
@@ -185,11 +187,11 @@ if (!isset($_SESSION['usuario'])){
 
                         $id = $user[0] -> id_login;
 
-                        $cidadaoRepository = $entityManager->getRepository('App\Models\Entity\Cidadao');
+                        $empresaRepository = $entityManager->getRepository('App\Models\Entity\Empresa');
 
-                        $cidadao = $cidadaoRepository->findBy(array('fk_login_cidadao' => $id));
+                        $empresa = $empresaRepository->findBy(array('fk_login_empresa' => $id));
 
-                        $cidade = $cidadao[0] -> cidade;
+                        $cidade = $empresa[0] -> cidade;
 
                         $denuncias = $denunciaRepository->findBy(array('cidade' => $cidade));
 

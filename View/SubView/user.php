@@ -57,13 +57,13 @@ if (!isset($_SESSION['usuario'])){
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li>
                     <a href="dashboard.php">
                         <i class="pe-7s-graph"></i>
                         <p>Painel Administrativo</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="user.php">
                         <i class="pe-7s-user"></i>
                         <p>Perfil de Usuário</p>

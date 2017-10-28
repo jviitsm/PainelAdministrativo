@@ -70,7 +70,7 @@ if (!isset($_SESSION['usuario'])){
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li>
                     <a href="dashboard.php">
                         <i class="pe-7s-graph"></i>
                         <p>Painel Administrativo</p>
@@ -101,6 +101,7 @@ if (!isset($_SESSION['usuario'])){
                     </a>
                 </li>
                 <li>
+                <li class="active">
                     <a href="maps.php">
                         <i class="pe-7s-map-marker"></i>
                         <p>Mapa</p>
@@ -165,7 +166,7 @@ if (!isset($_SESSION['usuario'])){
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="sair.php">
                                 <p>Sair</p>
                             </a>
                         </li>
@@ -176,14 +177,12 @@ if (!isset($_SESSION['usuario'])){
         </nav>
 
 
-
-
         <!-- MAPA -->
         <div id="mapa" style="height: 600px; width: 1100px">
         </div>
 
         <!-- Arquivo de inicialização do mapa -->
-        <script src="mapa.js"></script>
+        <script src="assets/js/mapa.js"></script>
 
 </body>
 
