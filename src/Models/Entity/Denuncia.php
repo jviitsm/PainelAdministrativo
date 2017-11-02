@@ -3,6 +3,8 @@
 namespace App\Models\Entity;
 
 
+
+
 /**
 
 * @Entity @Table(name="denuncia")
@@ -10,6 +12,7 @@ namespace App\Models\Entity;
 **/
 
 class Denuncia{
+
      /** 
      * @var int
      * @Id @Column(type="integer")
@@ -163,4 +166,21 @@ class Denuncia{
         function setFk_login_denuncia(Login $fk_login_denuncia) {
             $this->fk_login_denuncia = $fk_login_denuncia;
         }
+        function montarTabela($denuncias){
+            foreach ($denuncias as $lista){
+                echo "<form id=\"form_denuncia\" method=\"post\">" ;
+                echo "<tr>";
+                echo "<td>$lista->id_denuncia</td>";
+                echo "<td>$lista->descricao_denuncia</td>";
+                echo "<td>{$lista->fk_categoria_denuncia->descricao_categoria}</td>";
+                echo "<td>$lista->latitude_denuncia</td>";
+                echo "<td>$lista->longitude_denuncia</td>";
+                echo "<td>$lista->data_denuncia</td>";
+                echo "<td><button type=\"submit\" name=\"btn_denuncia\" class=\"btn btn-info btn-fill pull-center\">Checar</button></td>";
+                echo  "<input type=\"hidden\" name=\"id\" value=\"$lista->id_denuncia\">";
+                echo "</form>";
+            }
+        }
+
+
 }

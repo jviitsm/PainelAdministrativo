@@ -1,13 +1,21 @@
 <?php
+require_once("../../bootstrap.php");
+use App\Models\Entity\Denuncia;
 session_start();
 
-require_once("../../bootstrap.php");
+
 
 if (!isset($_SESSION['usuario'])){
     header("Location: ../../index.php");
     session_destroy();
 }
+##Buscando denuncia que foi clicada pelo usuario
 
+$denunciaRepository = $entityManager->getRepository('App\Models\Entity\Denuncia');
+
+$denuncia = $denunciaRepository->find($_SESSION['denuncia']);
+
+var_dump($denuncia);
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,8 +29,7 @@ if (!isset($_SESSION['usuario'])){
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-    <!--  Google Maps Plugin    -->
-    <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_smlZV61EJc1y0ZqgG6CqjzfT1ApoHrQ"></script>
+
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -32,7 +39,6 @@ if (!isset($_SESSION['usuario'])){
     <!--  Light Bootstrap Table core CSS    -->
     <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
 
-    <link rel="stylesheet" type="text/css" href="assets/css/estilo.css">
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="assets/css/demo.css" rel="stylesheet" />
@@ -45,22 +51,12 @@ if (!isset($_SESSION['usuario'])){
 
 </head>
 <body>
-<!--   SCRIPTS  -->
-<!--   Core JS Files   -->
-<script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-<script src="assets/js/jquery.min.js"></script>
-<!-- Caixa de informação -->
-<script src="assets/js/infobox.js"></script>
-<!-- Agrupamento dos marcadores -->
-<script src="assets/js/markerclusterer.js"></script>
 
-
-
-<!--  BODY  -->
 <div class="wrapper">
     <div class="sidebar" data-color="#DCDCDC" data-image="assets/img/sidebar-5.jpg">
 
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
+
 
         <div class="sidebar-wrapper">
             <div class="logo">
@@ -70,7 +66,7 @@ if (!isset($_SESSION['usuario'])){
             </div>
 
             <ul class="nav">
-                <li>
+                <li >
                     <a href="dashboard.php">
                         <i class="pe-7s-graph"></i>
                         <p>Painel Administrativo</p>
@@ -82,7 +78,7 @@ if (!isset($_SESSION['usuario'])){
                         <p>Perfil de Usuário</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="table.php">
                         <i class="pe-7s-note2"></i>
                         <p>Denuncias</p>
@@ -95,7 +91,8 @@ if (!isset($_SESSION['usuario'])){
                     </a>
                 </li>
                 <li>
-                <li class="active">
+                </li>
+                <li>
                     <a href="maps.php">
                         <i class="pe-7s-map-marker"></i>
                         <p>Mapa</p>
@@ -122,10 +119,12 @@ if (!isset($_SESSION['usuario'])){
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Maps</a>
+                    <a class="navbar-brand" href="#">Icons</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
+
+
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
@@ -135,7 +134,7 @@ if (!isset($_SESSION['usuario'])){
                             </a>
                         </li>
                         <li>
-                            <a href="sair.php">
+                            <a href="">
                                 <p>Sair</p>
                             </a>
                         </li>
@@ -146,17 +145,22 @@ if (!isset($_SESSION['usuario'])){
         </nav>
 
 
-        <!-- MAPA -->
-        <div id="mapa" style="height: 600px; width: 1100px">
-        </div>
 
-        <!-- Arquivo de inicialização do mapa -->
-        <script src="assets/js/mapa.js"></script>
+        <!-- INSERIR BODY AQUI -->
+
+
+
+
+
+
+    </div>
+</div>
+
 
 </body>
 
-        <!--   Core JS Files   -->
-
+       <!--   Core JS Files   -->
+    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 	<!--  Checkbox, Radio & Switch Plugins -->
@@ -168,16 +172,14 @@ if (!isset($_SESSION['usuario'])){
     <!--  Notifications Plugin    -->
     <script src="assets/js/bootstrap-notify.js"></script>
 
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 	<script src="assets/js/light-bootstrap-dashboard.js"></script>
 
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 	<script src="assets/js/demo.js"></script>
 
-    <script>
-        $().ready(function(){
-            demo.initGoogleMaps();
-        });
-    </script>
 
 </html>

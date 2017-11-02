@@ -82,7 +82,7 @@ if (!isset($_SESSION['usuario'])){
                     </a>
                 </li>
                 <li>
-                    <a href="icons.php">
+                    <a href="denuncia.php">
                         <i class="pe-7s-science"></i>
                         <p>Icons</p>
                     </a>

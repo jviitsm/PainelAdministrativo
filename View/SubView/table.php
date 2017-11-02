@@ -1,5 +1,6 @@
 <?php
-require_once("../../bootstrap.php");
+require '../../bootstrap.php';
+use App\Models\Entity\Denuncia;
 session_start();
 
 
@@ -7,6 +8,18 @@ session_start();
 if (!isset($_SESSION['usuario'])){
     header("Location: ../../index.php");
     session_destroy();
+}
+
+
+?>
+<?php
+if (isset($_POST['btn_denuncia'])) {
+    $id = $_POST['id'];
+
+    $_SESSION["denuncia"] = $id;
+    header("Location: denuncia.php");
+
+
 }
 
 ?>
@@ -83,12 +96,6 @@ if (!isset($_SESSION['usuario'])){
                     </a>
                 </li>
                 <li>
-                    <a href="icons.php">
-                        <i class="pe-7s-science"></i>
-                        <p>Icons</p>
-                    </a>
-                </li>
-                <li>
                     <a href="maps.php">
                         <i class="pe-7s-map-marker"></i>
                         <p>Mapa</p>
@@ -118,33 +125,6 @@ if (!isset($_SESSION['usuario'])){
                     <a class="navbar-brand" href="#">Table List</a>
                 </div>
                 <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-left">
-
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret hidden-sm hidden-xs"></b>
-                                    <span class="notification hidden-sm hidden-xs">5</span>
-									<p class="hidden-lg hidden-md">
-										5 Notifications
-										<b class="caret"></b>
-									</p>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                           <a href="">
-                                <i class="fa fa-search"></i>
-								<p class="hidden-lg hidden-md">Search</p>
-                            </a>
-                        </li>
-                    </ul>
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -177,44 +157,35 @@ if (!isset($_SESSION['usuario'])){
                                 <table class="table table-bordered table-striped table-condensed">
                                     <thead>
                                     <tr>
-
+                                        <th>Id</th>
                                         <th>Descrição</th>
-                                        <th >Categoria</th>
-                                        <th >Latitude</th>
-                                        <th >Longetude</th>
-                                        <th >Data</th>
+                                        <th>Categoria</th>
+                                        <th>Latitude</th>
+                                        <th>Longetude</th>
+                                        <th>Data</th>
+                                        <th>Ação</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <div>
                                         <?php
-                                        //Variavel que contem o repositorio denuncia
-                                        $denunciaRepository = $entityManager->getRepository('App\Models\Entity\Denuncia');
+
+                                        $denunciaInstance = new Denuncia();
 
                                         //Recuperando dados do user logado
                                         $user = $_SESSION["array"];
-
-
                                         $id = $user[0] -> id_login;
-
+                                        $denunciaRepository = $entityManager->getRepository('App\Models\Entity\Denuncia');
                                         $empresaRepository = $entityManager->getRepository('App\Models\Entity\Empresa');
-
                                         $empresa = $empresaRepository->findBy(array('fk_login_empresa' => $id));
-
                                         //Recuperando a cidade do user que esta logado
                                         $cidade = $empresa[0] -> cidade;
-
                                         //BUscando denuncias  da cidade do user logado
                                         $denuncias = $denunciaRepository->findBy(array('cidade' => $cidade, 'status_denuncia' =>1 ));
 
-                                        foreach ($denuncias as $lista){
-                                        echo "<tr>";
-                                        echo "<td>$lista->descricao_denuncia</td>";
-                                        echo "<td>{$lista->fk_categoria_denuncia->descricao_categoria}</td>";
-                                        echo "<td>$lista->latitude_denuncia</td>";
-                                        echo "<td>$lista->longitude_denuncia</td>";
-                                        echo "<td>$lista->data_denuncia</td>";
-                                        }
+
+                                        $denunciaInstance->montarTabela($denuncias);
+
                                         ?>
                                     </div>
                                     </tbody>
@@ -224,6 +195,7 @@ if (!isset($_SESSION['usuario'])){
                 </section>
             </div>
         </div>
+
         </section>
         </section>
 

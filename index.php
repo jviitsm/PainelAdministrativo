@@ -26,9 +26,9 @@ if (isset($_POST['btn_logar'])) {
         if ($empresa) {
             $_SESSION["usuario"] = $email;
             $_SESSION["array"] = $existeLogin;
-            header("Location: view/SubView/dashboard.php ");
+            header("Location: View/SubView/dashboard.php ");
         } else {
-            echo "<p class='alert-danger'>Somente empresa permitido!</p>";
+            echo "<p class='alert-danger'>Somente usuário empresa permitido!</p>";
         }
     } else if ($existeEmail) {
 
@@ -39,7 +39,7 @@ if (isset($_POST['btn_logar'])) {
         if ($empresa) {
             $_SESSION["usuario"] = $email;
             $_SESSION["array"] = $existeEmail;
-            header("Location: view/SubView/dashboard.php");
+            header("Location: View/SubView/dashboard.php");
         } else {
             echo "<p class='alert-danger'>Somente empresa permitido!</p>";
         }
@@ -101,32 +101,31 @@ if (isset($_POST['btn_esqueceu'])) {
 }
 
 
-    if(isset($_POST['btn_solicitar'])){
-        $email = $_POST['email_solicitar'];
-        $telefone = $_POST['telefone_solicitar'];
-        $nomeFantasia = $_POST['nome_fantasia'];
-        $estado = $_POST['select_estado'];
-        $cidade = $_POST['select_cidade'];
+if (isset($_POST['btn_solicitar'])) {
+    $email = $_POST['email_solicitar'];
+    $telefone = $_POST['telefone_solicitar'];
+    $nomeFantasia = $_POST['nome_fantasia'];
+    $estado = $_POST['select_estado'];
+    $cidade = $_POST['select_cidade'];
 
-        try
-        {
-            $solicitacaoRepotisory = $entityManager->getRepository('App\Models\Entity\Solicitacao');
+    try {
+        $solicitacaoRepotisory = $entityManager->getRepository('App\Models\Entity\Solicitacao');
 
-            $solicitacao = new Solicitacao();
+        $solicitacao = new Solicitacao();
 
-            $solicitacao->setEmail($email);
-            $solicitacao->setTelefone($telefone);
-            $solicitacao->setNomeFantasia($nomeFantasia);
-            $solicitacao->setEstado($estado);
-            $solicitacao->setCidade($cidade);
+        $solicitacao->setEmail($email);
+        $solicitacao->setTelefone($telefone);
+        $solicitacao->setNomeFantasia($nomeFantasia);
+        $solicitacao->setEstado($estado);
+        $solicitacao->setCidade($cidade);
 
-            $entityManager->persist($solicitacao);
-            $entityManager->flush();
-            echo "<p class='alert alert-success'>Solicitação enviada com sucesso. Entraremos em contato em breve! </p>";
-        }catch(Exception $e){
-            echo "<p class='alert alert-danger'>Não foi possivel enviar a solicitação!</p>";
-        }
+        $entityManager->persist($solicitacao);
+        $entityManager->flush();
+        echo "<p class='alert alert-success'>Solicitação enviada com sucesso. Entraremos em contato em breve! </p>";
+    } catch (Exception $e) {
+        echo "<p class='alert alert-danger'>Não foi possivel enviar a solicitação!</p>";
     }
+}
 ?>
 
 <!DOCTYPE html>
@@ -155,7 +154,7 @@ if (isset($_POST['btn_esqueceu'])) {
     <![endif]-->
 
     <!-- Favicon and touch icons -->
-    <link rel="shortcut icon" href="assets/ico/favicon.png">
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
@@ -183,7 +182,7 @@ if (isset($_POST['btn_esqueceu'])) {
                     });
 
                     $.each(data, function (key, val) {
-                        if(val.nome == str) {
+                        if (val.nome == str) {
                             $.each(val.cidades, function (key_city, val_city) {
                                 options_cidades += '<option value="' + val_city + '">' + val_city + '</option>';
                             });
@@ -237,7 +236,7 @@ if (isset($_POST['btn_esqueceu'])) {
                         <span class="pull-right">
                                      <a data-toggle="modal" href="#Esqueceu"> Esqueceu sua senha?</a>
                         </span>
-                       <br>
+                        <br>
                         <span class="pull-right">
                                      <a data-toggle="modal" href="#Solicitar"> Solicitar Cadastro</a>
                         </span>
@@ -247,7 +246,6 @@ if (isset($_POST['btn_esqueceu'])) {
             </div>
         </div>
     </div>
-
 
 
     <form id="form_esqueceu" method="post">
@@ -290,7 +288,8 @@ if (isset($_POST['btn_esqueceu'])) {
 
                         <input type="text" name="email_solicitar" placeholder="Email" autocomplete="off"
                                class="form-control placeholder-no-fix">
-                        <input type="text" name="telefone_solicitar" placeholder="Telefone Para Contato" autocomplete="off"
+                        <input type="text" name="telefone_solicitar" placeholder="Telefone Para Contato"
+                               autocomplete="off"
                                class="form-control placeholder-no-fix">
                         <input type="text" name="nome_fantasia" placeholder="Nome Fantasia" autocomplete="off"
                                class="form-control placeholder-no-fix">
@@ -301,8 +300,8 @@ if (isset($_POST['btn_esqueceu'])) {
                         </select>
 
                         <p>
-                        <select name="select_cidade" id="cidades">
-                        </select>
+                            <select name="select_cidade" id="cidades">
+                            </select>
                         </p>
 
                     </div>
@@ -317,7 +316,6 @@ if (isset($_POST['btn_esqueceu'])) {
 
 
 </div>
-
 
 
 <!-- Javascript -->
