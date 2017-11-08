@@ -1,7 +1,8 @@
 <?php
+require_once("../../bootstrap.php");
 session_start();
 
-require_once("../../bootstrap.php");
+
 
 if (!isset($_SESSION['usuario'])){
     header("Location: ../../index.php");

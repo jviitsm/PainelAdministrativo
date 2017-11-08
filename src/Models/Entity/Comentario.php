@@ -62,6 +62,17 @@ class Comentario{
             $this->descricao_comentario = $descricao_comentario;
         }
 
+        function montarComentarios($comentarios){
+
+
+            foreach ($comentarios as $lista) {
+                echo "<a class=\"list-group-item\">$lista->descricao_comentario </a>";
+            }
+            if(!$comentarios){
+                echo "<a class=\"list-group-item\">Nenhum comentario </a>";
+            }
+        }
+
 
 }
 ?>

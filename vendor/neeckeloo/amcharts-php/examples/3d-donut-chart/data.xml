@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <item>
+        <country>United States</country>
+        <value>9252</value>
+    </item>
+    <item>
+        <country>China</country>
+        <value>1882</value>
+    </item>
+    <item>
+        <country>Japan</country>
+        <value>1809</value>
+    </item>
+    <item>
+        <country>Germany</country>
+        <value>1322</value>
+    </item>
+    <item>
+        <country>United Kingdom</country>
+        <value>1122</value>
+    </item>
+    <item>
+        <country>France</country>
+        <value>1114</value>
+    </item>
+    <item>
+        <country>India</country>
+        <value>984</value>
+    </item>
+    <item>
+        <country>Spain</country>
+        <value>711</value>
+    </item>
+</root>

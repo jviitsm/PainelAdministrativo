@@ -95,5 +95,27 @@ class Solucao{
         $this->data_solucao = $data_solucao;
     }
 
+    function montarTabela($denuncias)
+    {
+        foreach ($denuncias as $lista) {
+
+            $endereco = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?latlng=' . $lista->latitude_denuncia . ',' . $lista->longitude_denuncia . '&key=AIzaSyC_smlZV61EJc1y0ZqgG6CqjzfT1ApoHrQ');
+            $output = json_decode($endereco, true);
+
+            $endereco = $output['results'][0]['formatted_address'];
+
+
+            echo "<form id=\"form_denuncia\" method=\"post\">";
+            echo "<tr>";
+            echo "<td>$lista->id_denuncia</td>";
+            echo "<td>$lista->descricao_denuncia</td>";
+            echo "<td>{$lista->fk_categoria_denuncia->descricao_categoria}</td>";
+            echo "<td>$endereco</td>";
+            echo "<td>$lista->data_denuncia</td>";
+            echo "</form>";
+
+        }
+    }
+
 
 }

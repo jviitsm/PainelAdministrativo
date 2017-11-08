@@ -15,8 +15,10 @@ if (!isset($_SESSION['usuario'])){
 <?php
 if (isset($_POST['btn_denuncia'])) {
     $id = $_POST['id'];
+    $endereco = $_POST['endereco'];
 
     $_SESSION["denuncia"] = $id;
+    $_SESSION['endereco'] = $endereco;
     header("Location: denuncia.php");
 
 
@@ -30,7 +32,7 @@ if (isset($_POST['btn_denuncia'])) {
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Light Bootstrap Dashboard by Creative Tim</title>
+	<title>City Care</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -90,21 +92,9 @@ if (isset($_POST['btn_denuncia'])) {
                     </a>
                 </li>
                 <li>
-                    <a href="typography.php">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Typography</p>
-                    </a>
-                </li>
-                <li>
                     <a href="maps.php">
                         <i class="pe-7s-map-marker"></i>
                         <p>Mapa</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="notifications.php">
-                        <i class="pe-7s-bell"></i>
-                        <p>Notificações</p>
                     </a>
                 </li>
 
@@ -160,8 +150,7 @@ if (isset($_POST['btn_denuncia'])) {
                                         <th>Id</th>
                                         <th>Descrição</th>
                                         <th>Categoria</th>
-                                        <th>Latitude</th>
-                                        <th>Longetude</th>
+                                        <th>Endereço</th>
                                         <th>Data</th>
                                         <th>Ação</th>
                                     </tr>
@@ -181,7 +170,9 @@ if (isset($_POST['btn_denuncia'])) {
                                         //Recuperando a cidade do user que esta logado
                                         $cidade = $empresa[0] -> cidade;
                                         //BUscando denuncias  da cidade do user logado
+
                                         $denuncias = $denunciaRepository->findBy(array('cidade' => $cidade, 'status_denuncia' =>1 ));
+
 
 
                                         $denunciaInstance->montarTabela($denuncias);

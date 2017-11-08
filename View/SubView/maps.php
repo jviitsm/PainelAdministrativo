@@ -1,7 +1,8 @@
 <?php
+require_once("../../bootstrap.php");
 session_start();
 
-require_once("../../bootstrap.php");
+
 
 if (!isset($_SESSION['usuario'])){
     header("Location: ../../index.php");
@@ -89,25 +90,12 @@ if (!isset($_SESSION['usuario'])){
                     </a>
                 </li>
                 <li>
-                    <a href="typography.php">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Typography</p>
-                    </a>
-                </li>
-                <li>
                 <li class="active">
                     <a href="maps.php">
                         <i class="pe-7s-map-marker"></i>
                         <p>Mapa</p>
                     </a>
                 </li>
-                <li>
-                    <a href="notifications.php">
-                        <i class="pe-7s-bell"></i>
-                        <p>Notificações</p>
-                    </a>
-                </li>
-
             </ul>
         </div>
     </div>

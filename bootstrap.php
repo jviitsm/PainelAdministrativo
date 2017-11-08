@@ -3,6 +3,7 @@
 require_once "vendor/autoload.php";
 
 
+
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
@@ -16,8 +17,10 @@ $dbParams = array(
     'user'     => 'root',/*citycare_web*/
     'password' => '',/*T0*oO3HfwSzv*/
     'dbname'   => 'citycare_db',
+    'charset' => 'utf8',
 );
 $isDevMode = true;
+
 
 $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/src/Models/Entity"), $isDevMode);
 $entityManager = EntityManager::create($dbParams, $config);

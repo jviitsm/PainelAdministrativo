@@ -183,6 +183,7 @@ input:focus {
   top: 0;
   height: 100vh; }
 
+
 .sidebar,
 body > .navbar-collapse {
   position: absolute;
@@ -1597,8 +1598,9 @@ body > .navbar-collapse {
     margin-bottom: 5px;
     text-transform: uppercase; }
   .card .title {
-    margin: 0;
-    color: #333333;
+    margin: 15px;
+
+    color: #000000;
     font-weight: 300; }
   .card .avatar {
     width: 30px;

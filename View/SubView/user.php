@@ -1,5 +1,9 @@
 <?php
 require_once("../../bootstrap.php");
+
+use App\Models\Entity\Empresa;
+use App\Models\Entity\Login;
+
 session_start();
 
 
@@ -13,12 +17,90 @@ $empresa = $empresaRepository->findBy(array("fk_login_empresa" => $_SESSION["arr
 
 
 if (isset($_POST['btnAtualizarPerfil'])) {
-    ##inserir codigo de atualizar
+    $id = $_SESSION["array"][0]->id_login;
+
+    $loginUser = new Login();
+    $empresaUser = new Empresa();
+
+    $loginRepository = $entityManager->getRepository('App\Models\Entity\Login');
+
+    $loginUser = $loginRepository->find($id);
+
+    $loginUser->setId_login($id);
+    if ($_POST['novaSenha']) {
+        $loginUser->setSenha($_POST['novaSenha']);
+    }
+    if($_SESSION['array'][0] -> login != $_POST['login']){
+        if ($_POST['login'] != ""){
+        if($loginRepository->findBy(array("login" => $_POST['login']))){
+            echo "<script type='text/javascript'>alert('Login Já Existe!');</script>";
+        }
+        else{
+            $loginUser->setLogin($_POST['login']);
+        }
+        }
+    }
+    if($_SESSION['array'][0] -> email != $_POST['email']){
+        if($_POST['email'] != ""){
+        if($loginRepository->findBy(array("email" => $_POST['email']))){
+            echo "<script type='text/javascript'>alert('Email Já Existe!');</script>";
+        }
+        else{
+            $loginUser->setEmail($_POST['email']);
+        }
+        }
+    }
+
+
+
+    $entityManager->merge($loginUser);
+    $entityManager->flush();
+
+
+    $loginNovoUser = $loginRepository->find($id);
+
+    $empresaUser = $empresaRepository->find($empresa[0]->id_empresa);
+
+    $empresaUser->setId_empresa($empresa[0]->id_empresa);
+    $empresaUser->setRazao_social($_POST['razaoSocial']);
+    $empresaUser->setFk_login_empresa($loginNovoUser);
+    $empresaUser->setCidade($_POST['cidade']);
+    $empresaUser->setEstado($_POST['estado']);
+
+    $imagem = $_FILES["fotoPerfil"];
+
+
+    if ($imagem["error"] == 0) {
+        $nome_temporario = $_FILES["fotoPerfil"]["tmp_name"];
+        $nome_real = uniqid('img-' . date('d-m-y') . '-');
+        $extensao = pathinfo($_FILES["fotoPerfil"]["name"], PATHINFO_EXTENSION);
+        $nome_real .= $_FILES["fotoPerfil"]["name"] . "";
+        if (strstr('.jpg;.jpeg;.gif;.png', $extensao)) {
+            copy($nome_temporario, "teste/$nome_real");
+            $photoURL = "teste/" . $nome_real;
+            $empresaUser->setDir_foto_usuario($photoURL);
+
+        } else {
+            echo "<script type='text/javascript'>alert('Tipo de arquivo invalido');</script>";
+        }
+
+
+    }
+    $loginNovaSession = $loginRepository->findBy(array('email' => $loginUser->getEmail()));
+
+    $_SESSION["array"] = $loginNovaSession;
+    $_SESSION["usuario"] = $loginUser->getEmail();
+
+    $entityManager->merge($empresaUser);
+    $entityManager->flush();
+
+
 }
+
 
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="utf-8"/>
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
@@ -84,21 +166,9 @@ if (isset($_POST['btnAtualizarPerfil'])) {
                     </a>
                 </li>
                 <li>
-                    <a href="typography.php">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Typography</p>
-                    </a>
-                </li>
-                <li>
                     <a href="maps.php">
                         <i class="pe-7s-map-marker"></i>
                         <p>Mapa</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="notifications.php">
-                        <i class="pe-7s-bell"></i>
-                        <p>Notificações</p>
                     </a>
                 </li>
 
@@ -117,7 +187,7 @@ if (isset($_POST['btnAtualizarPerfil'])) {
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">User</a>
+                    <a class="navbar-brand" href="#">Usuário</a>
                 </div>
                 <div class="collapse navbar-collapse">
 
@@ -128,7 +198,7 @@ if (isset($_POST['btnAtualizarPerfil'])) {
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="sair.php">
                                 <p>Sair</p>
                             </a>
                         </li>
@@ -164,7 +234,7 @@ if (isset($_POST['btnAtualizarPerfil'])) {
                                 <h4 class="title">Editar Perfil</h4>
                             </div>
                             <div class="content">
-                                <form id="atualizarPerfil" method="post">
+                                <form id="atualizarPerfil" method="post" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">
@@ -233,7 +303,7 @@ if (isset($_POST['btnAtualizarPerfil'])) {
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Foto de Perfil</label>
-                                                <input type="file" accept="image/*" name="fotoPerfil"
+                                                <input type="file" accept="image/*" name="fotoPerfil" id="fotoPerfil"
                                                        class="form-control">
                                             </div>
                                         </div>

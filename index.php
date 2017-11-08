@@ -1,11 +1,13 @@
 <?php
 require 'bootstrap.php';
-session_start();
-
-
 use PHPMailer\PHPMailer\PHPMailer;
 use App\Models\Entity\Login;
 use App\Models\Entity\Solicitacao;
+session_start();
+
+if (isset($_SESSION['usuario'])){
+    header("Location: View/SubView/dashboard.php ");
+}
 
 ?>
 <?php
