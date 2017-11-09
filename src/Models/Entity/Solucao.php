@@ -27,7 +27,7 @@ class Solucao{
     public $dir_foto_solucao;
     /** 
      * @var string
-     * @Column(type="datetime")
+     * @Column(type="string")
      */ 
     public $data_solucao;
 
@@ -103,6 +103,9 @@ class Solucao{
             $output = json_decode($endereco, true);
 
             $endereco = $output['results'][0]['formatted_address'];
+            list($year, $month, $day) = explode('-', $lista->data_denuncia);
+            list($dia) = explode('T', $day);
+            $data = "$dia"."/$month"."/$year";
 
 
             echo "<form id=\"form_denuncia\" method=\"post\">";
@@ -111,7 +114,9 @@ class Solucao{
             echo "<td>$lista->descricao_denuncia</td>";
             echo "<td>{$lista->fk_categoria_denuncia->descricao_categoria}</td>";
             echo "<td>$endereco</td>";
-            echo "<td>$lista->data_denuncia</td>";
+            echo "<td>$data</td>";
+            echo "<td><button type=\"submit\" name=\"btn_solucao\" class=\"btn btn-info btn-fill pull-center\">Checar</button></td>";
+            echo "<input type=\"hidden\" name=\"id\" value=\"$lista->id_denuncia\">";
             echo "</form>";
 
         }

@@ -8,7 +8,7 @@ if (!isset($_SESSION['usuario'])) {
 }
 
 $denunciaRepository = $entityManager->getRepository('App\Models\Entity\Denuncia');
-$denuncias = $denunciaRepository->findAll();
+$denuncias = $denunciaRepository->findBy(array("status_denuncia" => 1));
 $numeroDenuncias = count($denuncias);
 
 $cidadaoRepository = $entityManager->getRepository('App\Models\Entity\Cidadao');
@@ -219,7 +219,7 @@ $numeroSolucoes = count($solucoes);
                             </div>
                         </div>
                     </div>
-                    <a href="solucoes.php">
+                    <a href="solucionadas.php">
                         <div class="panel-footer">
                             <span class="pull-left">Ver Detalhes</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

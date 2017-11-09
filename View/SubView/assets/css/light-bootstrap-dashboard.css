@@ -644,9 +644,13 @@ body > .navbar-collapse {
   filter: alpha(opacity=50); }
 
 .btn-round {
-  border-width: 1px;
+  border-width: 2px;
   border-radius: 30px !important;
-  padding: 9px 18px; }
+  padding: 9px 18px;
+
+  align-content: center;
+
+}
   .btn-round.btn-icon {
     padding: 9px; }
 

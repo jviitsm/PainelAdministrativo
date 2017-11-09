@@ -2,8 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f331daf-bc84-4df0-9d7a-7f2ace1edbe5" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/solucao.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/View/SubView/solucoes.php" afterPath="$PROJECT_DIR$/View/SubView/solucionadas.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/assets/css/light-bootstrap-dashboard.css" afterPath="$PROJECT_DIR$/View/SubView/assets/css/light-bootstrap-dashboard.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/dashboard.php" afterPath="$PROJECT_DIR$/View/SubView/dashboard.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/denuncia.php" afterPath="$PROJECT_DIR$/View/SubView/denuncia.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/table.php" afterPath="$PROJECT_DIR$/View/SubView/table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/user.php" afterPath="$PROJECT_DIR$/View/SubView/user.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Models/Entity/Comentario.php" afterPath="$PROJECT_DIR$/src/Models/Entity/Comentario.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Models/Entity/Denuncia.php" afterPath="$PROJECT_DIR$/src/Models/Entity/Denuncia.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Models/Entity/Solucao.php" afterPath="$PROJECT_DIR$/src/Models/Entity/Solucao.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,26 +24,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="denuncia.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/SubView/denuncia.php">
+      <file leaf-file-name="solucao.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/View/SubView/solucao.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2839">
-              <caret line="167" column="22" lean-forward="false" selection-start-line="167" selection-start-column="22" selection-end-line="167" selection-end-column="22" />
+            <state relative-caret-position="340">
+              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding>
                 <element signature="e#44#75#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Denuncia.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Models/Entity/Denuncia.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="54" column="28" lean-forward="false" selection-start-line="54" selection-start-column="28" selection-end-line="54" selection-end-column="28" />
-              <folding>
-                <marker date="1510194623061" expanded="true" signature="4622:5255" ph="..." />
-                <marker date="1510194623061" expanded="true" signature="4647:5248" ph="..." />
               </folding>
             </state>
           </provider>
@@ -51,36 +48,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>$numero</find>
-      <find>sol</find>
-      <find>dashboard</find>
-      <find>style</find>
-      <find>fields</find>
-      <find>editar perfil</find>
-      <find>vard</find>
-      <find>icons</find>
-      <find>download</find>
-      <find>twitter</find>
-      <find>social</find>
-      <find>what is bot</find>
-      <find>what</find>
-      <find>dir</find>
-      <find>sign</find>
-      <find>bootstrap exa</find>
-      <find>descreva</find>
-      <find>solu</find>
-      <find>ver</find>
-      <find>solcu</find>
-      <find>panel</find>
-      <find>file</find>
-      <find>submit</find>
-      <find>soluco</find>
-      <find>citycare</find>
-      <find>comentarios</find>
       <find>get</find>
       <find>denuncia</find>
       <find>categ</find>
       <find>dados da</find>
+      <find>cidade</find>
+      <find>esqueceu</find>
+      <find>montar</find>
+      <find>solu</find>
+      <find>center</find>
+      <find>solucionar</find>
+      <find>descri</find>
+      <find>text</find>
+      <find>endereço</find>
+      <find>solução</find>
+      <find>comentarios</find>
+      <find>denuncias</find>
+      <find>categoria</find>
+      <find>round</find>
+      <find>descricao</find>
+      <find>foto</find>
+      <find>form</find>
+      <find>status</find>
+      <find>header</find>
+      <find>repository</find>
+      <find>soluc</find>
+      <find>button</find>
+      <find>ativas</find>
+      <find>solucio</find>
+      <find>data</find>
+      <find>repoti</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -90,8 +87,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Model/BdConnection.class.php" />
-        <option value="$PROJECT_DIR$/inc/Config.inc.php" />
         <option value="$PROJECT_DIR$/Model/Entity/Login.php" />
         <option value="$PROJECT_DIR$/View/SubView/dashboard.html" />
         <option value="$PROJECT_DIR$/index.css" />
@@ -122,25 +117,27 @@
         <option value="$PROJECT_DIR$/View/SubView/sair.php" />
         <option value="$PROJECT_DIR$/View/SubView/template.php" />
         <option value="$PROJECT_DIR$/View/SubView/assets/js/mapa.js" />
-        <option value="$PROJECT_DIR$/View/SubView/teste/solucoes.php" />
-        <option value="$PROJECT_DIR$/src/Models/Entity/Solucao.php" />
-        <option value="$PROJECT_DIR$/View/SubView/solucoes.php" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/View/SubView/assets/js/Chart.min.js" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/View/SubView/data.xml" />
         <option value="$PROJECT_DIR$/View/SubView/teste/data.xml" />
         <option value="$PROJECT_DIR$/View/SubView/assets/js/grafico1.js" />
-        <option value="$PROJECT_DIR$/View/SubView/assets/css/light-bootstrap-dashboard.css" />
         <option value="$PROJECT_DIR$/View/SubView/maps.php" />
-        <option value="$PROJECT_DIR$/View/SubView/dashboard.php" />
-        <option value="$PROJECT_DIR$/View/SubView/user.php" />
-        <option value="$PROJECT_DIR$/View/SubView/table.php" />
-        <option value="$PROJECT_DIR$/src/Models/Entity/Comentario.php" />
         <option value="$PROJECT_DIR$/bootstrap.php" />
+        <option value="$PROJECT_DIR$/View/SubView/dashboard.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/View/SubView/table.php" />
+        <option value="$PROJECT_DIR$/View/SubView/assets/css/light-bootstrap-dashboard.css" />
+        <option value="$PROJECT_DIR$/src/Models/Entity/Comentario.php" />
         <option value="$PROJECT_DIR$/View/SubView/assets/css/bootstrap.min.css" />
-        <option value="$PROJECT_DIR$/View/SubView/denuncia.php" />
+        <option value="$PROJECT_DIR$/View/SubView/user.php" />
         <option value="$PROJECT_DIR$/src/Models/Entity/Denuncia.php" />
+        <option value="$PROJECT_DIR$/View/SubView/teste/solucoes.php" />
+        <option value="$PROJECT_DIR$/View/SubView/solucionadas.php" />
+        <option value="$PROJECT_DIR$/View/SubView/solucoes.php" />
+        <option value="$PROJECT_DIR$/src/Models/Entity/Solucao.php" />
+        <option value="$PROJECT_DIR$/View/SubView/denuncia.php" />
+        <option value="$PROJECT_DIR$/View/SubView/solucao.php" />
       </list>
     </option>
   </component>
@@ -173,6 +170,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -214,7 +212,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -225,19 +222,19 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\jvict\PhpstormProjects\Painel\View\SubView\assets2" />
-      <recent name="C:\Users\jvict\PhpstormProjects\Painel\View\SubView\assets\css" />
-      <recent name="C:\Users\jvict\PhpstormProjects\Painel\View\SubView\assets\js" />
-      <recent name="C:\Users\jvict\PhpstormProjects\Painel\View\SubView" />
-      <recent name="C:\Users\jvict\PhpstormProjects\Painel\assets\ico" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jvict\PhpstormProjects\Painel\View\SubView" />
       <recent name="C:\Users\jvict\PhpstormProjects\Painel\assets\img" />
       <recent name="C:\Users\jvict\PhpstormProjects\Painel\View\SubView\assets\js" />
       <recent name="C:\Users\jvict\PhpstormProjects\Painel\View\SubView\assets\css" />
       <recent name="C:\Users\jvict\PhpstormProjects\Painel" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jvict\PhpstormProjects\Painel\View\SubView\assets2" />
+      <recent name="C:\Users\jvict\PhpstormProjects\Painel\View\SubView\assets\css" />
+      <recent name="C:\Users\jvict\PhpstormProjects\Painel\View\SubView\assets\js" />
+      <recent name="C:\Users\jvict\PhpstormProjects\Painel\View\SubView" />
+      <recent name="C:\Users\jvict\PhpstormProjects\Painel\assets\ico" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -301,7 +298,9 @@
       <workItem from="1510168169302" duration="4352000" />
       <workItem from="1510179960786" duration="788000" />
       <workItem from="1510194463637" duration="131000" />
-      <workItem from="1510194620332" duration="5000" />
+      <workItem from="1510194620332" duration="113000" />
+      <workItem from="1510195486059" duration="8000" />
+      <workItem from="1510254972904" duration="6467000" />
     </task>
     <task id="LOCAL-00001" summary="Login Implementado">
       <created>1508351545761</created>
@@ -359,11 +358,18 @@
       <option name="project" value="LOCAL" />
       <updated>1509662536528</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Status denuncia alterado para integer">
+      <created>1510194635619</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1510194635619</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116256000" />
+    <option name="totallyTimeSpent" value="122839000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -373,18 +379,18 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -402,18 +408,14 @@
     <MESSAGE value="Alteração do layout das telas" />
     <MESSAGE value="Google Maps Funcionando" />
     <MESSAGE value="Atualização da pagina de usuário" />
-    <option name="LAST_COMMIT_MESSAGE" value="Atualização da pagina de usuário" />
+    <MESSAGE value="Status denuncia alterado para integer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Status denuncia alterado para integer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/assets/ico/apple-touch-icon-57-precomposed.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/ico/apple-touch-icon-72-precomposed.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -508,13 +510,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/View/SubView/pontos.json" />
-    <entry file="file://$PROJECT_DIR$/View/SubView/template.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="36" lean-forward="false" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/SubView/sair.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -558,20 +553,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/solucoes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="174" column="75" lean-forward="false" selection-start-line="174" selection-start-column="75" selection-end-line="174" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Entity/Solucao.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="113" column="50" lean-forward="false" selection-start-line="113" selection-start-column="50" selection-end-line="113" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/inc/Config.inc.php" />
     <entry file="file://$PROJECT_DIR$/View/SubView/assets/js/Chart.min.js" />
     <entry file="file://$PROJECT_DIR$/vendor/neeckeloo/amcharts-php/tests/AmCharts/UtilsTest.php">
@@ -604,13 +585,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/assets/css/light-bootstrap-dashboard.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="184" column="0" lean-forward="true" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/SubView/assets/js/mapa.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
@@ -632,38 +606,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="20" column="38" lean-forward="false" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/common.rnc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5747">
-          <caret line="124" column="18" lean-forward="false" selection-start-line="124" selection-start-column="18" selection-end-line="124" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1309">
-          <caret line="4" column="34" lean-forward="false" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bootstrap.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="19" column="24" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Entity/Comentario.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="71" column="68" lean-forward="false" selection-start-line="71" selection-start-column="68" selection-end-line="71" selection-end-column="68" />
         </state>
       </provider>
     </entry>
@@ -675,27 +621,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/dashboard.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1690">
-          <caret line="266" column="37" lean-forward="false" selection-start-line="266" selection-start-column="32" selection-end-line="266" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/assets/css/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="4" column="95585" lean-forward="false" selection-start-line="4" selection-start-column="95585" selection-end-line="4" selection-end-column="95585" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/user.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1078">
-          <caret line="320" column="50" lean-forward="true" selection-start-line="320" selection-start-column="50" selection-end-line="320" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Entity/Categoria.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-153">
@@ -703,23 +628,121 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/common.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="129" column="16" lean-forward="false" selection-start-line="129" selection-start-column="12" selection-end-line="129" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/assets/css/light-bootstrap-dashboard.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="646" column="17" lean-forward="true" selection-start-line="646" selection-start-column="17" selection-end-line="646" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Entity/Comentario.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="68" column="33" lean-forward="false" selection-start-line="68" selection-start-column="33" selection-end-line="68" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/assets/css/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="4" column="104504" lean-forward="false" selection-start-line="4" selection-start-column="104504" selection-end-line="4" selection-end-column="104504" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="181" column="41" lean-forward="false" selection-start-line="181" selection-start-column="35" selection-end-line="181" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="36" lean-forward="false" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="114" column="28" lean-forward="false" selection-start-line="114" selection-start-column="22" selection-end-line="114" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/dashboard.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3585">
+          <caret line="219" column="30" lean-forward="true" selection-start-line="219" selection-start-column="30" selection-end-line="219" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/View/SubView/denuncia.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2839">
-          <caret line="167" column="22" lean-forward="false" selection-start-line="167" selection-start-column="22" selection-end-line="167" selection-end-column="22" />
+        <state relative-caret-position="272">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="82" />
           <folding>
             <element signature="e#44#75#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/solucionadas.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="62" column="29" lean-forward="false" selection-start-line="62" selection-start-column="25" selection-end-line="62" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Entity/Denuncia.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="54" column="28" lean-forward="false" selection-start-line="54" selection-start-column="28" selection-end-line="54" selection-end-column="28" />
+        <state relative-caret-position="37">
+          <caret line="114" column="13" lean-forward="true" selection-start-line="114" selection-start-column="13" selection-end-line="114" selection-end-column="35" />
           <folding>
-            <marker date="1510194623061" expanded="true" signature="4622:5255" ph="..." />
-            <marker date="1510194623061" expanded="true" signature="4647:5248" ph="..." />
+            <marker date="1510259895257" expanded="true" signature="4853:5552" ph="..." />
+            <marker date="1510259895257" expanded="true" signature="4878:5545" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Entity/Solucao.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="36" column="20" lean-forward="false" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/solucao.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="e#44#75#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

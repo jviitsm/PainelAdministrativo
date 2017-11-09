@@ -19,6 +19,7 @@ if (isset($_POST['btn_denuncia'])) {
 
     $_SESSION["denuncia"] = $id;
     $_SESSION['endereco'] = $endereco;
+    $_SESSION['dataDenuncia'] = $_POST['dataDenuncia'];
     header("Location: denuncia.php");
 
 

@@ -3,6 +3,7 @@ require_once("../../bootstrap.php");
 
 use App\Models\Entity\Denuncia;
 use App\Models\Entity\Comentario;
+use App\Models\Entity\Solucao;
 
 session_start();
 
@@ -13,7 +14,6 @@ if (!isset($_SESSION['usuario'])) {
 
 
 ##Buscando denuncia que foi clicada pelo usuario
-
 $denunciaRepository = $entityManager->getRepository('App\Models\Entity\Denuncia');
 
 $denuncia = $denunciaRepository->find($_SESSION['denuncia']);
@@ -28,6 +28,70 @@ $categoria = $denuncia->getFk_categoria_denuncia()->getDescricao_categoria();
 
 $comentarioRepository = $entityManager->getRepository('App\Models\Entity\Comentario');
 $comentarios = $comentarioRepository->findBy(array("fk_denuncia_comentario" => $denuncia->getId_denuncia()));
+
+
+##Cadastrar Solução
+
+
+if (isset($_POST['btnSolucionar'])) {
+    $controle = true;
+    if ($_POST['descricaoSolucao'] != '') {
+        $descricao = $_POST['descricaoSolucao'];
+    } else {
+        echo "<script type='text/javascript'>alert('Preencha a descrição');</script>";
+        $controle = false;
+    }
+
+
+    if (!($_FILES['fotoSolucao']['error'] == 4)) {
+        $imagem = $_FILES["fotoSolucao"];
+        if ($imagem["error"] == 0) {
+            $nome_temporario = $_FILES["fotoSolucao"]["tmp_name"];
+            $nome_real = uniqid('img-' . date('d-m-y') . '-');
+            $extensao = pathinfo($_FILES["fotoSolucao"]["name"], PATHINFO_EXTENSION);
+            $nome_real .= $_FILES["fotoSolucao"]["name"] . "";
+            if (strstr('.jpg;.jpeg;.gif;.png', $extensao)) {
+                copy($nome_temporario, "teste/$nome_real"); #"/home/citycare//public_html/Imgs/Solucao/$nome_real
+                $photoURL = "teste/" . $nome_real; #http://projetocitycare.com.br/Imgs/Solucao/$nome_real
+            } else {
+                echo "<script type='text/javascript'>alert('Tipo de arquivo invalido');</script>";
+                $controle = false;
+            }
+        }
+    } else {
+        echo "<script type='text/javascript'>alert('Insira a foto da solução');</script>";
+        $controle = false;
+    }
+
+    if($controle){
+
+    try{
+    $solucao = new Solucao();
+
+    $solucao->setDescricaoSolucao($descricao);
+    $solucao->setDirFotoSolucao($photoURL);
+    $solucao->setDataSolucao(date('d/m/y'));
+
+    $entityManager->persist($solucao);
+    $entityManager->flush();
+
+    $denuncia->setStatus_denuncia(0);
+    $denuncia->setFk_solucao_denuncia($solucao);
+
+    $entityManager->merge($denuncia);
+    $entityManager->flush();
+
+    $_SESSION['denuncia'] = "";
+    header("Location: table.php ");
+    }catch (Exception $e){
+        echo "<script type='text/javascript'>alert('Desculpe Ocorreu um Erro!');</script>";
+    }
+
+    }
+
+
+}
+
 
 ?>
 <!doctype html>
@@ -147,22 +211,23 @@ $comentarios = $comentarioRepository->findBy(array("fk_denuncia_comentario" => $
         <!-- INSERIR BODY AQUI -->
 
         <div class="col-sm-5">
-<br>
+            <br>
 
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                <h4 class="text-center">Dados da Denuncia</h4>
+                    <h5 class="text-center">Dados da Denuncia</h5>
                 </div>
                 <div class="panel-thumbnail">
                     <img src="<?php echo $denuncia->getDir_foto_denuncia() ?>" class="img-thumbnail">
                 </div>
                 <div class="panel-body">
                     <p class="huge text-center">
-                    <?php echo $denuncia->getDescricao_denuncia() ?>
+                        <?php echo $denuncia->getDescricao_denuncia() ?>
                     </p>
-                    <p class="text-center"><?php echo $categoria?></p>
-                    <p class="huge text-center"><?php echo $_SESSION['endereco']?></p>
-                    <p class="text-center"><?php echo count($agilizas) ?> Agilizas</p>
+                    <p class="text-center  "><?php echo $categoria ?></p>
+                    <p class="huge text-center"><?php echo $_SESSION['endereco'] ?></p>
+                    <p class="huge text-center"><?php echo $_SESSION['dataDenuncia'] ?></p>
+                    <p class="text-center"><?php echo count($agilizas) ?> Agiliza(s)</p>
                     <center><a class="modal-footer" href="<?php echo $denuncia->getDir_foto_denuncia() ?>">Ver
                             Imagem</a></center>
                 </div>
@@ -173,7 +238,7 @@ $comentarios = $comentarioRepository->findBy(array("fk_denuncia_comentario" => $
 
         <!-- main col right -->
         <div class="col-sm-7">
-<br>
+            <br>
             <div class="panel panel-primary">
                 <div class="panel-heading text-center"><h5>Comentários</h5></div>
                 <div class="panel-body">
@@ -188,32 +253,32 @@ $comentarios = $comentarioRepository->findBy(array("fk_denuncia_comentario" => $
 
 
             <div class="panel panel-primary">
-                <div class="panel-heading text-center"><h4>Solucionar Denuncia</h4></div>
+                <div class="panel-heading text-center"><h5>Solucionar Denuncia</h5></div>
                 <div class="panel-body">
 
                     <p class="text-center">Insira os Dados Para a Solução</p>
                     <div class="row">
-                        <form name="formSolucao" id="formSolucao" method="post">
+                        <form name="formSolucao" id="formSolucao" enctype="multipart/form-data" method="post">
                             <div class="form-group">
-                                <p>Descrição</p>
-                                <input type="text" name="cidade" class="form-control "
+                                <p class="text">Descrição</p>
+                                <input type="text" name="descricaoSolucao" class="form-control btn-round "
                                        placeholder="Solução">
                             </div>
                             <p>Foto</p>
-                            <input type="file" accept="image/*" name="fotoPerfil" id="fotoPerfil"
-                                   class="form-control">
+                            <input type="file" accept="image/*" name="fotoSolucao" id="fotoSolucao"
+                                   class="form-control btn-round">
                     </div>
                     <br>
-                    <button type="submit" name="btnSolucionar"
-                            class="button center-block">Solucionar
-                    </button>
+                    <center>
+                        <button type="submit" name="btnSolucionar"
+                                class="btn btn-primary">Solucionar
+                        </button>
+                    </center>
                     </form>
 
 
                 </div>
             </div>
-
-
 
 
         </div>

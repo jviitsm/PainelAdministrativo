@@ -183,7 +183,7 @@ class Denuncia
         $this->status_denuncia = $status_denuncia;
     }
 
-    function setFk_solucao_denuncia(Denuncia $fk_solucao_denuncia)
+    function setFk_solucao_denuncia(Solucao $fk_solucao_denuncia)
     {
         $this->fk_solucao_denuncia = $fk_solucao_denuncia;
     }
@@ -205,8 +205,14 @@ class Denuncia
             $endereco = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?latlng=' . $lista->latitude_denuncia . ',' . $lista->longitude_denuncia . '&key=AIzaSyC_smlZV61EJc1y0ZqgG6CqjzfT1ApoHrQ');
             $output = json_decode($endereco, true);
 
+            #Executar um explode na data para tratar a mesma
+            list($year, $month, $day) = explode('-', $lista->data_denuncia);
+            list($dia) = explode('T', $day);
+
+
             $endereco = $output['results'][0]['formatted_address'];
 
+            $data = "$dia"."/$month"."/$year";
 
             echo "<form id=\"form_denuncia\" method=\"post\">";
             echo "<tr>";
@@ -214,10 +220,11 @@ class Denuncia
             echo "<td>$lista->descricao_denuncia</td>";
             echo "<td>{$lista->fk_categoria_denuncia->descricao_categoria}</td>";
             echo "<td>$endereco</td>";
-            echo "<td>$lista->data_denuncia</td>";
+            echo "<td>$data</td>";
             echo "<td><button type=\"submit\" name=\"btn_denuncia\" class=\"btn btn-info btn-fill pull-center\">Checar</button></td>";
             echo "<input type=\"hidden\" name=\"id\" value=\"$lista->id_denuncia\">";
             echo "<input type=\"hidden\" name=\"endereco\" value=\"$endereco\">";
+            echo "<input type=\"hidden\" name=\"dataDenuncia\" value=\"$data\">";
             echo "</form>";
 
 

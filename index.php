@@ -28,6 +28,8 @@ if (isset($_POST['btn_logar'])) {
         if ($empresa) {
             $_SESSION["usuario"] = $email;
             $_SESSION["array"] = $existeLogin;
+
+
             header("Location: View/SubView/dashboard.php ");
         } else {
             echo "<p class='alert-danger'>Somente usuário empresa permitido!</p>";
@@ -262,7 +264,7 @@ if (isset($_POST['btn_solicitar'])) {
                     <div class="modal-body">
                         <p>Insira o seu e-mail para recuperar sua senha!</p>
 
-                        <input type="text" name="email_esqueceu" placeholder="Email" autocomplete="off"
+                        <input type="email" name="email_esqueceu" placeholder="Email" autocomplete="off"
                                class="form-control placeholder-no-fix">
 
                     </div>
@@ -288,19 +290,21 @@ if (isset($_POST['btn_solicitar'])) {
                     <div class="modal-body">
                         <p><b>Preencha todos os campos para solicitar o cadastro</b></p>
 
-                        <input type="text" name="email_solicitar" placeholder="Email" autocomplete="off"
+                        <input type="email" name="email_solicitar" placeholder="Email" autocomplete="off"
                                class="form-control placeholder-no-fix">
-                        <input type="text" name="telefone_solicitar" placeholder="Telefone Para Contato"
+                        <br>
+                        <input type="email" name="telefone_solicitar" placeholder="Telefone Para Contato"
                                autocomplete="off"
                                class="form-control placeholder-no-fix">
-                        <input type="text" name="nome_fantasia" placeholder="Nome Fantasia" autocomplete="off"
+                        <br>
+                        <input type="email" name="nome_fantasia" placeholder="Nome Fantasia" autocomplete="off"
                                class="form-control placeholder-no-fix">
                         <!-- Estado -->
-
+                        <br>
                         <select name="select_estado" id="estados">
                             <option value=""></option>
                         </select>
-
+                        <br>
                         <p>
                             <select name="select_cidade" id="cidades">
                             </select>

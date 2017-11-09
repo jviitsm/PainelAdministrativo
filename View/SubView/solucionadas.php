@@ -14,14 +14,15 @@ if (!isset($_SESSION['usuario'])){
 
 ?>
 <?php
-if (isset($_POST['btn_denuncia'])) {
+if (isset($_POST['btn_solucao'])) {
     $id = $_POST['id'];
 
     $_SESSION["denuncia"] = $id;
-    header("Location: denuncia.php");
+    header("Location: solucao.php");
 
 
 }
+
 
 ?>
 <!doctype html>
@@ -139,7 +140,7 @@ if (isset($_POST['btn_denuncia'])) {
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Denuncias Ativas
+                        Denuncias Solucionadas
                     </header>
                     <div class="panel-body">
                         <section id="unseen">
@@ -151,6 +152,7 @@ if (isset($_POST['btn_denuncia'])) {
                                     <th>Categoria</th>
                                     <th>Endereço</th>
                                     <th>Data</th>
+                                    <th>Solução</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -169,10 +171,12 @@ if (isset($_POST['btn_denuncia'])) {
                                     $cidade = $empresa[0] -> cidade;
                                     //BUscando denuncias  da cidade do user logado
 
+                                    $denunciaRepository = $entityManager->getRepository('App\Models\Entity\Denuncia');
+                                    $denuncias = $denunciaRepository->findBy(array("status_denuncia" => 0));
                                     $solucoes = $solucaoRepository->findAll();
 
 
-                                    $solucaoInstace->montarTabela($solucoes);
+                                    $solucaoInstace->montarTabela($denuncias);
 
                                     ?>
                                 </div>

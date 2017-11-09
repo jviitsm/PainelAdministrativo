@@ -66,10 +66,10 @@ class Comentario{
 
 
             foreach ($comentarios as $lista) {
-                echo "<a class=\"list-group-item\">$lista->descricao_comentario </a>";
+                echo "<a class=\"list-group-item \">$lista->descricao_comentario </a>";
             }
             if(!$comentarios){
-                echo "<a class=\"list-group-item\">Nenhum comentario </a>";
+                echo "<a class=\"list-group-item \">Nenhum comentario </a>";
             }
         }
 

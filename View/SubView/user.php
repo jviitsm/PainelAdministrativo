@@ -77,8 +77,8 @@ if (isset($_POST['btnAtualizarPerfil'])) {
         $nome_real .= $_FILES["fotoPerfil"]["name"] . "";
         if (strstr('.jpg;.jpeg;.gif;.png', $extensao)) {
             copy($nome_temporario, "teste/$nome_real");
-            $photoURL = "teste/" . $nome_real;
-            $empresaUser->setDir_foto_usuario($photoURL);
+            $photoURL = "teste/" . $nome_real; #/home/citycare//public_html/Imgs/User/$nome_real
+            $empresaUser->setDir_foto_usuario($photoURL); #http://projetocitycare.com.br/Imgs/User/$nome_real"
 
         } else {
             echo "<script type='text/javascript'>alert('Tipo de arquivo invalido');</script>";
