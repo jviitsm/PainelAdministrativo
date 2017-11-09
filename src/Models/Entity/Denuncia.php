@@ -51,8 +51,8 @@ class Denuncia
      */
     public $data_denuncia;
     /**
-     * @var bool
-     * @Column(type="boolean", nullable=true)
+     * @var
+     * @Column(type="integer", nullable=true)
      */
     public $status_denuncia;
     /**

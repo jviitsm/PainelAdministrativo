@@ -2,52 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f331daf-bc84-4df0-9d7a-7f2ace1edbe5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/assets2/assets/fonts/glyphicons-halflings-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/assets2/assets/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/assets2/assets/fonts/glyphicons-halflings-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/assets2/assets/img/150x150.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/assets2/assets/img/Thumbs.db" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/assets2/assets/img/bg_4.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/assets2/assets/img/bg_5.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/assets2/assets/img/photo.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/assets2/assets/img/photo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/assets2/assets/img/photo_002.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/assets2/assets/img/uFp_tsTJboUY7kue5XAsGAs28.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/assets/css/sb-admin-2.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/assets/css/sb-admin-2.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/assets/js/grafico1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/assets/js/sb-admin-2.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/assets2/assets/css/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/assets2/assets/css/facebook.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/assets2/assets/fonts/glyphicons-halflings-regular.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/assets2/assets/js/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/assets2/assets/js/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/solucoes.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/View/SubView/notifications.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/View/SubView/typography.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/inc/Config.inc.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/assets/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/View/SubView/assets/css/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/assets/css/light-bootstrap-dashboard.css" afterPath="$PROJECT_DIR$/View/SubView/assets/css/light-bootstrap-dashboard.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/assets/js/mapa.js" afterPath="$PROJECT_DIR$/View/SubView/assets/js/mapa.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/dashboard.php" afterPath="$PROJECT_DIR$/View/SubView/dashboard.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/denuncia.php" afterPath="$PROJECT_DIR$/View/SubView/denuncia.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/maps.php" afterPath="$PROJECT_DIR$/View/SubView/maps.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/sair.php" afterPath="$PROJECT_DIR$/View/SubView/sair.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/table.php" afterPath="$PROJECT_DIR$/View/SubView/table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/template.php" afterPath="$PROJECT_DIR$/View/SubView/template.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/user.php" afterPath="$PROJECT_DIR$/View/SubView/user.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bootstrap.php" afterPath="$PROJECT_DIR$/bootstrap.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Models/Entity/Comentario.php" afterPath="$PROJECT_DIR$/src/Models/Entity/Comentario.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Models/Entity/Denuncia.php" afterPath="$PROJECT_DIR$/src/Models/Entity/Denuncia.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Models/Entity/Solucao.php" afterPath="$PROJECT_DIR$/src/Models/Entity/Solucao.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/installed.json" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -58,13 +14,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="denuncia.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="denuncia.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/SubView/denuncia.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
+            <state relative-caret-position="2839">
               <caret line="167" column="22" lean-forward="false" selection-start-line="167" selection-start-column="22" selection-end-line="167" selection-end-column="22" />
               <folding>
                 <element signature="e#44#75#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Denuncia.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Models/Entity/Denuncia.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="54" column="28" lean-forward="false" selection-start-line="54" selection-start-column="28" selection-end-line="54" selection-end-column="28" />
+              <folding>
+                <marker date="1510194623061" expanded="true" signature="4622:5255" ph="..." />
+                <marker date="1510194623061" expanded="true" signature="4647:5248" ph="..." />
               </folding>
             </state>
           </provider>
@@ -170,8 +139,8 @@
         <option value="$PROJECT_DIR$/src/Models/Entity/Comentario.php" />
         <option value="$PROJECT_DIR$/bootstrap.php" />
         <option value="$PROJECT_DIR$/View/SubView/assets/css/bootstrap.min.css" />
-        <option value="$PROJECT_DIR$/src/Models/Entity/Denuncia.php" />
         <option value="$PROJECT_DIR$/View/SubView/denuncia.php" />
+        <option value="$PROJECT_DIR$/src/Models/Entity/Denuncia.php" />
       </list>
     </option>
   </component>
@@ -182,7 +151,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="5" />
     <option name="y" value="2" />
     <option name="width" value="697" />
@@ -329,7 +298,10 @@
       <workItem from="1510083463158" duration="2609000" />
       <workItem from="1510102651247" duration="18000" />
       <workItem from="1510102849123" duration="2723000" />
-      <workItem from="1510168169302" duration="4153000" />
+      <workItem from="1510168169302" duration="4352000" />
+      <workItem from="1510179960786" duration="788000" />
+      <workItem from="1510194463637" duration="131000" />
+      <workItem from="1510194620332" duration="5000" />
     </task>
     <task id="LOCAL-00001" summary="Login Implementado">
       <created>1508351545761</created>
@@ -391,10 +363,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115133000" />
+    <option name="totallyTimeSpent" value="116256000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22401172" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -554,7 +526,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-646">
           <caret line="11" column="6" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -598,7 +569,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="362">
           <caret line="113" column="50" lean-forward="false" selection-start-line="113" selection-start-column="50" selection-end-line="113" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -652,7 +622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="25" column="2" lean-forward="true" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="112" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -667,7 +636,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="20" column="38" lean-forward="false" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -675,7 +643,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-5747">
           <caret line="124" column="18" lean-forward="false" selection-start-line="124" selection-start-column="18" selection-end-line="124" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -683,7 +650,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1309">
           <caret line="4" column="34" lean-forward="false" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -691,7 +657,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="19" column="24" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -699,7 +664,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="430">
           <caret line="71" column="68" lean-forward="false" selection-start-line="71" selection-start-column="68" selection-end-line="71" selection-end-column="68" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -715,7 +679,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1690">
           <caret line="266" column="37" lean-forward="false" selection-start-line="266" selection-start-column="32" selection-end-line="266" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -723,7 +686,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="498">
           <caret line="4" column="95585" lean-forward="false" selection-start-line="4" selection-start-column="95585" selection-end-line="4" selection-end-column="95585" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -731,7 +693,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1078">
           <caret line="320" column="50" lean-forward="true" selection-start-line="320" selection-start-column="50" selection-end-line="320" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -739,27 +700,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-153">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Entity/Denuncia.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="119" column="13" lean-forward="true" selection-start-line="119" selection-start-column="13" selection-end-line="119" selection-end-column="39" />
-          <folding>
-            <marker date="1510172152014" expanded="true" signature="4627:5260" ph="..." />
-            <marker date="1510172152014" expanded="true" signature="4652:5253" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/View/SubView/denuncia.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
+        <state relative-caret-position="2839">
           <caret line="167" column="22" lean-forward="false" selection-start-line="167" selection-start-column="22" selection-end-line="167" selection-end-column="22" />
           <folding>
             <element signature="e#44#75#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Entity/Denuncia.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="54" column="28" lean-forward="false" selection-start-line="54" selection-start-column="28" selection-end-line="54" selection-end-column="28" />
+          <folding>
+            <marker date="1510194623061" expanded="true" signature="4622:5255" ph="..." />
+            <marker date="1510194623061" expanded="true" signature="4647:5248" ph="..." />
           </folding>
         </state>
       </provider>
