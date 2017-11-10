@@ -47,8 +47,8 @@ function carregarPontos() {
                         });
 
                         var myOptions = {
-                            content: "<p>" + "Categoria: " + ponto.fk_categoria_denuncia.descricao_categoria
-                            + ". Descricao: " + ponto.descricao_denuncia +  "</p>",
+                            content: "<p class='text-center'>" + "Categoria: " + ponto.fk_categoria_denuncia.descricao_categoria
+                            +"<br>" +  ". Descricao: " + ponto.descricao_denuncia +  "</p>",
                             pixelOffset: new google.maps.Size(-150, 0)
                         };
 

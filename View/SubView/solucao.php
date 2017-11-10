@@ -15,11 +15,27 @@ if (!isset($_SESSION['usuario'])) {
 $denunciaRepository = $entityManager->getRepository('App\Models\Entity\Denuncia');
 $denuncia = $denunciaRepository->find($_SESSION['denuncia']);
 
+$denunciaRepository = $entityManager->getRepository('App\Models\Entity\Denuncia');
+
+$denuncia = $denunciaRepository->find($_SESSION['denuncia']);
+
+$agilizaRepository = $entityManager->getRepository('App\Models\Entity\Agiliza');
+$agilizas = $agilizaRepository->findBy(array("fk_denuncia_agiliza" => $denuncia->getId_denuncia()));
+
+
+$comentarioInstance = new Comentario();
+
+$categoria = $denuncia->getFk_categoria_denuncia()->getDescricao_categoria();
+
+
+$comentarioRepository = $entityManager->getRepository('App\Models\Entity\Comentario');
+$comentarios = $comentarioRepository->findBy(array("fk_denuncia_comentario" => $denuncia->getId_denuncia()));
+
+
+
 $solucao = $denuncia->getFk_solucao_denuncia();
 
 
-
-var_dump($solucao);
 
 
 ?>
@@ -135,5 +151,104 @@ var_dump($solucao);
                 </div>
             </div>
         </nav>
+        <div class="col-sm-5">
+            <br>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h5 class="text-center">Dados da Denuncia</h5>
+                </div>
+                <div class="panel-thumbnail">
+                    <img src="<?php echo $denuncia->getDir_foto_denuncia() ?>" class="img-thumbnail">
+                </div>
+                <div class="panel-body">
+                    <p class="huge text-center">
+                        <?php echo $denuncia->getDescricao_denuncia() ?>
+                    </p>
+                    <p class="text-center  "><?php echo $categoria ?></p>
+                    <p class="huge text-center"><?php echo $_SESSION['endereco'] ?></p>
+                    <p class="huge text-center"><?php echo $_SESSION['dataDenuncia'] ?></p>
+                    <p class="text-center"><?php echo count($agilizas) ?> Agiliza(s)</p>
+                    <center><a class="modal-footer" href="<?php echo $denuncia->getDir_foto_denuncia() ?>">Ver
+                            Imagem</a></center>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- main col right -->
+        <div class="col-sm-7">
+            <br>
+            <div class="panel panel-primary">
+                <div class="panel-heading text-center"><h5>Comentários</h5></div>
+                <div class="panel-body">
+                    <div class="list-group">
+                        <?php
+
+                        $comentarioInstance->montarComentarios($comentarios);
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading text-center"><h5>Solução</h5></div>
+                <div class="panel-body">
+
+
+                    <div class="row">
+                        <div class="panel-thumbnail">
+                            <img src="<?php echo $solucao->getDirFotoSolucao() ?>" class="img-thumbnail img-rounded">
+                        </div>
+                        <div class="panel-body">
+                        <label class="text-center">Descrição</label>
+                        <p class="text-center"><?php echo $solucao->getDescricaoSolucao()?></p>
+
+
+
+
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+
+            </div><!-- /col-9 -->
+        </div><!-- /padding -->
+
+
+    </div>
+
+
+</body>
+
+<!--   Core JS Files   -->
+<script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--  Checkbox, Radio & Switch Plugins -->
+<script src="assets/js/bootstrap-checkbox-radio-switch.js"></script>
+
+<!--  Charts Plugin -->
+<script src="assets/js/chartist.min.js"></script>
+
+<!--  Notifications Plugin    -->
+<script src="assets/js/bootstrap-notify.js"></script>
+
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="assets/js/light-bootstrap-dashboard.js"></script>
+
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script src="assets/js/demo.js"></script>
+
+
+</html>
+
 
 
