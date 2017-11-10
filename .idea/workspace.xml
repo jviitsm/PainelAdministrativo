@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f331daf-bc84-4df0-9d7a-7f2ace1edbe5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/cadastrar.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/SubView/solicitacoes.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/cadastrar.php" afterPath="$PROJECT_DIR$/View/SubView/cadastrar.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/dashboard.php" afterPath="$PROJECT_DIR$/View/SubView/dashboard.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/denuncia.php" afterPath="$PROJECT_DIR$/View/SubView/denuncia.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/maps.php" afterPath="$PROJECT_DIR$/View/SubView/maps.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/solucao.php" afterPath="$PROJECT_DIR$/View/SubView/solucao.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/solucionadas.php" afterPath="$PROJECT_DIR$/View/SubView/solucionadas.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/solicitacoes.php" afterPath="$PROJECT_DIR$/View/SubView/solicitacoes.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/table.php" afterPath="$PROJECT_DIR$/View/SubView/table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/user.php" afterPath="$PROJECT_DIR$/View/SubView/user.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Models/Entity/Denuncia.php" afterPath="$PROJECT_DIR$/src/Models/Entity/Denuncia.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Models/Entity/Solicitacao.php" afterPath="$PROJECT_DIR$/src/Models/Entity/Solicitacao.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,24 +18,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="cadastrar.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/View/SubView/cadastrar.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="51" column="7" lean-forward="false" selection-start-line="51" selection-start-column="7" selection-end-line="51" selection-end-column="7" />
-              <folding>
-                <element signature="e#38#72#0#PHP" expanded="true" />
-                <marker date="1510282792619" expanded="true" signature="1793:1812" ph="..." />
-                <marker date="1510282792619" expanded="true" signature="4110:4139" ph="..." />
-                <marker date="1510282792619" expanded="true" signature="4420:4616" ph="..." />
-                <marker date="1510282792619" expanded="true" signature="4470:4594" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -53,10 +30,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>solucionar</find>
-      <find>descri</find>
-      <find>text</find>
-      <find>endereço</find>
       <find>solução</find>
       <find>comentarios</find>
       <find>denuncias</find>
@@ -83,6 +56,10 @@
       <find>reposito</find>
       <find>estado</find>
       <find>header</find>
+      <find>maps</find>
+      <find>table lis</find>
+      <find>table list</find>
+      <find>tasks</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -131,18 +108,18 @@
         <option value="$PROJECT_DIR$/src/Models/Entity/Solucao.php" />
         <option value="$PROJECT_DIR$/View/SubView/assets/js/mapa.js" />
         <option value="$PROJECT_DIR$/View/SubView/denuncia.php" />
-        <option value="$PROJECT_DIR$/View/SubView/maps.php" />
         <option value="$PROJECT_DIR$/View/SubView/solucao.php" />
         <option value="$PROJECT_DIR$/View/SubView/solucionadas.php" />
         <option value="$PROJECT_DIR$/View/SubView/user.php" />
-        <option value="$PROJECT_DIR$/View/SubView/dashboard.php" />
-        <option value="$PROJECT_DIR$/View/SubView/table.php" />
         <option value="$PROJECT_DIR$/src/Models/Entity/Denuncia.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/View/SubView/teste/cadastrar.php" />
-        <option value="$PROJECT_DIR$/src/Models/Entity/Solicitacao.php" />
+        <option value="$PROJECT_DIR$/View/SubView/maps.php" />
         <option value="$PROJECT_DIR$/View/SubView/solicitacoes.php" />
         <option value="$PROJECT_DIR$/View/SubView/cadastrar.php" />
+        <option value="$PROJECT_DIR$/View/SubView/table.php" />
+        <option value="$PROJECT_DIR$/src/Models/Entity/Solicitacao.php" />
+        <option value="$PROJECT_DIR$/View/SubView/dashboard.php" />
       </list>
     </option>
   </component>
@@ -306,7 +283,7 @@
       <workItem from="1510194620332" duration="113000" />
       <workItem from="1510195486059" duration="8000" />
       <workItem from="1510254972904" duration="8672000" />
-      <workItem from="1510275534878" duration="7289000" />
+      <workItem from="1510275534878" duration="9458000" />
     </task>
     <task id="LOCAL-00001" summary="Login Implementado">
       <created>1508351545761</created>
@@ -385,17 +362,23 @@
       <option name="project" value="LOCAL" />
       <updated>1510276261586</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Implementado pagina de exibição de solicitações de cadastro, e pagina de cadastro de eempresa, ambos visiveis só para admins">
+      <created>1510282866852</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1510282866852</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132333000" />
+    <option name="totallyTimeSpent" value="134502000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22401172" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22401172" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -431,7 +414,9 @@
     <MESSAGE value="Status denuncia alterado para integer" />
     <MESSAGE value="Adicionado tela de denuncias solucionadas, implementação da função para solucionar denuncias, alteração de datetime para srting na data_solucao alterações de layout em diversas paginas" />
     <MESSAGE value="Tela de Solução implementada" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tela de Solução implementada" />
+    <MESSAGE value="Implementado pagina de exibição de solicitações de cadastro, e pagina de cadastro de eempresa, ambos visiveis só para admins" />
+    <MESSAGE value="Implementado tarefas na tela inicial, mostrando as solicitações de cadastro" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementado tarefas na tela inicial, mostrando as solicitações de cadastro" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -650,17 +635,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/maps.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="106" column="20" lean-forward="false" selection-start-line="106" selection-start-column="20" selection-end-line="106" selection-end-column="20" />
-          <folding>
-            <marker date="1510278634914" expanded="true" signature="3408:3604" ph="..." />
-            <marker date="1510278634914" expanded="true" signature="3458:3582" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/SubView/sair.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -692,33 +666,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/dashboard.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="16" lean-forward="false" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-          <folding>
-            <marker date="1510278783279" expanded="true" signature="4790:4986" ph="..." />
-            <marker date="1510278783279" expanded="true" signature="4840:4964" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Entity/Comentario.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="379">
           <caret line="71" column="16" lean-forward="false" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="76" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-148">
-          <caret line="156" column="43" lean-forward="false" selection-start-line="156" selection-start-column="43" selection-end-line="156" selection-end-column="43" />
-          <folding>
-            <marker date="1510279226130" expanded="true" signature="3121:3317" ph="..." />
-            <marker date="1510279226130" expanded="true" signature="3171:3295" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -749,9 +701,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="83" column="10" lean-forward="true" selection-start-line="83" selection-start-column="10" selection-end-line="83" selection-end-column="94" />
+          <folding>
+            <marker date="1510278683447" expanded="true" signature="5701:5897" ph="..." />
+            <marker date="1510278683447" expanded="true" signature="5751:5875" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/maps.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="121" column="57" lean-forward="false" selection-start-line="121" selection-start-column="57" selection-end-line="121" selection-end-column="57" />
+          <folding>
+            <marker date="1510283112143" expanded="true" signature="3408:3604" ph="..." />
+            <marker date="1510283112143" expanded="true" signature="3458:3582" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/cadastrar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="169" column="72" lean-forward="false" selection-start-line="169" selection-start-column="72" selection-end-line="169" selection-end-column="72" />
+          <folding>
+            <element signature="e#38#72#0#PHP" expanded="true" />
+            <marker date="1510283138378" expanded="true" signature="1786:1805" ph="..." />
+            <marker date="1510283138378" expanded="true" signature="4103:4132" ph="..." />
+            <marker date="1510283138378" expanded="true" signature="4413:4609" ph="..." />
+            <marker date="1510283138378" expanded="true" signature="4463:4587" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="123" column="62" lean-forward="false" selection-start-line="123" selection-start-column="62" selection-end-line="123" selection-end-column="62" />
+          <folding>
+            <marker date="1510283180713" expanded="true" signature="3121:3317" ph="..." />
+            <marker date="1510283180713" expanded="true" signature="3171:3295" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/View/SubView/denuncia.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2536">
+        <state relative-caret-position="-1935">
           <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
           <folding>
             <element signature="e#44#75#0#PHP" expanded="true" />
@@ -762,34 +761,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Entity/Solicitacao.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="172" column="53" lean-forward="false" selection-start-line="172" selection-start-column="53" selection-end-line="172" selection-end-column="66" />
-          <folding>
-            <marker date="1510280592614" expanded="true" signature="3005:3051" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/SubView/solicitacoes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2825">
-          <caret line="179" column="38" lean-forward="true" selection-start-line="179" selection-start-column="38" selection-end-line="179" selection-end-column="38" />
+        <state relative-caret-position="136">
+          <caret line="170" column="35" lean-forward="false" selection-start-line="170" selection-start-column="35" selection-end-line="174" selection-end-column="117" />
           <folding>
-            <marker date="1510280645021" expanded="true" signature="3070:3266" ph="..." />
-            <marker date="1510280645021" expanded="true" signature="3120:3244" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/user.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="83" column="10" lean-forward="true" selection-start-line="83" selection-start-column="10" selection-end-line="83" selection-end-column="94" />
-          <folding>
-            <marker date="1510278683447" expanded="true" signature="5701:5897" ph="..." />
-            <marker date="1510278683447" expanded="true" signature="5751:5875" ph="..." />
+            <marker date="1510283125929" expanded="true" signature="3070:3266" ph="..." />
+            <marker date="1510283125929" expanded="true" signature="3120:3244" ph="..." />
           </folding>
         </state>
       </provider>
@@ -805,16 +783,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/cadastrar.php">
+    <entry file="file://$PROJECT_DIR$/View/SubView/dashboard.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="51" column="7" lean-forward="false" selection-start-line="51" selection-start-column="7" selection-end-line="51" selection-end-column="7" />
+        <state relative-caret-position="226">
+          <caret line="313" column="94" lean-forward="false" selection-start-line="313" selection-start-column="94" selection-end-line="313" selection-end-column="94" />
           <folding>
-            <element signature="e#38#72#0#PHP" expanded="true" />
-            <marker date="1510282792619" expanded="true" signature="1793:1812" ph="..." />
-            <marker date="1510282792619" expanded="true" signature="4110:4139" ph="..." />
-            <marker date="1510282792619" expanded="true" signature="4420:4616" ph="..." />
-            <marker date="1510282792619" expanded="true" signature="4470:4594" ph="..." />
+            <marker date="1510284918285" expanded="true" signature="5122:5318" ph="..." />
+            <marker date="1510284918285" expanded="true" signature="5172:5296" ph="..." />
+            <marker date="1510284918285" expanded="true" signature="10928:11721" ph="..." />
+            <marker date="1510284918285" expanded="true" signature="10976:11721" ph="..." />
+            <marker date="1510284918285" expanded="true" signature="11022:11194" ph="..." />
+            <marker date="1510284918285" expanded="true" signature="11234:11721" ph="..." />
+            <marker date="1510284918285" expanded="true" signature="11287:11721" ph="..." />
+            <marker date="1510284918285" expanded="true" signature="11335:11715" ph="..." />
+            <marker date="1510284918285" expanded="true" signature="11371:11715" ph="..." />
+            <marker date="1510284918285" expanded="true" signature="11422:11692" ph="..." />
+            <marker date="1510284918285" expanded="true" signature="11459:11491" ph="..." />
+            <marker date="1510284918285" expanded="true" signature="11459:11492" ph="..." />
+            <marker date="1510284918285" expanded="true" signature="11459:11652" ph="..." />
+            <marker date="1510284918285" expanded="true" signature="11656:11685" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Entity/Solicitacao.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="685">
+          <caret line="202" column="9" lean-forward="true" selection-start-line="202" selection-start-column="9" selection-end-line="202" selection-end-column="9" />
+          <folding>
+            <marker date="1510284726013" expanded="true" signature="3012:3058" ph="..." />
+            <marker date="1510284726013" expanded="true" signature="3637:3743" ph="..." />
+            <marker date="1510284726013" expanded="true" signature="3931:4311" ph="..." />
+            <marker date="1510284726013" expanded="true" signature="4109:4257" ph="..." />
           </folding>
         </state>
       </provider>

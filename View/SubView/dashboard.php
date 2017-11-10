@@ -1,5 +1,8 @@
 <?php
 require_once("../../bootstrap.php");
+
+use App\Models\Entity\Solicitacao;
+
 session_start();
 if (!isset($_SESSION['usuario'])) {
     header("Location: ../../index.php");
@@ -25,6 +28,16 @@ $solucaoRepository = $entityManager->getRepository('App\Models\Entity\Solucao');
 $solucoes = $solucaoRepository->findAll();
 
 $numeroSolucoes = count($solucoes);
+
+$solicitacaoInstance = new Solicitacao();
+
+$solicitacaoRepository = $entityManager->getRepository('App\Models\Entity\Solicitacao');
+
+$solicitacoes = $solicitacaoRepository->findBy(array("status_solicitacao" => 1));
+
+if (isset($_POST['btnRemove'])) {
+    header("Location: solicitacoes.php");
+}
 
 
 ?>
@@ -280,8 +293,38 @@ $numeroSolucoes = count($solucoes);
             </div>
         </div>
 
+        <?php
+        if ($_SESSION['administrador'] == true) {
 
-    </div>
+            echo " <div class=\"col-md-6\">
+
+           <div class=\"panel panel-primary\">
+                <div class=\"panel-heading\">
+                    <h4 class=\"title text-center\">Solicitações</h4>
+                    <p class=\"category text-center\">Cadastro de Empresas</p>
+                </div>
+                <div class=\"content\">
+                    <div class=\"table-full-width\">
+                        <table class=\"table\">
+                            <tbody>
+                            <form method=\"post\">
+                                <tr>
+                               " ?>
+
+            <?php $solicitacaoInstance->montarTask($solicitacoes, $_SESSION['administrador']);?>
+
+            <?php echo "
+                                <tr>
+                            </form>
+
+
+                    </div>";
+        }
+
+
+        ?>
+
+
 </body>
 
 <!--   Core JS Files   -->

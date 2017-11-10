@@ -121,7 +121,7 @@ if (isset($_POST['btn_denuncia'])) {
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Table List</a>
+                    <a class="navbar-brand" href="#">Denuncias</a>
                 </div>
                 <div class="collapse navbar-collapse">
 

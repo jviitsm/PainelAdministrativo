@@ -49,7 +49,7 @@ if(isset($_POST['btnCadastrar'])) {
         $empresa->setNome_fantasia($_POST['nomeFantasia']);
 
         $entityManager->persist($empresa);
-       
+
 
         $entityManager->remove($solicitacao);
         $entityManager->flush();
@@ -167,7 +167,7 @@ if(isset($_POST['btnCadastrar'])) {
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Table List</a>
+                    <a class="navbar-brand" href="#">Cadastro de Empresa</a>
                 </div>
                 <div class="collapse navbar-collapse">
 

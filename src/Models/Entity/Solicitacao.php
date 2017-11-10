@@ -2,11 +2,10 @@
 
 namespace App\Models\Entity;
 /**
-
  * @Entity @Table(name="solicitado")
-
  **/
-class Solicitacao{
+class Solicitacao
+{
 
     /**
      * @var int
@@ -47,11 +46,13 @@ class Solicitacao{
     {
         return $this->id_solicitacao;
     }
+
     /**
      * @var
      * @Column(type="integer", nullable=true)
      */
     public $status_solicitacao;
+
     /**
      * @param int $id_solicitacao
      */
@@ -157,9 +158,10 @@ class Solicitacao{
     }
 
 
-    function montarTabela($solicitações){
+    function montarTabela($solicitacoes)
+    {
 
-        foreach ($solicitações as $index){
+        foreach ($solicitacoes as $index) {
 
             echo "<form id=\"form_denuncia\" method=\"post\">";
             echo "<tr>";
@@ -174,20 +176,33 @@ class Solicitacao{
             echo "</form>";
 
 
-
-
-
         }
 
     }
 
+    function montarTask($solicitacoes,$sessao)
+    {
 
+        if($sessao == true){
+        foreach ($solicitacoes as $index) {
 
+            if($solicitacoes){
+                echo " <td>
+                                                   
+                                                </td>
+                                                <td>Solicitação da empresa: $index->nome_fantasia</td>
+                                                <td class=\"td-actions text-right\">
+       
+                                                    <button type=\"submit\" name='btnRemove' rel=\"tooltip\" title=\"Checar\" class=\"btn btn-danger btn-simple btn-xs\">
+                                                        <i class=\"fa fa-check\"></i>
+                                                    </button>
+                                                </td>
+                                                </tr>";
+            }
 
-
-
-
-
+        }
+        }
+    }
 
 
 }
