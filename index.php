@@ -22,18 +22,29 @@ if (isset($_POST['btn_logar'])) {
 
     if ($existeLogin) {
         $id = $existeLogin[0]->id_login;
-
+        $administrador = $existeLogin[0] -> administrador;
         $empresaRepository = $entityManager->getRepository('App\Models\Entity\Empresa');
         $empresa = $empresaRepository->findBy(array('fk_login_empresa' => $id));
+
         if ($empresa) {
+            if($administrador == false){
             $_SESSION["usuario"] = $email;
             $_SESSION["array"] = $existeLogin;
-
+            $_SESSION["administrador"] = false;
 
             header("Location: View/SubView/dashboard.php ");
+            }
+            if($administrador == true){
+                $_SESSION["usuario"] = $email;
+                $_SESSION["array"] = $existeLogin;
+                $_SESSION["administrador"] = true;
+                header("Location: View/SubView/dashboard.php ");
+            }
         } else {
             echo "<p class='alert-danger'>Somente usuário empresa permitido!</p>";
         }
+
+
     } else if ($existeEmail) {
 
         $id = $existeEmail[0]->id_login;
@@ -41,9 +52,18 @@ if (isset($_POST['btn_logar'])) {
         $empresaRepository = $entityManager->getRepository('App\Models\Entity\Empresa');
         $empresa = $empresaRepository->findBy(array('fk_login_empresa' => $id));
         if ($empresa) {
-            $_SESSION["usuario"] = $email;
-            $_SESSION["array"] = $existeEmail;
-            header("Location: View/SubView/dashboard.php");
+            if($existeEmail[0] ->administrador = 0) {
+                $_SESSION["usuario"] = $email;
+                $_SESSION["array"] = $existeEmail;
+                header("Location: View/SubView/dashboard.php");
+
+            }
+            else if($existeEmail[0] -> administrador = 1){
+                $_SESSION["usuario"] = $email;
+                $_SESSION["array"] = $existeEmail;
+                $_SESSION["administrador"] = 1;
+                header("Location: View/SubView/dashboard.php");
+            }
         } else {
             echo "<p class='alert-danger'>Somente empresa permitido!</p>";
         }
@@ -122,12 +142,13 @@ if (isset($_POST['btn_solicitar'])) {
         $solicitacao->setNomeFantasia($nomeFantasia);
         $solicitacao->setEstado($estado);
         $solicitacao->setCidade($cidade);
+        $solicitacao->setStatusSolicitacao(1);
 
         $entityManager->persist($solicitacao);
         $entityManager->flush();
         echo "<p class='alert alert-success'>Solicitação enviada com sucesso. Entraremos em contato em breve! </p>";
     } catch (Exception $e) {
-        echo "<p class='alert alert-danger'>Não foi possivel enviar a solicitação!</p>";
+        echo "<p class='alert alert-success'>Não foi possivel enviar a solicitação </p>";
     }
 }
 ?>
@@ -293,11 +314,11 @@ if (isset($_POST['btn_solicitar'])) {
                         <input type="email" name="email_solicitar" placeholder="Email" autocomplete="off"
                                class="form-control placeholder-no-fix">
                         <br>
-                        <input type="email" name="telefone_solicitar" placeholder="Telefone Para Contato"
+                        <input type="number" name="telefone_solicitar" placeholder="Telefone Para Contato"
                                autocomplete="off"
-                               class="form-control placeholder-no-fix">
+                              class="form-control placeholder-no-fix" >
                         <br>
-                        <input type="email" name="nome_fantasia" placeholder="Nome Fantasia" autocomplete="off"
+                        <input type="text-area" name="nome_fantasia" placeholder="Nome Fantasia" autocomplete="off"
                                class="form-control placeholder-no-fix">
                         <!-- Estado -->
                         <br>

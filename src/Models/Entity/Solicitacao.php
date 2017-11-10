@@ -47,7 +47,11 @@ class Solicitacao{
     {
         return $this->id_solicitacao;
     }
-
+    /**
+     * @var
+     * @Column(type="integer", nullable=true)
+     */
+    public $status_solicitacao;
     /**
      * @param int $id_solicitacao
      */
@@ -136,6 +140,46 @@ class Solicitacao{
         $this->telefone = $telefone;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getStatusSolicitacao()
+    {
+        return $this->status_solicitacao;
+    }
+
+    /**
+     * @param mixed $status_solicitacao
+     */
+    public function setStatusSolicitacao($status_solicitacao)
+    {
+        $this->status_solicitacao = $status_solicitacao;
+    }
+
+
+    function montarTabela($solicitações){
+
+        foreach ($solicitações as $index){
+
+            echo "<form id=\"form_denuncia\" method=\"post\">";
+            echo "<tr>";
+            echo "<td>$index->id_solicitacao</td>";
+            echo "<td>$index->email</td>";
+            echo "<td>$index->nome_fantasia</td>";
+            echo "<td>$index->cidade</td>";
+            echo "<td>$index->estado</td>";
+            echo "<td>$index->telefone</td>";
+            echo "<input type=\"hidden\" name=\"id\" value=\"$index->id_solicitacao\">";
+            echo "<td><button type=\"submit\" name=\"btnSolicitado\" class=\"btn btn-info btn-fill pull-center\">Cadastrar</button></td>";
+            echo "</form>";
+
+
+
+
+
+        }
+
+    }
 
 
 

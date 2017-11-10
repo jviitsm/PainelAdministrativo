@@ -1,7 +1,6 @@
 <?php
 require_once("../../bootstrap.php");
 session_start();
-
 if (!isset($_SESSION['usuario'])) {
     header("Location: ../../index.php");
     session_destroy();
@@ -42,33 +41,33 @@ $numeroSolucoes = count($solucoes);
     <meta name="viewport" content="width=device-width"/>
 
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script  type="text/javascript">
-        google.load("visualization","1",{'packages':['corechart']});
+    <script type="text/javascript">
+        google.load("visualization", "1", {'packages': ['corechart']});
         google.setOnLoadCallback(desenhaGrafico);
 
         function desenhaGrafico() {
             var data = new google.visualization.DataTable();
-            data.addColumn('string','Mês');
-            data.addColumn('number','Despesas em R$');
+            data.addColumn('string', 'Mês');
+            data.addColumn('number', 'Despesas em R$');
 
             data.addRows(2);
 
-            data.setValue(0,0,'JAN');
-            data.setValue(0,1,3450.0);
+            data.setValue(0, 0, 'JAN');
+            data.setValue(0, 1, 3450.0);
 
-            data.setValue(1,0,'FEV');
-            data.setValue(1,1,5420.0);
+            data.setValue(1, 0, 'FEV');
+            data.setValue(1, 1, 5420.0);
 
             var options = {
                 title: 'Despesas por mês',
-                width: 400, height : 300,
+                width: 400, height: 300,
                 colors: ['#335070'],
                 legend: {position: 'bottom'}
             };
 
             var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
 
-            chart.draw(data,options);
+            chart.draw(data, options);
 
 
         }
@@ -138,6 +137,15 @@ $numeroSolucoes = count($solucoes);
                         <p>Mapa</p>
                     </a>
                 </li>
+                <?php
+                if ($_SESSION['administrador'] == true) {
+                    echo " <li>
+                    <a href=\"solicitacoes.php\">
+                        <i class=\"pe-7s-id\"></i>
+                        <p>Sol. de Cadastro</p>
+                    </a>
+                </li>";
+                } ?>
 
             </ul>
         </div>
@@ -271,12 +279,6 @@ $numeroSolucoes = count($solucoes);
                 </div>
             </div>
         </div>
-
-
-
-
-
-
 
 
     </div>

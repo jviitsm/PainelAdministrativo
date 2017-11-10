@@ -96,6 +96,15 @@ if (!isset($_SESSION['usuario'])){
                         <p>Mapa</p>
                     </a>
                 </li>
+                <?php
+                if ($_SESSION['administrador'] == true) {
+                    echo " <li>
+                    <a href=\"solicitacoes.php\">
+                        <i class=\"pe-7s-id\"></i>
+                        <p>Sol. de Cadastro</p>
+                    </a>
+                </li>";
+                } ?>
             </ul>
         </div>
     </div>

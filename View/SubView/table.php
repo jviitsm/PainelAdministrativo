@@ -98,7 +98,15 @@ if (isset($_POST['btn_denuncia'])) {
                         <p>Mapa</p>
                     </a>
                 </li>
-
+                <?php
+                if ($_SESSION['administrador'] == true) {
+                    echo " <li>
+                    <a href=\"solicitacoes.php\">
+                        <i class=\"pe-7s-id\"></i>
+                        <p>Sol. de Cadastro</p>
+                    </a>
+                </li>";
+                } ?>
             </ul>
         </div>
     </div>
