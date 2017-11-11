@@ -43,6 +43,7 @@ function carregarPontos() {
                         var marker = new google.maps.Marker({
                             position: new google.maps.LatLng(ponto.latitude_denuncia, ponto.longitude_denuncia),
                             title: "Denuncia",
+                            icon: 'assets/img/icone_care.png'
 
                         });
 

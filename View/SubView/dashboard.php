@@ -109,7 +109,7 @@ if (isset($_POST['btnRemove'])) {
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="#DCDCDC" data-image="assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="#DCDCDC" data-image="assets/img/sidebar-5.png">
 
         <!--
 

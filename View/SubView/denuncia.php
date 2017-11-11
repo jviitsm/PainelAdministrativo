@@ -51,8 +51,8 @@ if (isset($_POST['btnSolucionar'])) {
             $extensao = pathinfo($_FILES["fotoSolucao"]["name"], PATHINFO_EXTENSION);
             $nome_real .= $_FILES["fotoSolucao"]["name"] . "";
             if (strstr('.jpg;.jpeg;.gif;.png', $extensao)) {
-                copy($nome_temporario, "teste/$nome_real"); #"/home/citycare//public_html/Imgs/Solucao/$nome_real
-                $photoURL = "teste/" . $nome_real; #http://projetocitycare.com.br/Imgs/Solucao/$nome_real
+                copy($nome_temporario, "/home/citycare/public_html/Imgs/Solucao/$nome_real"); #"/home/citycare//public_html/Imgs/Solucao/$nome_real
+                $photoURL = "http://projetocitycare.com.br/Imgs/Solucao/$nome_real"; #http://projetocitycare.com.br/Imgs/Solucao/$nome_real
             } else {
                 echo "<script type='text/javascript'>alert('Tipo de arquivo invalido');</script>";
                 $controle = false;
@@ -63,29 +63,29 @@ if (isset($_POST['btnSolucionar'])) {
         $controle = false;
     }
 
-    if($controle){
+    if ($controle) {
 
-    try{
-    $solucao = new Solucao();
+        try {
+            $solucao = new Solucao();
 
-    $solucao->setDescricaoSolucao($descricao);
-    $solucao->setDirFotoSolucao($photoURL);
-    $solucao->setDataSolucao(date('d/m/y'));
+            $solucao->setDescricaoSolucao($descricao);
+            $solucao->setDirFotoSolucao($photoURL);
+            $solucao->setDataSolucao(date('d/m/y'));
 
-    $entityManager->persist($solucao);
-    $entityManager->flush();
+            $entityManager->persist($solucao);
+            $entityManager->flush();
 
-    $denuncia->setStatus_denuncia(0);
-    $denuncia->setFk_solucao_denuncia($solucao);
+            $denuncia->setStatus_denuncia(0);
+            $denuncia->setFk_solucao_denuncia($solucao);
 
-    $entityManager->merge($denuncia);
-    $entityManager->flush();
+            $entityManager->merge($denuncia);
+            $entityManager->flush();
 
-    $_SESSION['denuncia'] = "";
-    header("Location: table.php ");
-    }catch (Exception $e){
-        echo "<script type='text/javascript'>alert('Desculpe Ocorreu um Erro!');</script>";
-    }
+            $_SESSION['denuncia'] = "";
+            header("Location: table.php ");
+        } catch (Exception $e) {
+            echo "<script type='text/javascript'>alert('Desculpe Ocorreu um Erro!');</script>";
+        }
 
     }
 
@@ -130,7 +130,7 @@ if (isset($_POST['btnSolucionar'])) {
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="#DCDCDC" data-image="assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="#DCDCDC" data-image="assets/img/sidebar-5.png">
 
         <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
@@ -248,12 +248,13 @@ if (isset($_POST['btnSolucionar'])) {
         <!-- main col right -->
         <div class="col-sm-7">
             <br>
-            <div class="panel panel-primary">
-                <div class="panel-heading text-center"><h5>Comentários</h5></div>
+            <div class="panel panel-primary" >
+                <div class="panel-heading text-center">
+                    <h5>Comentários</h5>
+                </div>
                 <div class="panel-body">
-                    <div class="list-group">
+                    <div class="container" style="overflow-y: scroll; max-height: 400px;">
                         <?php
-
                         $comentarioInstance->montarComentarios($comentarios);
                         ?>
                     </div>

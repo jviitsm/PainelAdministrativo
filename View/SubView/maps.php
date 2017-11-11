@@ -59,7 +59,7 @@ if (!isset($_SESSION['usuario'])){
 
 <!--  BODY  -->
 <div class="wrapper">
-    <div class="sidebar" data-color="#DCDCDC" data-image="assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="#DCDCDC" data-image="assets/img/sidebar-5.png">
 
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 

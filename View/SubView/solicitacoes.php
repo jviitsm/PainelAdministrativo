@@ -14,7 +14,7 @@ if (!$_SESSION['administrador'] == true) {
     header("Location: dashboard.php");
 }
 if(isset($_POST['btnSolicitado'])){
-   $_SESSION['cadastrar'] = $_POST['id'];
+    $_SESSION['cadastrar'] = $_POST['id'];
 
     header("Location: cadastrar.php");
 
@@ -57,7 +57,7 @@ if(isset($_POST['btnSolicitado'])){
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="#DCDCDC" data-image="assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="#DCDCDC" data-image="assets/img/sidebar-5.png">
 
         <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
@@ -152,35 +152,37 @@ if(isset($_POST['btnSolicitado'])){
                     </header>
                     <div class="panel-body">
                         <section id="unseen">
-                            <table class="table table-bordered table-striped table-condensed">
-                                <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Email</th>
-                                    <th>Nome Fantasia</th>
-                                    <th>Cidade</th>
-                                    <th>Estado</th>
-                                    <th>Telefone</th>
-                                    <th>Ação</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <div>
-                                    <?php
+                            <div style="overflow-x:auto;">
+                                <table class="table table-bordered table-striped table-condensed">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Email</th>
+                                        <th>Nome Fantasia</th>
+                                        <th>Cidade</th>
+                                        <th>Estado</th>
+                                        <th>Telefone</th>
+                                        <th>Ação</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <div>
+                                        <?php
 
-                                    $solicitacaoInstance = new Solicitacao();
+                                        $solicitacaoInstance = new Solicitacao();
 
-                                    $solicitacaoRepository = $entityManager->getRepository('App\Models\Entity\Solicitacao');
+                                        $solicitacaoRepository = $entityManager->getRepository('App\Models\Entity\Solicitacao');
 
-                                    $solicitacoes = $solicitacaoRepository->findBy(array("status_solicitacao" => 1));
+                                        $solicitacoes = $solicitacaoRepository->findBy(array("status_solicitacao" => 1));
 
 
-                                    $solicitacaoInstance->montarTabela($solicitacoes);
+                                        $solicitacaoInstance->montarTabela($solicitacoes);
 
-                                    ?>
-                                </div>
-                                </tbody>
-                            </table>
+                                        ?>
+                                    </div>
+                                    </tbody>
+                                </table>
+                            </div>
                         </section>
                     </div>
                 </section>

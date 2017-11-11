@@ -19,9 +19,14 @@ $dbParams = array(
     'dbname'   => 'citycare_db',
     'charset' => 'utf8',
 );
+$cacheDir = dirname(__FILE__).'/cache';
+if (!is_dir($cacheDir)) {
+    mkdir($cacheDir);
+}
+
 $isDevMode = true;
 
 
-$config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/src/Models/Entity"), $isDevMode);
+$config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/src/Models/Entity"), $isDevMode,$cacheDir);
 $entityManager = EntityManager::create($dbParams, $config);
 $container['em'] = $entityManager;

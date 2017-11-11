@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace App\Models\Entity;
 
 
@@ -8,7 +8,7 @@ namespace App\Models\Entity;
 
 **/
 class Comentario{
-    /** 
+    /**
      * @var int
      * @Id @Column(type="integer")
      * @GeneratedValue
@@ -19,7 +19,7 @@ class Comentario{
      * @JoinColumn(name="fk_login_comentario", referencedColumnName="id_login")
      */
     public $fk_login_comentario;
-    /** 
+    /**
      * @OneToOne(targetEntity="Denuncia", fetch="EAGER")
      * @JoinColumn(name="fk_denuncia_comentario", referencedColumnName="id_denuncia")
     */
@@ -29,7 +29,7 @@ class Comentario{
      * @Column(type="string", length=400)
      */
     public $descricao_comentario;
-        
+
         function getId_comentario() {
             return $this->id_comentario;
         }
@@ -63,10 +63,10 @@ class Comentario{
         }
 
         function montarComentarios($comentarios){
-
-
             foreach ($comentarios as $lista) {
-                echo "<a class=\"list-group-item \">$lista->descricao_comentario </a>";
+
+                echo "<div class=\"textarea\" contenteditable=\"true\">$lista->descricao_comentario</div>";
+                echo "<hr>";
             }
             if(!$comentarios){
                 echo "<a class=\"list-group-item \">Nenhum comentario </a>";

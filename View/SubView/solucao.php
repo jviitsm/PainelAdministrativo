@@ -75,7 +75,7 @@ $solucao = $denuncia->getFk_solucao_denuncia();
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="#DCDCDC" data-image="assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="#DCDCDC" data-image="assets/img/sidebar-5.png">
 
         <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
@@ -194,9 +194,8 @@ $solucao = $denuncia->getFk_solucao_denuncia();
             <div class="panel panel-primary">
                 <div class="panel-heading text-center"><h5>Comentários</h5></div>
                 <div class="panel-body">
-                    <div class="list-group">
+                    <div class="container" style="overflow-y: scroll; max-height: 400px;">
                         <?php
-
                         $comentarioInstance->montarComentarios($comentarios);
                         ?>
                     </div>
@@ -209,23 +208,24 @@ $solucao = $denuncia->getFk_solucao_denuncia();
 
                     <div class="row">
                         <div class="panel-thumbnail">
-                            <img src="<?php echo $solucao->getDirFotoSolucao() ?>" class="img-thumbnail img-rounded">
+                            <center>
+                                <img src="<?php echo $solucao->getDirFotoSolucao() ?>" class="img-thumbnail img-responsive"></center>
                         </div>
                         <div class="panel-body">
-                        <label class="text-center">Descrição</label>
-                        <p class="text-center"><?php echo $solucao->getDescricaoSolucao()?></p>
+                            <label class="text-center">Descrição</label>
+                            <p class="text-center"><?php echo $solucao->getDescricaoSolucao()?></p>
+
+
+
+
+                        </div>
+
 
 
 
 
                     </div>
-
-
-
-
-
                 </div>
-            </div>
 
             </div><!-- /col-9 -->
         </div><!-- /padding -->
