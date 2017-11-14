@@ -3,6 +3,7 @@ require_once("../../bootstrap.php");
 
 use App\Models\Entity\Empresa;
 use App\Models\Entity\Login;
+use App\Models\Entity\Solicitacao;
 
 session_start();
 
@@ -12,6 +13,10 @@ if (!isset($_SESSION['usuario'])) {
     session_destroy();
 }
 
+$solicitacaoInstance = new Solicitacao();
+$solicitacaoRepository = $entityManager->getRepository('App\Models\Entity\Solicitacao');
+$solicitacoes = $solicitacaoRepository->findBy(array("status_solicitacao" => 1));
+$numeroSolicitacoes = count($solicitacoes);
 $empresaRepository = $entityManager->getRepository('App\Models\Entity\Empresa');
 $empresa = $empresaRepository->findBy(array("fk_login_empresa" => $_SESSION["array"][0]->id_login));
 
@@ -32,22 +37,22 @@ if (isset($_POST['btnAtualizarPerfil'])) {
     }
     if($_SESSION['array'][0] -> login != $_POST['login']){
         if ($_POST['login'] != ""){
-        if($loginRepository->findBy(array("login" => $_POST['login']))){
-            echo "<script type='text/javascript'>alert('Login Já Existe!');</script>";
-        }
-        else{
-            $loginUser->setLogin($_POST['login']);
-        }
+            if($loginRepository->findBy(array("login" => $_POST['login']))){
+                echo "<script type='text/javascript'>alert('Login Já Existe!');</script>";
+            }
+            else{
+                $loginUser->setLogin($_POST['login']);
+            }
         }
     }
     if($_SESSION['array'][0] -> email != $_POST['email']){
         if($_POST['email'] != ""){
-        if($loginRepository->findBy(array("email" => $_POST['email']))){
-            echo "<script type='text/javascript'>alert('Email Já Existe!');</script>";
-        }
-        else{
-            $loginUser->setEmail($_POST['email']);
-        }
+            if($loginRepository->findBy(array("email" => $_POST['email']))){
+                echo "<script type='text/javascript'>alert('Email Já Existe!');</script>";
+            }
+            else{
+                $loginUser->setEmail($_POST['email']);
+            }
         }
     }
 
@@ -76,8 +81,8 @@ if (isset($_POST['btnAtualizarPerfil'])) {
         $extensao = pathinfo($_FILES["fotoPerfil"]["name"], PATHINFO_EXTENSION);
         $nome_real .= $_FILES["fotoPerfil"]["name"] . "";
         if (strstr('.jpg;.jpeg;.gif;.png', $extensao)) {
-            copy($nome_temporario, "teste/$nome_real");
-            $photoURL = "teste/" . $nome_real; #/home/citycare//public_html/Imgs/User/$nome_real
+            copy($nome_temporario, "/home/citycare//public_html/Imgs/User/$nome_real");
+            $photoURL = "https://projetocitycare.com.br/Imgs/User/$nome_real";  #/home/citycare//public_html/Imgs/User/$nome_real
             $empresaUser->setDir_foto_usuario($photoURL); #http://projetocitycare.com.br/Imgs/User/$nome_real"
 
         } else {
@@ -127,8 +132,8 @@ if (isset($_POST['btnAtualizarPerfil'])) {
 
 
     <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet"/>
 </head>
 <body>
@@ -141,7 +146,7 @@ if (isset($_POST['btnAtualizarPerfil'])) {
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.projetocitycare.com.br" class="simple-text">
+                <a href="https://www.projetocitycare.com.br" class="simple-text">
                     City Care
                 </a>
             </div>
@@ -165,12 +170,7 @@ if (isset($_POST['btnAtualizarPerfil'])) {
                         <p>Denuncias</p>
                     </a>
                 </li>
-                <li>
-                    <a href="maps.php">
-                        <i class="pe-7s-map-marker"></i>
-                        <p>Mapa</p>
-                    </a>
-                </li>
+
                 <?php
                 if ($_SESSION['administrador'] == true) {
                     echo " <li>
@@ -201,7 +201,31 @@ if (isset($_POST['btnAtualizarPerfil'])) {
                     <a class="navbar-brand" href="#">Usuário</a>
                 </div>
                 <div class="collapse navbar-collapse">
-
+                    <!-- Mostrar noficiações de solicitações de cadastro -->
+                    <?php
+                    #verificar se é admin
+                    if ($_SESSION['administrador'] == true) {
+                        echo " <ul class=\"nav navbar-nav navbar-left\">
+                        <li class=\"dropdown\">
+                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
+                                <i class=\"fa fa-globe\"></i>
+                                <b class=\"caret hidden-sm hidden-xs\"></b>
+                                <span class=\"notification hidden-sm hidden-xs\">$numeroSolicitacoes</span>
+                                <p class=\"hidden-lg hidden-md\">
+                                    $numeroSolicitacoes Notificações
+                                    <b class=\"caret\"></b>
+                                </p>
+                            </a>
+                            <ul class=\"dropdown-menu\">" ?>
+                        <?php
+                        $solicitacaoInstance->montarTask($solicitacoes, $_SESSION['administrador']); ?>
+                        <?php echo "
+                            </ul>
+                        </li>
+                    </ul>
+                            ";
+                    }
+                    ?>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="user.php">
@@ -373,13 +397,8 @@ if (isset($_POST['btnAtualizarPerfil'])) {
 <!--  Notifications Plugin    -->
 <script src="assets/js/bootstrap-notify.js"></script>
 
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="assets/js/light-bootstrap-dashboard.js"></script>
 
-<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-<script src="assets/js/demo.js"></script>
 
 </html>

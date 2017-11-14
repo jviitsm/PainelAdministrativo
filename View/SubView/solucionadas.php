@@ -2,6 +2,8 @@
 require '../../bootstrap.php';
 use App\Models\Entity\Denuncia;
 use App\Models\Entity\Solucao;
+use App\Models\Entity\Solicitacao;
+
 session_start();
 
 
@@ -11,6 +13,10 @@ if (!isset($_SESSION['usuario'])){
     session_destroy();
 }
 
+$solicitacaoInstance = new Solicitacao();
+$solicitacaoRepository = $entityManager->getRepository('App\Models\Entity\Solicitacao');
+$solicitacoes = $solicitacaoRepository->findBy(array("status_solicitacao" => 1));
+$numeroSolicitacoes = count($solicitacoes);
 
 ?>
 <?php
@@ -53,8 +59,8 @@ if (isset($_POST['btn_solucao'])) {
 
 
     <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 </head>
 <body>
@@ -67,7 +73,7 @@ if (isset($_POST['btn_solucao'])) {
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.projetocitycare.com.br" class="simple-text">
+                <a href="https://www.projetocitycare.com.br" class="simple-text">
                     City Care
                 </a>
             </div>
@@ -89,12 +95,6 @@ if (isset($_POST['btn_solucao'])) {
                     <a href="table.php">
                         <i class="pe-7s-note2"></i>
                         <p>Denuncias</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="maps.php">
-                        <i class="pe-7s-map-marker"></i>
-                        <p>Mapa</p>
                     </a>
                 </li>
                 <?php
@@ -124,7 +124,31 @@ if (isset($_POST['btn_solucao'])) {
                     <a class="navbar-brand" href="#">Table List</a>
                 </div>
                 <div class="collapse navbar-collapse">
-
+                    <!-- Mostrar noficiações de solicitações de cadastro -->
+                    <?php
+                    #verificar se é admin
+                    if ($_SESSION['administrador'] == true) {
+                        echo " <ul class=\"nav navbar-nav navbar-left\">
+                        <li class=\"dropdown\">
+                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
+                                <i class=\"fa fa-globe\"></i>
+                                <b class=\"caret hidden-sm hidden-xs\"></b>
+                                <span class=\"notification hidden-sm hidden-xs\">$numeroSolicitacoes</span>
+                                <p class=\"hidden-lg hidden-md\">
+                                    $numeroSolicitacoes Notificações
+                                    <b class=\"caret\"></b>
+                                </p>
+                            </a>
+                            <ul class=\"dropdown-menu\">" ?>
+                        <?php
+                        $solicitacaoInstance->montarTask($solicitacoes, $_SESSION['administrador']); ?>
+                        <?php echo "
+                            </ul>
+                        </li>
+                    </ul>
+                            ";
+                    }
+                    ?>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="user.php">
@@ -153,44 +177,46 @@ if (isset($_POST['btn_solucao'])) {
                     </header>
                     <div class="panel-body">
                         <section id="unseen">
-                            <table class="table table-bordered table-striped table-condensed">
-                                <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Descrição</th>
-                                    <th>Categoria</th>
-                                    <th>Endereço</th>
-                                    <th>Data</th>
-                                    <th>Solução</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <div>
-                                    <?php
+                            <div style="overflow-x:auto;">
+                                <table class="table table-bordered table-striped table-condensed">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Descrição</th>
+                                        <th>Categoria</th>
+                                        <th>Endereço</th>
+                                        <th>Data</th>
+                                        <th>Solução</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <div>
+                                        <?php
 
-                                    $solucaoInstace = new Solucao();
+                                        $solucaoInstace = new Solucao();
 
-                                    //Recuperando dados do user logado
-                                    $user = $_SESSION["array"];
-                                    $id = $user[0] -> id_login;
-                                    $solucaoRepository = $entityManager->getRepository('App\Models\Entity\Solucao');
-                                    $empresaRepository = $entityManager->getRepository('App\Models\Entity\Empresa');
-                                    $empresa = $empresaRepository->findBy(array('fk_login_empresa' => $id));
-                                    //Recuperando a cidade do user que esta logado
-                                    $cidade = $empresa[0] -> cidade;
-                                    //BUscando denuncias  da cidade do user logado
+                                        //Recuperando dados do user logado
+                                        $user = $_SESSION["array"];
+                                        $id = $user[0] -> id_login;
+                                        $solucaoRepository = $entityManager->getRepository('App\Models\Entity\Solucao');
+                                        $empresaRepository = $entityManager->getRepository('App\Models\Entity\Empresa');
+                                        $empresa = $empresaRepository->findBy(array('fk_login_empresa' => $id));
+                                        //Recuperando a cidade do user que esta logado
+                                        $cidade = $empresa[0] -> cidade;
+                                        //BUscando denuncias  da cidade do user logado
 
-                                    $denunciaRepository = $entityManager->getRepository('App\Models\Entity\Denuncia');
-                                    $denuncias = $denunciaRepository->findBy(array("status_denuncia" => 0));
-                                    $solucoes = $solucaoRepository->findAll();
+                                        $denunciaRepository = $entityManager->getRepository('App\Models\Entity\Denuncia');
+                                        $denuncias = $denunciaRepository->findBy(array("status_denuncia" => 0));
+                                        $solucoes = $solucaoRepository->findAll();
 
 
-                                    $solucaoInstace->montarTabela($denuncias);
+                                        $solucaoInstace->montarTabela($denuncias);
 
-                                    ?>
-                                </div>
-                                </tbody>
-                            </table>
+                                        ?>
+                                    </div>
+                                    </tbody>
+                                </table>
+                            </div>
                         </section>
                     </div>
                 </section>
@@ -222,14 +248,8 @@ if (isset($_POST['btn_solucao'])) {
 <!--  Notifications Plugin    -->
 <script src="assets/js/bootstrap-notify.js"></script>
 
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="assets/js/light-bootstrap-dashboard.js"></script>
-
-<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-<script src="assets/js/demo.js"></script>
 
 
 </html>

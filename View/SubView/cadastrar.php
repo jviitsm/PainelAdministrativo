@@ -8,6 +8,7 @@ use App\Models\Entity\Login;
 session_start();
 
 
+
 if (!isset($_SESSION['usuario'])) {
     header("Location: ../../index.php");
     session_destroy();
@@ -16,6 +17,10 @@ if (!$_SESSION['administrador'] == true) {
     header("Location: dashboard.php");
 }
 
+$solicitacaoInstance = new Solicitacao();
+$solicitacaoRepository = $entityManager->getRepository('App\Models\Entity\Solicitacao');
+$solicitacoes = $solicitacaoRepository->findBy(array("status_solicitacao" => 1));
+$numeroSolicitacoes = count($solicitacoes);
 
 $solicitacaoRepository = $entityManager->getRepository('App\Models\Entity\Solicitacao');
 
@@ -72,18 +77,17 @@ if(isset($_POST['btnCadastrar'])) {
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
     <title>City Care</title>
 
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
-    <meta name="viewport" content="width=device-width"/>
-
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
 
     <!-- Bootstrap core CSS     -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Animation library for notifications   -->
     <link href="assets/css/animate.min.css" rel="stylesheet"/>
@@ -91,15 +95,16 @@ if(isset($_POST['btnCadastrar'])) {
     <!--  Light Bootstrap Table core CSS    -->
     <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
 
+    <link rel="stylesheet" type="text/css" href="assets/css/estilo.css">
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="assets/css/demo.css" rel="stylesheet"/>
+    <link href="assets/css/demo.css" rel="stylesheet" />
 
 
     <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -135,12 +140,6 @@ if(isset($_POST['btnCadastrar'])) {
                     <p>Denuncias</p>
                 </a>
                 </li>
-                <li>
-                    <a href="maps.php">
-                        <i class="pe-7s-map-marker"></i>
-                        <p>Mapa</p>
-                    </a>
-                </li>
                 <?php
                 if ($_SESSION['administrador'] == true) {
                     echo "  <li class=\"active\">
@@ -169,7 +168,31 @@ if(isset($_POST['btnCadastrar'])) {
                     <a class="navbar-brand" href="#">Cadastro de Empresa</a>
                 </div>
                 <div class="collapse navbar-collapse">
-
+                    <!-- Mostrar noficiações de solicitações de cadastro -->
+                    <?php
+                    #verificar se é admin
+                    if ($_SESSION['administrador'] == true) {
+                        echo " <ul class=\"nav navbar-nav navbar-left\">
+                        <li class=\"dropdown\">
+                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
+                                <i class=\"fa fa-globe\"></i>
+                                <b class=\"caret hidden-sm hidden-xs\"></b>
+                                <span class=\"notification hidden-sm hidden-xs\">$numeroSolicitacoes</span>
+                                <p class=\"hidden-lg hidden-md\">
+                                    $numeroSolicitacoes Notificações
+                                    <b class=\"caret\"></b>
+                                </p>
+                            </a>
+                            <ul class=\"dropdown-menu\">" ?>
+                        <?php
+                        $solicitacaoInstance->montarTask($solicitacoes, $_SESSION['administrador']); ?>
+                        <?php echo "
+                            </ul>
+                        </li>
+                    </ul>
+                            ";
+                    }
+                    ?>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="user.php">
@@ -327,9 +350,6 @@ if(isset($_POST['btnCadastrar'])) {
 
 <!--  Notifications Plugin    -->
 <script src="assets/js/bootstrap-notify.js"></script>
-
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="assets/js/light-bootstrap-dashboard.js"></script>

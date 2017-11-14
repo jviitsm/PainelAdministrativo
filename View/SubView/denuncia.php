@@ -4,13 +4,20 @@ require_once("../../bootstrap.php");
 use App\Models\Entity\Denuncia;
 use App\Models\Entity\Comentario;
 use App\Models\Entity\Solucao;
+use App\Models\Entity\Solicitacao;
 
 session_start();
+
 
 if (!isset($_SESSION['usuario'])) {
     header("Location: ../../index.php");
     session_destroy();
 }
+
+$solicitacaoInstance = new Solicitacao();
+$solicitacaoRepository = $entityManager->getRepository('App\Models\Entity\Solicitacao');
+$solicitacoes = $solicitacaoRepository->findBy(array("status_solicitacao" => 1));
+$numeroSolicitacoes = count($solicitacoes);
 
 
 ##Buscando denuncia que foi clicada pelo usuario
@@ -52,7 +59,7 @@ if (isset($_POST['btnSolucionar'])) {
             $nome_real .= $_FILES["fotoSolucao"]["name"] . "";
             if (strstr('.jpg;.jpeg;.gif;.png', $extensao)) {
                 copy($nome_temporario, "/home/citycare/public_html/Imgs/Solucao/$nome_real"); #"/home/citycare//public_html/Imgs/Solucao/$nome_real
-                $photoURL = "http://projetocitycare.com.br/Imgs/Solucao/$nome_real"; #http://projetocitycare.com.br/Imgs/Solucao/$nome_real
+                $photoURL = "https://projetocitycare.com.br/Imgs/Solucao/$nome_real"; #http://projetocitycare.com.br/Imgs/Solucao/$nome_real
             } else {
                 echo "<script type='text/javascript'>alert('Tipo de arquivo invalido');</script>";
                 $controle = false;
@@ -122,8 +129,8 @@ if (isset($_POST['btnSolucionar'])) {
     <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
 
     <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet"/>
 
 </head>
@@ -137,7 +144,7 @@ if (isset($_POST['btnSolucionar'])) {
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.projetocitycare.com.br" class="simple-text">
+                <a href="https://www.projetocitycare.com.br" class="simple-text">
                     City Care
                 </a>
             </div>
@@ -162,12 +169,6 @@ if (isset($_POST['btnSolucionar'])) {
                     </a>
                 </li>
                 <li>
-                </li>
-                <li>
-                    <a href="maps.php">
-                        <i class="pe-7s-map-marker"></i>
-                        <p>Mapa</p>
-                    </a>
                 </li>
                 <?php
                 if ($_SESSION['administrador'] == true) {
@@ -197,8 +198,31 @@ if (isset($_POST['btnSolucionar'])) {
                     <a class="navbar-brand">Denuncia</a>
                 </div>
                 <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-left">
+                    <!-- Mostrar noficiações de solicitações de cadastro -->
+                    <?php
+                    #verificar se é admin
+                    if ($_SESSION['administrador'] == true) {
+                        echo " <ul class=\"nav navbar-nav navbar-left\">
+                        <li class=\"dropdown\">
+                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
+                                <i class=\"fa fa-globe\"></i>
+                                <b class=\"caret hidden-sm hidden-xs\"></b>
+                                <span class=\"notification hidden-sm hidden-xs\">$numeroSolicitacoes</span>
+                                <p class=\"hidden-lg hidden-md\">
+                                    $numeroSolicitacoes Notificações
+                                    <b class=\"caret\"></b>
+                                </p>
+                            </a>
+                            <ul class=\"dropdown-menu\">" ?>
+                        <?php
+                        $solicitacaoInstance->montarTask($solicitacoes, $_SESSION['administrador']); ?>
+                        <?php echo "
+                            </ul>
+                        </li>
                     </ul>
+                            ";
+                    }
+                    ?>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="user.php">
@@ -253,7 +277,7 @@ if (isset($_POST['btnSolucionar'])) {
                     <h5>Comentários</h5>
                 </div>
                 <div class="panel-body">
-                    <div class="container" style="overflow-y: scroll; max-height: 400px;">
+                    <div class="container" style="overflow-y: scroll; max-height: 400px; max-width: 580px">
                         <?php
                         $comentarioInstance->montarComentarios($comentarios);
                         ?>
@@ -317,14 +341,9 @@ if (isset($_POST['btnSolucionar'])) {
 <!--  Notifications Plugin    -->
 <script src="assets/js/bootstrap-notify.js"></script>
 
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="assets/js/light-bootstrap-dashboard.js"></script>
 
-<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-<script src="assets/js/demo.js"></script>
 
 
 </html>

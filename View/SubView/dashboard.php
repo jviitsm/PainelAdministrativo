@@ -8,6 +8,8 @@ if (!isset($_SESSION['usuario'])) {
     header("Location: ../../index.php");
     session_destroy();
 }
+date_default_timezone_set('America/Bahia');
+$hora = date('h:i', time());
 
 $denunciaRepository = $entityManager->getRepository('App\Models\Entity\Denuncia');
 $denuncias = $denunciaRepository->findBy(array("status_denuncia" => 1));
@@ -26,20 +28,17 @@ $numeroInteracoes = count($agilizas) + count($comentario);
 
 $solucaoRepository = $entityManager->getRepository('App\Models\Entity\Solucao');
 $solucoes = $solucaoRepository->findAll();
-
 $numeroSolucoes = count($solucoes);
 
 $solicitacaoInstance = new Solicitacao();
-
 $solicitacaoRepository = $entityManager->getRepository('App\Models\Entity\Solicitacao');
-
 $solicitacoes = $solicitacaoRepository->findBy(array("status_solicitacao" => 1));
+$numeroSolicitacoes = count($solicitacoes);
 
-if (isset($_POST['btnRemove'])) {
+
+if (isset($_POST['btnChecar'])) {
     header("Location: solicitacoes.php");
 }
-
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -51,40 +50,10 @@ if (isset($_POST['btnRemove'])) {
     <title>City Care</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+
     <meta name="viewport" content="width=device-width"/>
 
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-        google.load("visualization", "1", {'packages': ['corechart']});
-        google.setOnLoadCallback(desenhaGrafico);
-
-        function desenhaGrafico() {
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Mês');
-            data.addColumn('number', 'Despesas em R$');
-
-            data.addRows(2);
-
-            data.setValue(0, 0, 'JAN');
-            data.setValue(0, 1, 3450.0);
-
-            data.setValue(1, 0, 'FEV');
-            data.setValue(1, 1, 5420.0);
-
-            var options = {
-                title: 'Despesas por mês',
-                width: 400, height: 300,
-                colors: ['#335070'],
-                legend: {position: 'bottom'}
-            };
-
-            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-
-            chart.draw(data, options);
-
-
-        }
-    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7qWWDPjYAoxV2m_o_E2NnDLSy4EPn52o"></script>
 
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
@@ -95,32 +64,34 @@ if (isset($_POST['btnRemove'])) {
     <!--  Light Bootstrap Table core CSS    -->
     <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
 
+    <link rel="stylesheet" type="text/css" href="assets/css/estilo.css">
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="assets/css/demo.css" rel="stylesheet"/>
 
     <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet"/>
 
 
 </head>
 <body>
+<!--   Core JS Files   -->
+<script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="assets/js/jquery.min.js"></script>
+<!-- Caixa de informação -->
+<script src="assets/js/infobox.js"></script>
+<!-- Agrupamento dos marcadores -->
+<script src="assets/js/markerclusterer.js"></script>
+
 
 <div class="wrapper">
     <div class="sidebar" data-color="#DCDCDC" data-image="assets/img/sidebar-5.png">
 
-        <!--
-
-            Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
-            Tip 2: you can also add an image using data-image tag
-
-        -->
-
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.projetocitycare.com.br" class="simple-text">
+                <a href="https://www.projetocitycare.com.br" class="simple-text">
                     City Care
                 </a>
             </div>
@@ -142,12 +113,6 @@ if (isset($_POST['btnRemove'])) {
                     <a href="table.php">
                         <i class="pe-7s-note2"></i>
                         <p>Denuncias</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="maps.php">
-                        <i class="pe-7s-map-marker"></i>
-                        <p>Mapa</p>
                     </a>
                 </li>
                 <?php
@@ -178,10 +143,34 @@ if (isset($_POST['btnRemove'])) {
                     </button>
                     <a class="navbar-brand">Painel</a>
                 </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-left">
 
+                <div class="collapse navbar-collapse">
+                    <!-- Mostrar noficiações de solicitações de cadastro -->
+                    <?php
+                    #verificar se é admin
+                    if ($_SESSION['administrador'] == true) {
+                        echo " <ul class=\"nav navbar-nav navbar-left\">
+                        <li class=\"dropdown\">
+                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
+                                <i class=\"fa fa-globe\"></i>
+                                <b class=\"caret hidden-sm hidden-xs\"></b>
+                                <span class=\"notification hidden-sm hidden-xs\">$numeroSolicitacoes</span>
+                                <p class=\"hidden-lg hidden-md\">
+                                    $numeroSolicitacoes Notificações
+                                    <b class=\"caret\"></b>
+                                </p>
+                            </a>
+                            <ul class=\"dropdown-menu\">" ?>
+                        <?php
+                        $solicitacaoInstance->montarTask($solicitacoes, $_SESSION['administrador']); ?>
+                        <?php echo "
+                            </ul>
+                        </li>
                     </ul>
+                            ";
+                    }
+                    ?>
+
 
                     <ul class="nav navbar-nav navbar-right">
 
@@ -203,6 +192,7 @@ if (isset($_POST['btnRemove'])) {
 
 
         <br>
+
 
         <div class="col-md-16">
             <div class="col-lg-3 col-md-6">
@@ -263,12 +253,12 @@ if (isset($_POST['btnRemove'])) {
                             </div>
                         </div>
                     </div>
-                    <a href="#">
-                        <div class="panel-footer">
-                            <span class="pull-left"></span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
+
+                    <div class="panel-footer">
+                        <span class="pull-left"></span>
+                        <div class="clearfix"></div>
+                    </div>
+
                 </div>
             </div>
 
@@ -293,43 +283,35 @@ if (isset($_POST['btnRemove'])) {
             </div>
         </div>
 
-        <?php
-        if ($_SESSION['administrador'] == true) {
-
-            echo " <div class=\"col-md-6\">
-
-           <div class=\"panel panel-primary\">
-                <div class=\"panel-heading\">
-                    <h4 class=\"title text-center\">Solicitações</h4>
-                    <p class=\"category text-center\">Cadastro de Empresas</p>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="panel-title text-center">Mapa</h4>
+                    <p class="category">Denuncias ativas e solucionadas</p>
                 </div>
-                <div class=\"content\">
-                    <div class=\"table-full-width\">
-                        <table class=\"table\">
-                            <tbody>
-                            <form method=\"post\">
-                                <tr>
-                               " ?>
-
-            <?php $solicitacaoInstance->montarTask($solicitacoes, $_SESSION['administrador']);?>
-
-            <?php echo "
-                                <tr>
-                            </form>
+                <div class="content">
 
 
-                    </div>";
-        }
+                    <div id="mapa" class="container-fluid" style="height: 500px; width: 1000px">
 
+                    </div>
+                    <div class="footer">
+                        <hr>
+                        <div class="stats">
+                            <i class="fa fa-history"></i> Atualizado as: <?php echo $hora ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        ?>
+    <!-- Arquivo de inicialização do mapa -->
+    <script src="assets/js/mapa.js"></script>
 
 
 </body>
 
-<!--   Core JS Files   -->
-
-<script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
 <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 <!--  Checkbox, Radio & Switch Plugins -->
@@ -339,17 +321,10 @@ if (isset($_POST['btnRemove'])) {
 <script src="assets/js/chartist.min.js"></script>
 
 <!--  Notifications Plugin    -->
-
 <script src="assets/js/bootstrap-notify.js"></script>
-
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="assets/js/light-bootstrap-dashboard.js"></script>
-
-
-<script src="assets/js/sb-admin-2.js"></script>
 
 
 </html>

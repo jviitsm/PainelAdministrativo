@@ -205,6 +205,7 @@ class Denuncia
         foreach ($denuncias as $lista) {
 
             $endereco = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?latlng=' . $lista->latitude_denuncia . ',' . $lista->longitude_denuncia . '&key=AIzaSyC_smlZV61EJc1y0ZqgG6CqjzfT1ApoHrQ');
+
             $output = json_decode($endereco, true);
 
             #Executar um explode na data para tratar a mesma

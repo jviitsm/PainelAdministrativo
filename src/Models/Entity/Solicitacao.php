@@ -172,7 +172,8 @@ class Solicitacao
             echo "<td>$index->estado</td>";
             echo "<td>$index->telefone</td>";
             echo "<input type=\"hidden\" name=\"id\" value=\"$index->id_solicitacao\">";
-            echo "<td><button type=\"submit\" name=\"btnSolicitado\" class=\"btn btn-info btn-fill pull-center\">Cadastrar</button></td>";
+            echo "<td><button type=\"submit\" name=\"btnSolicitado\" class=\"btn btn-info btn-fill pull\">Cadastrar</button></td>";
+            echo "<td><button type=\"submit\" name=\"btnExcluir\" class=\"btn btn-info btn-fill pull\">Excluir</button></td>";
             echo "</form>";
 
 
@@ -187,18 +188,12 @@ class Solicitacao
         foreach ($solicitacoes as $index) {
 
             if($solicitacoes){
-                echo " <td>
-                                                   
-                                                </td>
-                                                <td>Solicitação da empresa: $index->nome_fantasia</td>
-                                                <td class=\"td-actions text-right\">
-       
-                                                    <button type=\"submit\" name='btnRemove' rel=\"tooltip\" title=\"Checar\" class=\"btn btn-danger btn-simple btn-xs\">
-                                                        <i class=\"fa fa-check\"></i>
-                                                    </button>
-                                                </td>
-                                                </tr>";
+              echo "<li><a href=\"solicitacoes.php\">Empresa: $index->nome_fantasia</a></li>";
             }
+            else{
+                echo "<li><a href=\"solicitacoes.php\">Nenhuma Solicitação</a></li>";
+            }
+
 
         }
         }

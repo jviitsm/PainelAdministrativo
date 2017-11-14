@@ -1,11 +1,13 @@
 <?php
 require 'bootstrap.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use App\Models\Entity\Login;
 use App\Models\Entity\Solicitacao;
+
 session_start();
 
-if (isset($_SESSION['usuario'])){
+if (isset($_SESSION['usuario'])) {
     header("Location: View/SubView/dashboard.php ");
 }
 
@@ -22,46 +24,44 @@ if (isset($_POST['btn_logar'])) {
 
     if ($existeLogin) {
         $id = $existeLogin[0]->id_login;
-        $administrador = $existeLogin[0] -> administrador;
+        $administrador = $existeLogin[0]->administrador;
         $empresaRepository = $entityManager->getRepository('App\Models\Entity\Empresa');
         $empresa = $empresaRepository->findBy(array('fk_login_empresa' => $id));
 
         if ($empresa) {
-            if($administrador == false){
-            $_SESSION["usuario"] = $email;
-            $_SESSION["array"] = $existeLogin;
-            $_SESSION["administrador"] = false;
+            if ($administrador == false) {
+                $_SESSION["usuario"] = $email;
+                $_SESSION["array"] = $existeLogin;
+                $_SESSION["administrador"] = false;
 
-            header("Location: View/SubView/dashboard.php ");
+                header("Location: View/SubView/dashboard.php");
             }
-            if($administrador == true){
+            if ($administrador == true) {
                 $_SESSION["usuario"] = $email;
                 $_SESSION["array"] = $existeLogin;
                 $_SESSION["administrador"] = true;
-                header("Location: View/SubView/dashboard.php ");
+                header("Location: View/SubView/dashboard.php");
             }
         } else {
             echo "<p class='alert-danger'>Somente usuário empresa permitido!</p>";
         }
-
-
     } else if ($existeEmail) {
-
         $id = $existeEmail[0]->id_login;
-
         $empresaRepository = $entityManager->getRepository('App\Models\Entity\Empresa');
+        $administrador = $existeEmail[0]->administrador;
         $empresa = $empresaRepository->findBy(array('fk_login_empresa' => $id));
+
         if ($empresa) {
-            if($existeEmail[0] ->administrador = 0) {
+            if ($administrador == false) {
                 $_SESSION["usuario"] = $email;
                 $_SESSION["array"] = $existeEmail;
+                $_SESSION["administrador"] = false;
                 header("Location: View/SubView/dashboard.php");
 
-            }
-            else if($existeEmail[0] -> administrador = 1){
+            } else if ($administrador == true) {
                 $_SESSION["usuario"] = $email;
                 $_SESSION["array"] = $existeEmail;
-                $_SESSION["administrador"] = 1;
+                $_SESSION["administrador"] = true;
                 header("Location: View/SubView/dashboard.php");
             }
         } else {
@@ -74,54 +74,63 @@ if (isset($_POST['btn_logar'])) {
 
 
 if (isset($_POST['btn_esqueceu'])) {
+
+
     $email = $_POST["email_esqueceu"];
-
-    //Gerar senha randomica
-    $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    $novaSenha = substr(str_shuffle($chars), 0, 8);
-
-
-    $loginRepository = $entityManager->getRepository('App\Models\Entity\Login');
-
-    $login = $loginRepository->findBy(array('email' => $email));
-
-    if ($login) {
-
-        $id = $login[0]->id_login;
-
-        $loginUser = new Login();
-        $loginUser = $loginRepository->find($id);
-
-        $loginUser->setSenha($novaSenha);
+    if(empty($email)){
+        echo "<p class='alert alert-danger'>Digite o Email!</p>";
+    }else{
 
 
-        $entityManager->merge($loginUser);
-        $entityManager->flush();
+        //Gerar senha randomica
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        $novaSenha = substr(str_shuffle($chars), 0, 8);
 
 
-        $mail = new PHPMailer(true);
-        $mail->isSMTP();
-        $mail->SMTPDebug = 0;
-        $mail->Host = 'smtp.gmail.com';
-        $mail->Port = 587;
-        $mail->SMTPSecure = 'tls';
-        $mail->SMTPAuth = true;
-        $mail->Username = "projetocitycare@gmail.com";
-        $mail->Password = "citycare123";
-        $mail->setFrom("projetocitycare@gmail.com", 'City Care');
-        $mail->addAddress($email);
-        $mail->Subject = 'Nova Senha';
-        $mail->Body = $novaSenha;
+
+        $loginRepository = $entityManager->getRepository('App\Models\Entity\Login');
+
+        $login = $loginRepository->findBy(array('email' => $email));
+
+        if ($login) {
+
+            $id = $login[0]->id_login;
+
+            $loginUser = new Login();
+            $loginUser = $loginRepository->find($id);
+
+            $loginUser->setSenha($novaSenha);
 
 
-        if (!$mail->send()) {
-            echo "<p class='alert alert-danger'>Email Invalido!</p>";
+            $entityManager->merge($loginUser);
+            $entityManager->flush();
+
+
+            $mail = new PHPMailer(true);
+            $mail->isSMTP();
+            $mail->SMTPDebug = 0;
+            $mail->Host = 'smtp.gmail.com';
+            $mail->Port = 587;
+            $mail->SMTPSecure = 'tls';
+            $mail->SMTPAuth = true;
+            $mail->Username = "projetocitycare@gmail.com";
+            $mail->Password = "citycare123";
+            $mail->setFrom("projetocitycare@gmail.com", 'City Care');
+            $mail->addAddress($email);
+            $mail->Subject = 'Nova Senha';
+            $mail->Body = $novaSenha;
+
+
+            if (!$mail->send()) {
+                echo "<p class='alert alert-danger'>Email Invalido!</p>";
+            } else {
+                echo "<p class='alert alert-success'>Email Enviado com Sucesso!</p>";
+            }
         } else {
-            echo "<p class='alert alert-success'>Email Enviado com Sucesso!</p>";
+            echo "<p class='alert alert-danger'>Email Invalido!</p>";
         }
-    } else {
-        echo "<p class='alert alert-danger'>Email Invalido!</p>";
     }
+
 }
 
 
@@ -165,7 +174,7 @@ if (isset($_POST['btn_solicitar'])) {
     <title>City Care - Login</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/form-elements.css">
@@ -184,7 +193,7 @@ if (isset($_POST['btn_solicitar'])) {
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
-    <script type="text/javascript" src="\View\SubView\assets\js\jquery.min.js"></script>
+    <script type="text/javascript" src="View\SubView\assets\js\jquery.min.js"></script>
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -220,8 +229,8 @@ if (isset($_POST['btn_solicitar'])) {
             });
 
         });
-
     </script>
+
 
 </head>
 
@@ -291,7 +300,7 @@ if (isset($_POST['btn_solicitar'])) {
                     </div>
                     <div class="modal-footer">
                         <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
-                        <button class="btn btn-success" name="btn_esqueceu" type="submit">Enviar</button>
+                        <button type="submit" name="btn_esqueceu" class="btn">Enviar</button>
                     </div>
                 </div>
             </div>
@@ -316,7 +325,7 @@ if (isset($_POST['btn_solicitar'])) {
                         <br>
                         <input type="number" name="telefone_solicitar" placeholder="Telefone Para Contato"
                                autocomplete="off"
-                              class="form-control placeholder-no-fix" >
+                               class="form-control placeholder-no-fix">
                         <br>
                         <input type="text-area" name="nome_fantasia" placeholder="Nome Fantasia" autocomplete="off"
                                class="form-control placeholder-no-fix">

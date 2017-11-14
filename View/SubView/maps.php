@@ -13,17 +13,18 @@ if (!isset($_SESSION['usuario'])){
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>City Care</title>
+    <title>City Care</title>
 
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
     <!--  Google Maps Plugin    -->
-    <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_smlZV61EJc1y0ZqgG6CqjzfT1ApoHrQ"></script>
+    <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7qWWDPjYAoxV2m_o_E2NnDLSy4EPn52o"></script>
+
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -40,8 +41,8 @@ if (!isset($_SESSION['usuario'])){
 
 
     <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
 </head>
@@ -61,11 +62,11 @@ if (!isset($_SESSION['usuario'])){
 <div class="wrapper">
     <div class="sidebar" data-color="#DCDCDC" data-image="assets/img/sidebar-5.png">
 
-    <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
+        <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.projetocitycare.com.br" class="simple-text">
+                <a href="https://www.projetocitycare.com.br" class="simple-text">
                     City Care
                 </a>
             </div>
@@ -110,7 +111,7 @@ if (!isset($_SESSION['usuario'])){
     </div>
 
     <div class="main-panel">
-		<nav class="navbar navbar-default navbar-fixed">
+        <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
@@ -144,7 +145,9 @@ if (!isset($_SESSION['usuario'])){
 
 
         <!-- MAPA -->
-        <div id="mapa" style="height: 600px; width: 1100px">
+        <div class="container-fluid">
+            <div id="mapa" style="height: 600px; width: 1070px">
+            </div>
         </div>
 
         <!-- Arquivo de inicialização do mapa -->
@@ -152,29 +155,29 @@ if (!isset($_SESSION['usuario'])){
 
 </body>
 
-        <!--   Core JS Files   -->
+<!--   Core JS Files   -->
 
-	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
-	<!--  Checkbox, Radio & Switch Plugins -->
-	<script src="assets/js/bootstrap-checkbox-radio-switch.js"></script>
+<!--  Checkbox, Radio & Switch Plugins -->
+<script src="assets/js/bootstrap-checkbox-radio-switch.js"></script>
 
-	<!--  Charts Plugin -->
-	<script src="assets/js/chartist.min.js"></script>
+<!--  Charts Plugin -->
+<script src="assets/js/chartist.min.js"></script>
 
-    <!--  Notifications Plugin    -->
-    <script src="assets/js/bootstrap-notify.js"></script>
+<!--  Notifications Plugin    -->
+<script src="assets/js/bootstrap-notify.js"></script>
 
-    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-	<script src="assets/js/light-bootstrap-dashboard.js"></script>
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="assets/js/light-bootstrap-dashboard.js"></script>
 
-	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-	<script src="assets/js/demo.js"></script>
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script src="assets/js/demo.js"></script>
 
-    <script>
-        $().ready(function(){
-            demo.initGoogleMaps();
-        });
-    </script>
+<script>
+    $().ready(function(){
+        demo.initGoogleMaps();
+    });
+</script>
 
 </html>

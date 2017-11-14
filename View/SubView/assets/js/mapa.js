@@ -1,3 +1,6 @@
+
+    //your code here
+
 var map;
 var idInfoBoxAberto;
 var infoBox = [];
@@ -34,7 +37,7 @@ function carregarPontos() {
                 beforeSend: function(request) {
                     request.setRequestHeader("X-Token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoicm9vdCIsInNlbmhhIjoiY2FyZWNpdHkiLCJpcCI6IjE3Ny4xMjkuNjAuMTA1In0.4gAD8--mlchHdjsSs-0lQlQZkxI6UbqHM0TYmfv2xdA");
                 },
-                url: "http://servico.projetocitycare.com.br/denuncia/er",
+                url: "https://www.servico.projetocitycare.com.br/denuncia/er",
                 success: function(pontos) {
                     var latlngbounds = new google.maps.LatLngBounds();
 
@@ -49,7 +52,7 @@ function carregarPontos() {
 
                         var myOptions = {
                             content: "<p class='text-center'>" + "Categoria: " + ponto.fk_categoria_denuncia.descricao_categoria
-                            +"<br>" +  ". Descricao: " + ponto.descricao_denuncia +  "</p>",
+                            +"<br>" +  "Descricao: " + ponto.descricao_denuncia +  "</p>",
                             pixelOffset: new google.maps.Size(-150, 0)
                         };
 
