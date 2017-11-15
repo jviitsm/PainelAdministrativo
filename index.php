@@ -1,165 +1,31 @@
 <?php
 require 'bootstrap.php';
 
-use PHPMailer\PHPMailer\PHPMailer;
-use App\Models\Entity\Login;
-use App\Models\Entity\Solicitacao;
+
+use App\Controller\Classes\UsuarioController;
+use App\Controller\Classes\SolicitacaoCadastroController;
+
 
 session_start();
+
 
 if (isset($_SESSION['usuario'])) {
     header("Location: View/SubView/dashboard.php ");
 }
 
+
+$controllerUser = new UsuarioController();
+$controlerSolicitacao = new SolicitacaoCadastroController();
+
+
 ?>
 <?php
-if (isset($_POST['btn_logar'])) {
-    $email = $_POST["usuario"];
-    $senha = base64_encode($_POST["senha"]);
 
-    $loginRepository = $entityManager->getRepository('App\Models\Entity\Login');
-
-    $existeLogin = $loginRepository->findBy(array('login' => $email, 'senha' => $senha));
-    $existeEmail = $loginRepository->findBy(array('email' => $email, 'senha' => $senha));
-
-    if ($existeLogin) {
-        $id = $existeLogin[0]->id_login;
-        $administrador = $existeLogin[0]->administrador;
-        $empresaRepository = $entityManager->getRepository('App\Models\Entity\Empresa');
-        $empresa = $empresaRepository->findBy(array('fk_login_empresa' => $id));
-
-        if ($empresa) {
-            if ($administrador == false) {
-                $_SESSION["usuario"] = $email;
-                $_SESSION["array"] = $existeLogin;
-                $_SESSION["administrador"] = false;
-
-                header("Location: View/SubView/dashboard.php");
-            }
-            if ($administrador == true) {
-                $_SESSION["usuario"] = $email;
-                $_SESSION["array"] = $existeLogin;
-                $_SESSION["administrador"] = true;
-                header("Location: View/SubView/dashboard.php");
-            }
-        } else {
-            echo "<p class='alert-danger'>Somente usuário empresa permitido!</p>";
-        }
-    } else if ($existeEmail) {
-        $id = $existeEmail[0]->id_login;
-        $empresaRepository = $entityManager->getRepository('App\Models\Entity\Empresa');
-        $administrador = $existeEmail[0]->administrador;
-        $empresa = $empresaRepository->findBy(array('fk_login_empresa' => $id));
-
-        if ($empresa) {
-            if ($administrador == false) {
-                $_SESSION["usuario"] = $email;
-                $_SESSION["array"] = $existeEmail;
-                $_SESSION["administrador"] = false;
-                header("Location: View/SubView/dashboard.php");
-
-            } else if ($administrador == true) {
-                $_SESSION["usuario"] = $email;
-                $_SESSION["array"] = $existeEmail;
-                $_SESSION["administrador"] = true;
-                header("Location: View/SubView/dashboard.php");
-            }
-        } else {
-            echo "<p class='alert-danger'>Somente empresa permitido!</p>";
-        }
-    } else {
-        echo "<p class='alert-danger'>Usuário ou Senha inválidos!</p>";
-    }
-}
+$controllerUser->realizarLogin($entityManager);
+$controllerUser->esqueceuSenha($entityManager);
+$controlerSolicitacao->solicitarCadastro($entityManager);
 
 
-if (isset($_POST['btn_esqueceu'])) {
-
-
-    $email = $_POST["email_esqueceu"];
-    if(empty($email)){
-        echo "<p class='alert alert-danger'>Digite o Email!</p>";
-    }else{
-
-
-        //Gerar senha randomica
-        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        $novaSenha = substr(str_shuffle($chars), 0, 8);
-
-
-
-        $loginRepository = $entityManager->getRepository('App\Models\Entity\Login');
-
-        $login = $loginRepository->findBy(array('email' => $email));
-
-        if ($login) {
-
-            $id = $login[0]->id_login;
-
-            $loginUser = new Login();
-            $loginUser = $loginRepository->find($id);
-
-            $loginUser->setSenha($novaSenha);
-
-
-            $entityManager->merge($loginUser);
-            $entityManager->flush();
-
-
-            $mail = new PHPMailer(true);
-            $mail->isSMTP();
-            $mail->SMTPDebug = 0;
-            $mail->Host = 'smtp.gmail.com';
-            $mail->Port = 587;
-            $mail->SMTPSecure = 'tls';
-            $mail->SMTPAuth = true;
-            $mail->Username = "projetocitycare@gmail.com";
-            $mail->Password = "citycare123";
-            $mail->setFrom("projetocitycare@gmail.com", 'City Care');
-            $mail->addAddress($email);
-            $mail->Subject = 'Nova Senha';
-            $mail->Body = $novaSenha;
-
-
-            if (!$mail->send()) {
-                echo "<p class='alert alert-danger'>Email Invalido!</p>";
-            } else {
-                echo "<p class='alert alert-success'>Email Enviado com Sucesso!</p>";
-            }
-        } else {
-            echo "<p class='alert alert-danger'>Email Invalido!</p>";
-        }
-    }
-
-}
-
-
-if (isset($_POST['btn_solicitar'])) {
-    $email = $_POST['email_solicitar'];
-    $telefone = $_POST['telefone_solicitar'];
-    $nomeFantasia = $_POST['nome_fantasia'];
-    $estado = $_POST['select_estado'];
-    $cidade = $_POST['select_cidade'];
-
-    try {
-        $solicitacaoRepotisory = $entityManager->getRepository('App\Models\Entity\Solicitacao');
-
-        $solicitacao = new Solicitacao();
-
-        $solicitacao->setEmail($email);
-        $solicitacao->setTelefone($telefone);
-        $solicitacao->setNomeFantasia($nomeFantasia);
-        $solicitacao->setEstado($estado);
-        $solicitacao->setCidade($cidade);
-        $solicitacao->setStatusSolicitacao(1);
-
-        $entityManager->persist($solicitacao);
-        $entityManager->flush();
-        echo "<p class='alert alert-success'>Solicitação enviada com sucesso. Entraremos em contato em breve! </p>";
-    } catch (Exception $e) {
-        echo "<p class='alert alert-success'>Não foi possivel enviar a solicitação </p>";
-    }
-}
 ?>
 
 <!DOCTYPE html>

@@ -158,46 +158,4 @@ class Solicitacao
     }
 
 
-    function montarTabela($solicitacoes)
-    {
-
-        foreach ($solicitacoes as $index) {
-
-            echo "<form id=\"form_denuncia\" method=\"post\">";
-            echo "<tr>";
-            echo "<td>$index->id_solicitacao</td>";
-            echo "<td>$index->email</td>";
-            echo "<td>$index->nome_fantasia</td>";
-            echo "<td>$index->cidade</td>";
-            echo "<td>$index->estado</td>";
-            echo "<td>$index->telefone</td>";
-            echo "<input type=\"hidden\" name=\"id\" value=\"$index->id_solicitacao\">";
-            echo "<td><button type=\"submit\" name=\"btnSolicitado\" class=\"btn btn-info btn-fill pull\">Cadastrar</button></td>";
-            echo "<td><button type=\"submit\" name=\"btnExcluir\" class=\"btn btn-info btn-fill pull\">Excluir</button></td>";
-            echo "</form>";
-
-
-        }
-
-    }
-
-    function montarTask($solicitacoes,$sessao)
-    {
-
-        if($sessao == true){
-        foreach ($solicitacoes as $index) {
-
-            if($solicitacoes){
-              echo "<li><a href=\"solicitacoes.php\">Empresa: $index->nome_fantasia</a></li>";
-            }
-            else{
-                echo "<li><a href=\"solicitacoes.php\">Nenhuma Solicitação</a></li>";
-            }
-
-
-        }
-        }
-    }
-
-
 }

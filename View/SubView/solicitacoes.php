@@ -2,6 +2,7 @@
 require '../../bootstrap.php';
 
 use App\Models\Entity\Solicitacao;
+use App\Controller\Classes\SolicitacaoCadastroController;
 
 session_start();
 
@@ -10,12 +11,6 @@ if (!isset($_SESSION['usuario'])) {
     header("Location: ../../index.php");
     session_destroy();
 }
-
-$solicitacaoInstance = new Solicitacao();
-$solicitacaoRepository = $entityManager->getRepository('App\Models\Entity\Solicitacao');
-$solicitacoes = $solicitacaoRepository->findBy(array("status_solicitacao" => 1));
-$numeroSolicitacoes = count($solicitacoes);
-
 if (!$_SESSION['administrador'] == true) {
     header("Location: dashboard.php");
 }
@@ -23,24 +18,16 @@ if(isset($_POST['btnSolicitado'])){
     $_SESSION['cadastrar'] = $_POST['id'];
     header("Location: cadastrar.php");
 }
-if(isset($_POST['btnExcluir'])){
-    $solicitacaoRepository = $entityManager->getRepository('App\Models\Entity\Solicitacao');
 
-    try{
-        $solicitacaoARemover = $solicitacaoRepository->find($_POST['id']);
 
-        $entityManager->remove($solicitacaoARemover);
-        $entityManager->flush();
+$solicitacaoController = new SolicitacaoCadastroController();
+$solicitacaoController->excluirSolicitacao($entityManager);
 
-    }catch (Exception $e){
-        echo "<script type='text/javascript'>alert('Não foi possivel excluir!, ocorreu algum erro.');</script>";
-    }
-}
 
 ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="utf-8"/>
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
@@ -136,28 +123,9 @@ if(isset($_POST['btnExcluir'])){
                 <div class="collapse navbar-collapse">
                     <!-- Mostrar noficiações de solicitações de cadastro -->
                     <?php
-                    #verificar se é admin
-                    if ($_SESSION['administrador'] == true) {
-                        echo " <ul class=\"nav navbar-nav navbar-left\">
-                        <li class=\"dropdown\">
-                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
-                                <i class=\"fa fa-globe\"></i>
-                                <b class=\"caret hidden-sm hidden-xs\"></b>
-                                <span class=\"notification hidden-sm hidden-xs\">$numeroSolicitacoes</span>
-                                <p class=\"hidden-lg hidden-md\">
-                                    $numeroSolicitacoes Notificações
-                                    <b class=\"caret\"></b>
-                                </p>
-                            </a>
-                            <ul class=\"dropdown-menu\">" ?>
-                        <?php
-                        $solicitacaoInstance->montarTask($solicitacoes, $_SESSION['administrador']); ?>
-                        <?php echo "
-                            </ul>
-                        </li>
-                    </ul>
-                            ";
-                    }
+                    #verificar se é admin e montar task
+                    $solicitacaoController->montarTaskSolicitacoes($entityManager,$solicitacaoController->contarSolicitacao($entityManager),
+                        $solicitacaoController->buscarSolicitacoes($entityManager),$_SESSION['administrador']);
                     ?>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -204,16 +172,7 @@ if(isset($_POST['btnExcluir'])){
                                     <tbody>
                                     <div>
                                         <?php
-
-                                        $solicitacaoInstance = new Solicitacao();
-
-                                        $solicitacaoRepository = $entityManager->getRepository('App\Models\Entity\Solicitacao');
-
-                                        $solicitacoes = $solicitacaoRepository->findBy(array("status_solicitacao" => 1));
-
-
-                                        $solicitacaoInstance->montarTabela($solicitacoes);
-
+                                        $solicitacaoController->montarTabela($solicitacaoController->buscarSolicitacoes($entityManager));
                                         ?>
                                     </div>
                                     </tbody>

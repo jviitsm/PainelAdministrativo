@@ -62,20 +62,7 @@ class Comentario{
         $this->descricao_comentario = $descricao_comentario;
     }
 
-    function montarComentarios($comentarios){
-        foreach ($comentarios as $lista) {
 
-
-            echo "<textarea class='textarea'style='border: none;resize: none; width: 530px' readonly>$lista->descricao_comentario</textarea>";
-            echo "<hr>";
-        }
-        if(!$comentarios){
-            echo "<hr>";
-            echo "<br>";
-            echo "<textarea class='textarea'style='border: none;resize: none' readonly>Nenhum comentario</textarea>";
-            echo "<hr>";
-        }
-    }
 
 
 }

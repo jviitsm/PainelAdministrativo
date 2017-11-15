@@ -1,13 +1,10 @@
 <?php
 require '../../bootstrap.php';
 
-use App\Models\Entity\Solicitacao;
-use App\Models\Entity\Empresa;
-use App\Models\Entity\Login;
+use App\Controller\Classes\SolicitacaoCadastroController;
+use App\Controller\Classes\CadastrarEmpresaController;
 
 session_start();
-
-
 
 if (!isset($_SESSION['usuario'])) {
     header("Location: ../../index.php");
@@ -17,65 +14,16 @@ if (!$_SESSION['administrador'] == true) {
     header("Location: dashboard.php");
 }
 
-$solicitacaoInstance = new Solicitacao();
-$solicitacaoRepository = $entityManager->getRepository('App\Models\Entity\Solicitacao');
-$solicitacoes = $solicitacaoRepository->findBy(array("status_solicitacao" => 1));
-$numeroSolicitacoes = count($solicitacoes);
+$solicitacaoController = new SolicitacaoCadastroController();
+$cadastrarController = new CadastrarEmpresaController();
 
-$solicitacaoRepository = $entityManager->getRepository('App\Models\Entity\Solicitacao');
-
-$solicitacao = $solicitacaoRepository->find($_SESSION['cadastrar']);
-
-
-if(isset($_POST['btnCadastrar'])) {
-    if($_POST['nomeFantasia'] && $_POST['email'] && $_POST['login'] && $_POST['senha'] && $_POST['razaoSocial'] &&
-        $_POST['cidade'] && $_POST['estado']){
-
-
-
-        $novoLogin = new Login();
-
-        $novoLogin->setEmail($_POST['email']);
-        $novoLogin->setLogin($_POST['login']);
-        $novoLogin->setSenha($_POST['senha']);
-        $novoLogin->setAsAdministrador(0);
-        $novoLogin->setStatus_login(1);
-
-        $entityManager->persist($novoLogin);
-
-        $empresa = new Empresa();
-
-        $empresa->setDir_foto_usuario("http://projetocitycare.com.br/Imgs/User/Masculino.jpg");
-        $empresa->setEstado($_POST['estado']);
-        $empresa->setCidade($_POST['cidade']);
-        $empresa->setFk_login_empresa($novoLogin);
-        $empresa->setCnpj($_POST['cnpj']);
-        $empresa->setRazao_social($_POST['razaoSocial']);
-        $empresa->setNome_fantasia($_POST['nomeFantasia']);
-
-        $entityManager->persist($empresa);
-
-
-        $entityManager->remove($solicitacao);
-        $entityManager->flush();
-
-        header("Location: solicitacoes.php");
-    }
-
-    else
-    {
-        echo "<script type='text/javascript'>alert('Preencha Todos os Campos');</script>";
-    }
-
-
-
-}
-
+$solicitacao =  $solicitacaoController->buscarSolicitacao($entityManager,$_SESSION['cadastrar']);
+$cadastrarController->cadastrar($entityManager,$solicitacao);
 
 ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
@@ -170,28 +118,9 @@ if(isset($_POST['btnCadastrar'])) {
                 <div class="collapse navbar-collapse">
                     <!-- Mostrar noficiações de solicitações de cadastro -->
                     <?php
-                    #verificar se é admin
-                    if ($_SESSION['administrador'] == true) {
-                        echo " <ul class=\"nav navbar-nav navbar-left\">
-                        <li class=\"dropdown\">
-                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
-                                <i class=\"fa fa-globe\"></i>
-                                <b class=\"caret hidden-sm hidden-xs\"></b>
-                                <span class=\"notification hidden-sm hidden-xs\">$numeroSolicitacoes</span>
-                                <p class=\"hidden-lg hidden-md\">
-                                    $numeroSolicitacoes Notificações
-                                    <b class=\"caret\"></b>
-                                </p>
-                            </a>
-                            <ul class=\"dropdown-menu\">" ?>
-                        <?php
-                        $solicitacaoInstance->montarTask($solicitacoes, $_SESSION['administrador']); ?>
-                        <?php echo "
-                            </ul>
-                        </li>
-                    </ul>
-                            ";
-                    }
+                    #verificar se é admin e montar task
+                    $solicitacaoController->montarTaskSolicitacoes($entityManager,$solicitacaoController->contarSolicitacao($entityManager),
+                        $solicitacaoController->buscarSolicitacoes($entityManager),$_SESSION['administrador']);
                     ?>
                     <ul class="nav navbar-nav navbar-right">
                         <li>

@@ -1,7 +1,13 @@
 <?php
 require_once("../../bootstrap.php");
 
-use App\Models\Entity\Solicitacao;
+
+use App\Controller\Classes\DenunciaController;
+use App\Controller\Classes\CidadaoController;
+use App\Controller\Classes\AgilizaController;
+use App\Controller\Classes\ComentarioController;
+use App\Controller\Classes\SolucaoController;
+use App\Controller\Classes\SolicitacaoCadastroController;
 
 session_start();
 if (!isset($_SESSION['usuario'])) {
@@ -11,30 +17,14 @@ if (!isset($_SESSION['usuario'])) {
 date_default_timezone_set('America/Bahia');
 $hora = date('h:i', time());
 
-$denunciaRepository = $entityManager->getRepository('App\Models\Entity\Denuncia');
-$denuncias = $denunciaRepository->findBy(array("status_denuncia" => 1));
-$numeroDenuncias = count($denuncias);
+$denunciaController = new DenunciaController();
+$cidadaoController = new CidadaoController();
+$agilizaController = new AgilizaController();
+$comentarioController = new ComentarioController();
+$solucaoController = new SolucaoController();
+$solicitacaoController = new SolicitacaoCadastroController();
 
-$cidadaoRepository = $entityManager->getRepository('App\Models\Entity\Cidadao');
-$cidadadaos = $cidadaoRepository->findAll();
-$numeroCidadaos = count($cidadadaos);
-
-$agilizaRepository = $entityManager->getRepository('App\Models\Entity\Agiliza');
-$comentarioRepository = $entityManager->getRepository('App\Models\Entity\Comentario');
-
-$agilizas = $agilizaRepository->findBy(array("interacao" => 1));
-$comentario = $comentarioRepository->findAll();
-$numeroInteracoes = count($agilizas) + count($comentario);
-
-$solucaoRepository = $entityManager->getRepository('App\Models\Entity\Solucao');
-$solucoes = $solucaoRepository->findAll();
-$numeroSolucoes = count($solucoes);
-
-$solicitacaoInstance = new Solicitacao();
-$solicitacaoRepository = $entityManager->getRepository('App\Models\Entity\Solicitacao');
-$solicitacoes = $solicitacaoRepository->findBy(array("status_solicitacao" => 1));
-$numeroSolicitacoes = count($solicitacoes);
-
+$numeroInteracoes = count($agilizaController->contarAgiliza($entityManager)) + count($comentarioController->contarComentarios($entityManager));
 
 if (isset($_POST['btnChecar'])) {
     header("Location: solicitacoes.php");
@@ -147,31 +137,10 @@ if (isset($_POST['btnChecar'])) {
                 <div class="collapse navbar-collapse">
                     <!-- Mostrar noficiações de solicitações de cadastro -->
                     <?php
-                    #verificar se é admin
-                    if ($_SESSION['administrador'] == true) {
-                        echo " <ul class=\"nav navbar-nav navbar-left\">
-                        <li class=\"dropdown\">
-                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
-                                <i class=\"fa fa-globe\"></i>
-                                <b class=\"caret hidden-sm hidden-xs\"></b>
-                                <span class=\"notification hidden-sm hidden-xs\">$numeroSolicitacoes</span>
-                                <p class=\"hidden-lg hidden-md\">
-                                    $numeroSolicitacoes Notificações
-                                    <b class=\"caret\"></b>
-                                </p>
-                            </a>
-                            <ul class=\"dropdown-menu\">" ?>
-                        <?php
-                        $solicitacaoInstance->montarTask($solicitacoes, $_SESSION['administrador']); ?>
-                        <?php echo "
-                            </ul>
-                        </li>
-                    </ul>
-                            ";
-                    }
+                    #verificar se é admin e montar task
+                    $solicitacaoController->montarTaskSolicitacoes($entityManager,$solicitacaoController->contarSolicitacao($entityManager),
+                        $solicitacaoController->buscarSolicitacoes($entityManager),$_SESSION['administrador']);
                     ?>
-
-
                     <ul class="nav navbar-nav navbar-right">
 
                         <li>
@@ -189,11 +158,7 @@ if (isset($_POST['btnChecar'])) {
                 </div>
             </div>
         </nav>
-
-
         <br>
-
-
         <div class="col-md-16">
             <div class="col-lg-3 col-md-6">
                 <div class="panel panel-primary">
@@ -203,7 +168,7 @@ if (isset($_POST['btnChecar'])) {
                                 <i class="fa fa-map-marker fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge"><?php echo $numeroDenuncias ?></div>
+                                <div class="huge"><?php echo $denunciaController->contarDenuncias($entityManager); ?></div>
                                 <div>Denuncias <br> Ativas!</div>
                             </div>
                         </div>
@@ -225,7 +190,7 @@ if (isset($_POST['btnChecar'])) {
                                 <i class="fa fa-check-square fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge"><?php echo $numeroSolucoes ?></div>
+                                <div class="huge"><?php echo $solucaoController->contarSolucao($entityManager)?></div>
                                 <div>Denuncias Solucionadas!</div>
                             </div>
                         </div>
@@ -248,7 +213,7 @@ if (isset($_POST['btnChecar'])) {
                                 <i class="fa fa-user fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge"><?php echo $numeroCidadaos ?></div>
+                                <div class="huge"><?php echo $cidadaoController->contarCidadaos($entityManager); ?></div>
                                 <div>Usuários <br>Cadastrados!</div>
                             </div>
                         </div>
@@ -289,11 +254,13 @@ if (isset($_POST['btnChecar'])) {
                     <h4 class="panel-title text-center">Mapa</h4>
                     <p class="category">Denuncias ativas e solucionadas</p>
                 </div>
+                <div style="overflow-x : auto; overflow-y: auto">
                 <div class="content">
 
 
                     <div id="mapa" class="container-fluid" style="height: 500px; width: 1000px">
 
+                    </div>
                     </div>
                     <div class="footer">
                         <hr>
