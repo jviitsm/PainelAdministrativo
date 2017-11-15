@@ -5,18 +5,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/dashboard.php" afterPath="$PROJECT_DIR$/View/SubView/dashboard.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/denuncia.php" afterPath="$PROJECT_DIR$/View/SubView/denuncia.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/sair.php" afterPath="$PROJECT_DIR$/View/SubView/sair.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/solucao.php" afterPath="$PROJECT_DIR$/View/SubView/solucao.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/solucionadas.php" afterPath="$PROJECT_DIR$/View/SubView/solucionadas.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/table.php" afterPath="$PROJECT_DIR$/View/SubView/table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/user.php" afterPath="$PROJECT_DIR$/View/SubView/user.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cache/__CG__AppModelsEntitySolucao.php" afterPath="$PROJECT_DIR$/cache/__CG__AppModelsEntitySolucao.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Classes/ComentarioController.php" afterPath="$PROJECT_DIR$/src/Controller/Classes/ComentarioController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Classes/DenunciaController.php" afterPath="$PROJECT_DIR$/src/Controller/Classes/DenunciaController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Classes/SolucaoController.php" afterPath="$PROJECT_DIR$/src/Controller/Classes/SolucaoController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Classes/UsuarioController.php" afterPath="$PROJECT_DIR$/src/Controller/Classes/UsuarioController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Models/Entity/Denuncia.php" afterPath="$PROJECT_DIR$/src/Models/Entity/Denuncia.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Models/Entity/Solucao.php" afterPath="$PROJECT_DIR$/src/Models/Entity/Solucao.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,15 +15,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="dashboard.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/View/SubView/dashboard.php">
+      <file leaf-file-name="denuncia.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/View/SubView/denuncia.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3264">
-              <caret line="192" column="89" lean-forward="false" selection-start-line="192" selection-start-column="89" selection-end-line="192" selection-end-column="89" />
+            <state relative-caret-position="194">
+              <caret line="213" column="69" lean-forward="false" selection-start-line="213" selection-start-column="69" selection-end-line="213" selection-end-column="69" />
               <folding>
-                <element signature="e#45#91#0#PHP" expanded="true" />
-                <marker date="1510721563352" expanded="true" signature="3894:4090" ph="..." />
-                <marker date="1510721563352" expanded="true" signature="3944:4068" ph="..." />
+                <element signature="e#47#104#0#PHP" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#form#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#form#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1510721941196" expanded="true" signature="3616:3812" ph="..." />
+                <marker date="1510721941196" expanded="true" signature="3666:3790" ph="..." />
               </folding>
             </state>
           </provider>
@@ -53,8 +43,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>http</find>
-      <find>jquery</find>
       <find>email</find>
       <find>btn_esq</find>
       <find>btn_logar</find>
@@ -83,6 +71,8 @@
       <find>$denuncia</find>
       <find>denuncia</find>
       <find>admin</find>
+      <find>atualiz</find>
+      <find>dados pa</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -130,7 +120,6 @@
         <option value="$PROJECT_DIR$/src/Models/Entity/Solicitacao.php" />
         <option value="$PROJECT_DIR$/src/Controller/Classes/SolicitacaoCadastroController.php" />
         <option value="$PROJECT_DIR$/View/SubView/solicitacoes.php" />
-        <option value="$PROJECT_DIR$/View/SubView/denuncia.php" />
         <option value="$PROJECT_DIR$/src/Models/Entity/Denuncia.php" />
         <option value="$PROJECT_DIR$/View/SubView/table.php" />
         <option value="$PROJECT_DIR$/src/Models/Entity/Solucao.php" />
@@ -141,8 +130,9 @@
         <option value="$PROJECT_DIR$/View/SubView/user.php" />
         <option value="$PROJECT_DIR$/src/Controller/Classes/UsuarioController.php" />
         <option value="$PROJECT_DIR$/View/SubView/sair.php" />
-        <option value="$PROJECT_DIR$/View/SubView/dashboard.php" />
         <option value="$PROJECT_DIR$/src/Controller/Classes/SolucaoController.php" />
+        <option value="$PROJECT_DIR$/View/SubView/dashboard.php" />
+        <option value="$PROJECT_DIR$/View/SubView/denuncia.php" />
       </list>
     </option>
   </component>
@@ -329,7 +319,7 @@
       <workItem from="1510613340594" duration="546000" />
       <workItem from="1510629666847" duration="6340000" />
       <workItem from="1510712823522" duration="405000" />
-      <workItem from="1510713283078" duration="8358000" />
+      <workItem from="1510713283078" duration="8610000" />
     </task>
     <task id="LOCAL-00001" summary="Login Implementado">
       <created>1508351545761</created>
@@ -450,11 +440,18 @@
       <option name="project" value="LOCAL" />
       <updated>1510719001096</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="100% do mvc concluido">
+      <created>1510721720023</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1510721720023</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="166240000" />
+    <option name="totallyTimeSpent" value="166492000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -502,7 +499,8 @@
     <MESSAGE value="Maps movido para tela inicial, adicionado notificações de solicitações de cadastro, refatoramentos no layout" />
     <MESSAGE value="Refatoramento para arquitetura mvc, 50% concluido" />
     <MESSAGE value="100% do mvc concluido" />
-    <option name="LAST_COMMIT_MESSAGE" value="100% do mvc concluido" />
+    <MESSAGE value="Refatoramento na margem de alguns textos do layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refatoramento na margem de alguns textos do layout" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -894,18 +892,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/denuncia.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="25" column="80" lean-forward="false" selection-start-line="25" selection-start-column="80" selection-end-line="25" selection-end-column="80" />
-          <folding>
-            <element signature="e#47#104#0#PHP" expanded="true" />
-            <marker date="1510719186786" expanded="true" signature="3616:3812" ph="..." />
-            <marker date="1510719186786" expanded="true" signature="3666:3790" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/Classes/DenunciaController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
@@ -924,12 +910,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/View/SubView/dashboard.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3264">
-          <caret line="192" column="89" lean-forward="false" selection-start-line="192" selection-start-column="89" selection-end-line="192" selection-end-column="89" />
+        <state relative-caret-position="364">
+          <caret line="267" column="76" lean-forward="false" selection-start-line="267" selection-start-column="76" selection-end-line="267" selection-end-column="76" />
           <folding>
             <element signature="e#45#91#0#PHP" expanded="true" />
-            <marker date="1510721563352" expanded="true" signature="3894:4090" ph="..." />
-            <marker date="1510721563352" expanded="true" signature="3944:4068" ph="..." />
+            <element signature="n#style#0;n#i#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1510721860815" expanded="true" signature="3894:4090" ph="..." />
+            <marker date="1510721860815" expanded="true" signature="3944:4068" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/denuncia.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="213" column="69" lean-forward="false" selection-start-line="213" selection-start-column="69" selection-end-line="213" selection-end-column="69" />
+          <folding>
+            <element signature="e#47#104#0#PHP" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#form#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#form#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1510721941196" expanded="true" signature="3616:3812" ph="..." />
+            <marker date="1510721941196" expanded="true" signature="3666:3790" ph="..." />
           </folding>
         </state>
       </provider>

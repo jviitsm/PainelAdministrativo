@@ -207,12 +207,12 @@ $solucaoController->cadastrarSolucao($entityManager,$denuncia);
                     <div class="row">
                         <form name="formSolucao" id="formSolucao" enctype="multipart/form-data" method="post">
                             <div class="form-group">
-                                <p class="text">Descrição</p>
+                                <p class="text" style="margin-left: 10px">Descrição</p>
                                 <input type="text" name="descricaoSolucao" class="form-control btn-round "
                                        placeholder="Solução">
                             </div>
-                            <p>Foto</p>
-                            <input type="file" accept="image/*" name="fotoSolucao" id="fotoSolucao"
+                            <p class="text" style="margin-left: 10px">Foto</p>
+                            <input type="file" accept="image/*" name="fotoSolucao"  id="fotoSolucao"
                                    class="form-control btn-round">
                     </div>
                     <br>

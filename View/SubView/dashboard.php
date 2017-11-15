@@ -265,7 +265,7 @@ if (isset($_POST['btnChecar'])) {
                     <div class="footer">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-history"></i> Atualizado as: <?php echo $hora ?>
+                            <i class="fa fa-history" style="margin-left: 5px"></i> Atualizado as: <?php echo $hora ?>
                         </div>
                     </div>
                 </div>
