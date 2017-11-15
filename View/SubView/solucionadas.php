@@ -1,38 +1,29 @@
 <?php
 require '../../bootstrap.php';
-use App\Models\Entity\Denuncia;
-use App\Models\Entity\Solucao;
-use App\Models\Entity\Solicitacao;
+
+
+use App\Controller\Classes\DenunciaController;
+use App\Controller\Classes\SolucaoController;
+use App\Controller\Classes\SolicitacaoCadastroController;
+use App\Controller\Classes\UsuarioController;
 
 session_start();
-
-
 
 if (!isset($_SESSION['usuario'])){
     header("Location: ../../index.php");
     session_destroy();
 }
+$denunciaController = new DenunciaController();
+$usuarioController = new UsuarioController();
+$solicitacaoController = new SolicitacaoCadastroController();
+$solucaoController = new SolucaoController();
 
-$solicitacaoInstance = new Solicitacao();
-$solicitacaoRepository = $entityManager->getRepository('App\Models\Entity\Solicitacao');
-$solicitacoes = $solicitacaoRepository->findBy(array("status_solicitacao" => 1));
-$numeroSolicitacoes = count($solicitacoes);
-
-?>
-<?php
-if (isset($_POST['btn_solucao'])) {
-    $id = $_POST['id'];
-
-    $_SESSION["denuncia"] = $id;
-    header("Location: solucao.php");
-
-
-}
-
+$solucaoController->redirecionar();
 
 ?>
+
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
@@ -126,28 +117,9 @@ if (isset($_POST['btn_solucao'])) {
                 <div class="collapse navbar-collapse">
                     <!-- Mostrar noficiações de solicitações de cadastro -->
                     <?php
-                    #verificar se é admin
-                    if ($_SESSION['administrador'] == true) {
-                        echo " <ul class=\"nav navbar-nav navbar-left\">
-                        <li class=\"dropdown\">
-                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
-                                <i class=\"fa fa-globe\"></i>
-                                <b class=\"caret hidden-sm hidden-xs\"></b>
-                                <span class=\"notification hidden-sm hidden-xs\">$numeroSolicitacoes</span>
-                                <p class=\"hidden-lg hidden-md\">
-                                    $numeroSolicitacoes Notificações
-                                    <b class=\"caret\"></b>
-                                </p>
-                            </a>
-                            <ul class=\"dropdown-menu\">" ?>
-                        <?php
-                        $solicitacaoInstance->montarTask($solicitacoes, $_SESSION['administrador']); ?>
-                        <?php echo "
-                            </ul>
-                        </li>
-                    </ul>
-                            ";
-                    }
+                    #verificar se é admin e montar task
+                    $solicitacaoController->montarTaskSolicitacoes($entityManager,$solicitacaoController->contarSolicitacao($entityManager),
+                        $solicitacaoController->buscarSolicitacoes($entityManager),$_SESSION['administrador']);
                     ?>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -192,26 +164,14 @@ if (isset($_POST['btn_solucao'])) {
                                     <tbody>
                                     <div>
                                         <?php
-
-                                        $solucaoInstace = new Solucao();
-
                                         //Recuperando dados do user logado
-                                        $user = $_SESSION["array"];
+                                       $user = $usuarioController->retornarUsuario();
                                         $id = $user[0] -> id_login;
-                                        $solucaoRepository = $entityManager->getRepository('App\Models\Entity\Solucao');
-                                        $empresaRepository = $entityManager->getRepository('App\Models\Entity\Empresa');
-                                        $empresa = $empresaRepository->findBy(array('fk_login_empresa' => $id));
+                                        $empresa = $usuarioController->retornarEmpresa($entityManager,$id);
                                         //Recuperando a cidade do user que esta logado
                                         $cidade = $empresa[0] -> cidade;
-                                        //BUscando denuncias  da cidade do user logado
-
-                                        $denunciaRepository = $entityManager->getRepository('App\Models\Entity\Denuncia');
-                                        $denuncias = $denunciaRepository->findBy(array("status_denuncia" => 0));
-                                        $solucoes = $solucaoRepository->findAll();
-
-
-                                        $solucaoInstace->montarTabela($denuncias);
-
+                                        $denuncias = $denunciaController->buscarSolucionadas($entityManager,$empresa[0] -> cidade);
+                                        $solucaoController->montarTabela($denuncias);
                                         ?>
                                     </div>
                                     </tbody>

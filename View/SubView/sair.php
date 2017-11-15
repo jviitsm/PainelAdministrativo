@@ -4,9 +4,6 @@ $_SESSION = [];
 header("location: ../../index.php");
 session_destroy();
 
-
-
-
 exit();
 
 ?>

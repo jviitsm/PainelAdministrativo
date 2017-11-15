@@ -3,6 +3,9 @@
 
 namespace App\Controller\Classes;
 
+use App\Models\Entity\Empresa;
+use App\Models\Entity\Login;
+
 
 class UsuarioController
 {
@@ -131,5 +134,101 @@ class UsuarioController
 
         }
     }
+    function retornarUsuario(){
+       $user = $_SESSION["array"];
+        return $user;
+    }
+    function retornarEmpresa($entityManager, $id){
+        $empresaRepository = $entityManager->getRepository('App\Models\Entity\Empresa');
+        $empresa = $empresaRepository->findBy(array('fk_login_empresa' => $id));
+        return $empresa;
+    }
+
+    function atualizarPerfil($entityManager,$empresa){
+        if (isset($_POST['btnAtualizarPerfil'])) {
+            $empresaRepository = $entityManager->getRepository('App\Models\Entity\Empresa');
+
+            $id = $_SESSION["array"][0]->id_login;
+
+            $loginUser = new Login();
+            $empresaUser = new Empresa();
+
+            $loginRepository = $entityManager->getRepository('App\Models\Entity\Login');
+
+            $loginUser = $loginRepository->find($id);
+
+            $loginUser->setId_login($id);
+            if ($_POST['novaSenha']) {
+                $loginUser->setSenha($_POST['novaSenha']);
+            }
+            if($_SESSION['array'][0] -> login != $_POST['login']){
+                if ($_POST['login'] != ""){
+                    if($loginRepository->findBy(array("login" => $_POST['login']))){
+                        echo "<script type='text/javascript'>alert('Login Já Existe!');</script>";
+                    }
+                    else{
+                        $loginUser->setLogin($_POST['login']);
+                    }
+                }
+            }
+            if($_SESSION['array'][0] -> email != $_POST['email']){
+                if($_POST['email'] != ""){
+                    if($loginRepository->findBy(array("email" => $_POST['email']))){
+                        echo "<script type='text/javascript'>alert('Email Já Existe!');</script>";
+                    }
+                    else{
+                        $loginUser->setEmail($_POST['email']);
+                    }
+                }
+            }
+
+
+
+            $entityManager->merge($loginUser);
+            $entityManager->flush();
+
+
+            $loginNovoUser = $loginRepository->find($id);
+
+            $empresaUser = $empresaRepository->find($empresa[0]->id_empresa);
+
+            $empresaUser->setId_empresa($empresa[0]->id_empresa);
+            $empresaUser->setRazao_social($_POST['razaoSocial']);
+            $empresaUser->setFk_login_empresa($loginNovoUser);
+            $empresaUser->setCidade($_POST['cidade']);
+            $empresaUser->setEstado($_POST['estado']);
+
+            $imagem = $_FILES["fotoPerfil"];
+
+
+            if ($imagem["error"] == 0) {
+                $nome_temporario = $_FILES["fotoPerfil"]["tmp_name"];
+                $nome_real = uniqid('img-' . date('d-m-y') . '-');
+                $extensao = pathinfo($_FILES["fotoPerfil"]["name"], PATHINFO_EXTENSION);
+                $nome_real .= $_FILES["fotoPerfil"]["name"] . "";
+                if (strstr('.jpg;.jpeg;.gif;.png', $extensao)) {
+                    copy($nome_temporario, "/home/citycare//public_html/Imgs/User/$nome_real");
+                    $photoURL = "https://projetocitycare.com.br/Imgs/User/$nome_real";  #/home/citycare//public_html/Imgs/User/$nome_real
+                    $empresaUser->setDir_foto_usuario($photoURL); #http://projetocitycare.com.br/Imgs/User/$nome_real"
+
+                } else {
+                    echo "<script type='text/javascript'>alert('Tipo de arquivo invalido');</script>";
+                }
+
+
+            }
+            $loginNovaSession = $loginRepository->findBy(array('email' => $loginUser->getEmail()));
+
+            $_SESSION["array"] = $loginNovaSession;
+            $_SESSION["usuario"] = $loginUser->getEmail();
+
+            $entityManager->merge($empresaUser);
+            $entityManager->flush();
+
+
+        }
+
+    }
+
 
 }

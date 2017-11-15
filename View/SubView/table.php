@@ -1,51 +1,36 @@
 <?php
 require '../../bootstrap.php';
-use App\Models\Entity\Denuncia;
-use App\Models\Entity\Solicitacao;
+
+use App\Controller\Classes\DenunciaController;
+use App\Controller\Classes\SolicitacaoCadastroController;
+
 session_start();
 
-if (!isset($_SESSION['usuario'])){
+if (!isset($_SESSION['usuario'])) {
     header("Location: ../../index.php");
     session_destroy();
 }
+$solicitacaoController = new SolicitacaoCadastroController();
+$denunciaController = new DenunciaController();
 
-$solicitacaoInstance = new Solicitacao();
-$solicitacaoRepository = $entityManager->getRepository('App\Models\Entity\Solicitacao');
-$solicitacoes = $solicitacaoRepository->findBy(array("status_solicitacao" => 1));
-$numeroSolicitacoes = count($solicitacoes);
-
-
-
-?>
-<?php
-if (isset($_POST['btn_denuncia'])) {
-    $id = $_POST['id'];
-    $endereco = $_POST['endereco'];
-
-    $_SESSION["denuncia"] = $id;
-    $_SESSION['endereco'] = $endereco;
-    $_SESSION['dataDenuncia'] = $_POST['dataDenuncia'];
-    header("Location: denuncia.php");
-
-
-}
+$denunciaController->redirecionar();
 
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
     <title>City Care</title>
 
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
 
 
     <!-- Bootstrap core CSS     -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
 
     <!-- Animation library for notifications   -->
     <link href="assets/css/animate.min.css" rel="stylesheet"/>
@@ -55,13 +40,13 @@ if (isset($_POST['btn_denuncia'])) {
 
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="assets/css/demo.css" rel="stylesheet" />
+    <link href="assets/css/demo.css" rel="stylesheet"/>
 
 
     <!--     Fonts and icons     -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet"/>
 </head>
 <body>
 
@@ -114,7 +99,8 @@ if (isset($_POST['btn_denuncia'])) {
         <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target="#navigation-example-2">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -125,28 +111,9 @@ if (isset($_POST['btn_denuncia'])) {
                 <div class="collapse navbar-collapse">
                     <!-- Mostrar noficiações de solicitações de cadastro -->
                     <?php
-                    #verificar se é admin
-                    if ($_SESSION['administrador'] == true) {
-                        echo " <ul class=\"nav navbar-nav navbar-left\">
-                        <li class=\"dropdown\">
-                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
-                                <i class=\"fa fa-globe\"></i>
-                                <b class=\"caret hidden-sm hidden-xs\"></b>
-                                <span class=\"notification hidden-sm hidden-xs\">$numeroSolicitacoes</span>
-                                <p class=\"hidden-lg hidden-md\">
-                                    $numeroSolicitacoes Notificações
-                                    <b class=\"caret\"></b>
-                                </p>
-                            </a>
-                            <ul class=\"dropdown-menu\">" ?>
-                        <?php
-                        $solicitacaoInstance->montarTask($solicitacoes, $_SESSION['administrador']); ?>
-                        <?php echo "
-                            </ul>
-                        </li>
-                    </ul>
-                            ";
-                    }
+                    #verificar se é admin e montar task
+                    $solicitacaoController->montarTaskSolicitacoes($entityManager, $solicitacaoController->contarSolicitacao($entityManager),
+                        $solicitacaoController->buscarSolicitacoes($entityManager), $_SESSION['administrador']);
                     ?>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -190,30 +157,9 @@ if (isset($_POST['btn_denuncia'])) {
                                     </thead>
                                     <tbody>
                                     <div>
-
-
                                         <?php
-
-                                        $denunciaInstance = new Denuncia();
-
-                                        //Recuperando dados do user logado
-                                        $user = $_SESSION["array"];
-                                        $id = $user[0] -> id_login;
-                                        $denunciaRepository = $entityManager->getRepository('App\Models\Entity\Denuncia');
-                                        $empresaRepository = $entityManager->getRepository('App\Models\Entity\Empresa');
-                                        $empresa = $empresaRepository->findBy(array('fk_login_empresa' => $id));
-                                        //Recuperando a cidade do user que esta logado
-                                        $cidade = $empresa[0] -> cidade;
-                                        //BUscando denuncias  da cidade do user logado
-
-                                        $denuncias = $denunciaRepository->findBy(array('cidade' => $cidade, 'status_denuncia' =>1 ));
-
-
-
-                                        $denunciaInstance->montarTabela($denuncias);
-
+                                        $denunciaController->montarTabela($denunciaController->buscarNaCidade($entityManager));
                                         ?>
-
                                     </div>
                                     </tbody>
                                 </table>
@@ -226,8 +172,6 @@ if (isset($_POST['btn_denuncia'])) {
 
         </section>
         </section>
-
-
 
 
     </div>

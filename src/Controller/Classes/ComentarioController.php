@@ -20,7 +20,7 @@ class ComentarioController{
         foreach ($comentarios as $lista) {
 
 
-            echo "<textarea class='textarea'style='border: none;resize: none; width: 530px' readonly>$lista->descricao_comentario</textarea>";
+            echo "<textarea readonly class='textarea'style='border: none;resize: none; width: 530px' >$lista->descricao_comentario</textarea>";
             echo "<hr>";
         }
         if(!$comentarios){

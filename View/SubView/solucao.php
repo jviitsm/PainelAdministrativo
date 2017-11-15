@@ -1,53 +1,32 @@
 <?php
 require_once("../../bootstrap.php");
 
-use App\Models\Entity\Denuncia;
-use App\Models\Entity\Comentario;
-use App\Models\Entity\Solucao;
-use App\Models\Entity\Solicitacao;
+use App\Controller\Classes\DenunciaController;
+Use App\Controller\Classes\ComentarioController;
+use App\Controller\Classes\AgilizaController;
+use App\Controller\Classes\SolicitacaoCadastroController;
 
 session_start();
-
 
 if (!isset($_SESSION['usuario'])) {
     header("Location: ../../index.php");
     session_destroy();
 }
 
-$solicitacaoInstance = new Solicitacao();
-$solicitacaoRepository = $entityManager->getRepository('App\Models\Entity\Solicitacao');
-$solicitacoes = $solicitacaoRepository->findBy(array("status_solicitacao" => 1));
-$numeroSolicitacoes = count($solicitacoes);
+$solicitacaoController = new SolicitacaoCadastroController();
+$denunciaController = new DenunciaController();
+$comentarioController = new ComentarioController();
+$agilizaController = new AgilizaController();
 
-$denunciaRepository = $entityManager->getRepository('App\Models\Entity\Denuncia');
-$denuncia = $denunciaRepository->find($_SESSION['denuncia']);
-
-$denunciaRepository = $entityManager->getRepository('App\Models\Entity\Denuncia');
-
-$denuncia = $denunciaRepository->find($_SESSION['denuncia']);
-
-$agilizaRepository = $entityManager->getRepository('App\Models\Entity\Agiliza');
-$agilizas = $agilizaRepository->findBy(array("fk_denuncia_agiliza" => $denuncia->getId_denuncia()));
-
-
-$comentarioInstance = new Comentario();
-
-$categoria = $denuncia->getFk_categoria_denuncia()->getDescricao_categoria();
-
-
-$comentarioRepository = $entityManager->getRepository('App\Models\Entity\Comentario');
-$comentarios = $comentarioRepository->findBy(array("fk_denuncia_comentario" => $denuncia->getId_denuncia()));
-
-
-
-$solucao = $denuncia->getFk_solucao_denuncia();
-
-
-
+$denuncia = $denunciaController->buscarDenuncia($entityManager,$_SESSION['denuncia']);
+$agilizas = $agilizaController->buscarAgilizas($entityManager,$denuncia);
+$categoria = $denunciaController->retornarCategoria($denuncia);
+$comentarios = $comentarioController->buscarComentario($entityManager,$denuncia);
+$solucao = $denunciaController->retornarSolucao($denuncia);
 
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="utf-8"/>
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
@@ -143,30 +122,10 @@ $solucao = $denuncia->getFk_solucao_denuncia();
                     <a class="navbar-brand">Solução</a>
                 </div>
                 <div class="collapse navbar-collapse">
-                    <!-- Mostrar noficiações de solicitações de cadastro -->
                     <?php
-                    #verificar se é admin
-                    if ($_SESSION['administrador'] == true) {
-                        echo " <ul class=\"nav navbar-nav navbar-left\">
-                        <li class=\"dropdown\">
-                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
-                                <i class=\"fa fa-globe\"></i>
-                                <b class=\"caret hidden-sm hidden-xs\"></b>
-                                <span class=\"notification hidden-sm hidden-xs\">$numeroSolicitacoes</span>
-                                <p class=\"hidden-lg hidden-md\">
-                                    $numeroSolicitacoes Notificações
-                                    <b class=\"caret\"></b>
-                                </p>
-                            </a>
-                            <ul class=\"dropdown-menu\">" ?>
-                        <?php
-                        $solicitacaoInstance->montarTask($solicitacoes, $_SESSION['administrador']); ?>
-                        <?php echo "
-                            </ul>
-                        </li>
-                    </ul>
-                            ";
-                    }
+                    #verificar se é admin e montar task
+                    $solicitacaoController->montarTaskSolicitacoes($entityManager,$solicitacaoController->contarSolicitacao($entityManager),
+                        $solicitacaoController->buscarSolicitacoes($entityManager),$_SESSION['administrador']);
                     ?>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -220,7 +179,7 @@ $solucao = $denuncia->getFk_solucao_denuncia();
                 <div class="panel-body">
                     <div class="container" style="overflow-y: scroll; max-height: 400px; max-width: 580px">
                         <?php
-                        $comentarioInstance->montarComentarios($comentarios);
+                        $comentarioController->montarComentarios($comentarios);
                         ?>
                     </div>
                 </div>
@@ -239,14 +198,7 @@ $solucao = $denuncia->getFk_solucao_denuncia();
                             <label class="text-center">Descrição</label>
                             <p class="text-center"><?php echo $solucao->getDescricaoSolucao()?></p>
 
-
-
-
                         </div>
-
-
-
-
 
                     </div>
                 </div>

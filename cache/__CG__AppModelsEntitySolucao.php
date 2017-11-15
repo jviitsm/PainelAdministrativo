@@ -306,15 +306,4 @@ class Solucao extends \App\Models\Entity\Solucao implements \Doctrine\ORM\Proxy\
         return parent::setDataSolucao($data_solucao);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function montarTabela($denuncias)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'montarTabela', [$denuncias]);
-
-        return parent::montarTabela($denuncias);
-    }
-
 }

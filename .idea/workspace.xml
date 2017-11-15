@@ -3,6 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="3f331daf-bc84-4df0-9d7a-7f2ace1edbe5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/dashboard.php" afterPath="$PROJECT_DIR$/View/SubView/dashboard.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/denuncia.php" afterPath="$PROJECT_DIR$/View/SubView/denuncia.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/sair.php" afterPath="$PROJECT_DIR$/View/SubView/sair.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/solucao.php" afterPath="$PROJECT_DIR$/View/SubView/solucao.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/solucionadas.php" afterPath="$PROJECT_DIR$/View/SubView/solucionadas.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/table.php" afterPath="$PROJECT_DIR$/View/SubView/table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/View/SubView/user.php" afterPath="$PROJECT_DIR$/View/SubView/user.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cache/__CG__AppModelsEntitySolucao.php" afterPath="$PROJECT_DIR$/cache/__CG__AppModelsEntitySolucao.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Classes/ComentarioController.php" afterPath="$PROJECT_DIR$/src/Controller/Classes/ComentarioController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Classes/DenunciaController.php" afterPath="$PROJECT_DIR$/src/Controller/Classes/DenunciaController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Classes/SolucaoController.php" afterPath="$PROJECT_DIR$/src/Controller/Classes/SolucaoController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Classes/UsuarioController.php" afterPath="$PROJECT_DIR$/src/Controller/Classes/UsuarioController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Models/Entity/Denuncia.php" afterPath="$PROJECT_DIR$/src/Models/Entity/Denuncia.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Models/Entity/Solucao.php" afterPath="$PROJECT_DIR$/src/Models/Entity/Solucao.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,19 +27,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="solucao.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/View/SubView/solucao.php">
+      <file leaf-file-name="dashboard.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/View/SubView/dashboard.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="3264">
+              <caret line="192" column="89" lean-forward="false" selection-start-line="192" selection-start-column="89" selection-end-line="192" selection-end-column="89" />
               <folding>
-                <element signature="e#44#75#0#PHP" expanded="true" />
-                <marker date="1510712760398" expanded="true" signature="3899:4095" ph="..." />
-                <marker date="1510712760398" expanded="true" signature="3949:4073" ph="..." />
-                <marker date="1510712760398" expanded="true" signature="5168:5878" ph="..." />
-                <marker date="1510712760398" expanded="true" signature="5216:5878" ph="..." />
-                <marker date="1510712760398" expanded="true" signature="5310:5821" ph="..." />
-                <marker date="1510712760398" expanded="true" signature="5622:5788" ph="..." />
+                <element signature="e#45#91#0#PHP" expanded="true" />
+                <marker date="1510721563352" expanded="true" signature="3894:4090" ph="..." />
+                <marker date="1510721563352" expanded="true" signature="3944:4068" ph="..." />
               </folding>
             </state>
           </provider>
@@ -43,7 +53,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>admini</find>
       <find>http</find>
       <find>jquery</find>
       <find>email</find>
@@ -71,8 +80,9 @@
       <find>agiliz</find>
       <find>soluciona</find>
       <find>instance</find>
-      <find>admin</find>
       <find>$denuncia</find>
+      <find>denuncia</find>
+      <find>admin</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -93,7 +103,6 @@
         <option value="$PROJECT_DIR$/View/SubView/assets/js/markerclusterer.js" />
         <option value="$PROJECT_DIR$/assets/bootstrap/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/assets/css/form-elements.css" />
-        <option value="$PROJECT_DIR$/View/SubView/sair.php" />
         <option value="$PROJECT_DIR$/View/SubView/assets/js/Chart.min.js" />
         <option value="$PROJECT_DIR$/View/SubView/data.xml" />
         <option value="$PROJECT_DIR$/View/SubView/teste/data.xml" />
@@ -101,7 +110,6 @@
         <option value="$PROJECT_DIR$/View/SubView/assets/css/light-bootstrap-dashboard.css" />
         <option value="$PROJECT_DIR$/View/SubView/teste/solucoes.php" />
         <option value="$PROJECT_DIR$/View/SubView/solucoes.php" />
-        <option value="$PROJECT_DIR$/src/Models/Entity/Solucao.php" />
         <option value="$PROJECT_DIR$/View/SubView/teste/cadastrar.php" />
         <option value="$PROJECT_DIR$/assets/css/style.css" />
         <option value="$PROJECT_DIR$/assets/bootstrap/css/bootstrap.css" />
@@ -110,29 +118,31 @@
         <option value="$PROJECT_DIR$/View/SubView/assets/js/mapa.js" />
         <option value="$PROJECT_DIR$/bootstrap.php" />
         <option value="$PROJECT_DIR$/View/SubView/template.php" />
-        <option value="$PROJECT_DIR$/View/SubView/table.php" />
-        <option value="$PROJECT_DIR$/View/SubView/solucao.php" />
-        <option value="$PROJECT_DIR$/View/SubView/solucionadas.php" />
-        <option value="$PROJECT_DIR$/View/SubView/user.php" />
-        <option value="$PROJECT_DIR$/src/Models/Entity/Denuncia.php" />
         <option value="$PROJECT_DIR$/Controller/UsuarioController.php" />
         <option value="$PROJECT_DIR$/Controller/Classes/UsuarioController.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/src/Controller/Classes/UsuarioController.php" />
-        <option value="$PROJECT_DIR$/src/Controller/Classes/DenunciaController.php" />
         <option value="$PROJECT_DIR$/src/Controller/Classes/AgilizaController.php" />
         <option value="$PROJECT_DIR$/src/Models/Entity/Comentario.php" />
-        <option value="$PROJECT_DIR$/src/Controller/Classes/ComentarioController.php" />
-        <option value="$PROJECT_DIR$/src/Controller/Classes/SolucaoController.php" />
-        <option value="$PROJECT_DIR$/View/SubView/dashboard.php" />
-        <option value="$PROJECT_DIR$/View/SubView/denuncia.php" />
         <option value="$PROJECT_DIR$/src/Controller/Classes/CadastrarEmpresaController.php" />
         <option value="$PROJECT_DIR$/View/SubView/cadastrar.php" />
         <option value="$PROJECT_DIR$/src/Controller/Classes/CidadaoController.php" />
         <option value="$PROJECT_DIR$/src/Models/Entity/Solicitacao.php" />
         <option value="$PROJECT_DIR$/src/Controller/Classes/SolicitacaoCadastroController.php" />
         <option value="$PROJECT_DIR$/View/SubView/solicitacoes.php" />
+        <option value="$PROJECT_DIR$/View/SubView/denuncia.php" />
+        <option value="$PROJECT_DIR$/src/Models/Entity/Denuncia.php" />
+        <option value="$PROJECT_DIR$/View/SubView/table.php" />
+        <option value="$PROJECT_DIR$/src/Models/Entity/Solucao.php" />
+        <option value="$PROJECT_DIR$/View/SubView/solucionadas.php" />
+        <option value="$PROJECT_DIR$/src/Controller/Classes/ComentarioController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/Classes/DenunciaController.php" />
+        <option value="$PROJECT_DIR$/View/SubView/solucao.php" />
+        <option value="$PROJECT_DIR$/View/SubView/user.php" />
+        <option value="$PROJECT_DIR$/src/Controller/Classes/UsuarioController.php" />
+        <option value="$PROJECT_DIR$/View/SubView/sair.php" />
+        <option value="$PROJECT_DIR$/View/SubView/dashboard.php" />
+        <option value="$PROJECT_DIR$/src/Controller/Classes/SolucaoController.php" />
       </list>
     </option>
   </component>
@@ -319,7 +329,7 @@
       <workItem from="1510613340594" duration="546000" />
       <workItem from="1510629666847" duration="6340000" />
       <workItem from="1510712823522" duration="405000" />
-      <workItem from="1510713283078" duration="5658000" />
+      <workItem from="1510713283078" duration="8358000" />
     </task>
     <task id="LOCAL-00001" summary="Login Implementado">
       <created>1508351545761</created>
@@ -433,14 +443,22 @@
       <option name="project" value="LOCAL" />
       <updated>1510718931436</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Refatoramento para arquitetura mvc, 50% concluido">
+      <created>1510719001096</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1510719001096</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="163540000" />
+    <option name="totallyTimeSpent" value="166240000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22401172" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -483,11 +501,12 @@
     <MESSAGE value="Alteração do layout para o comentario não sair da tela" />
     <MESSAGE value="Maps movido para tela inicial, adicionado notificações de solicitações de cadastro, refatoramentos no layout" />
     <MESSAGE value="Refatoramento para arquitetura mvc, 50% concluido" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refatoramento para arquitetura mvc, 50% concluido" />
+    <MESSAGE value="100% do mvc concluido" />
+    <option name="LAST_COMMIT_MESSAGE" value="100% do mvc concluido" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -546,13 +565,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/sair.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="15" lean-forward="true" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/web-forms.rnc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
@@ -588,14 +600,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Entity/Solucao.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="68" column="20" lean-forward="true" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/SubView/assets/js/mapa.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="311">
@@ -607,27 +611,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/solucionadas.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="249" column="0" lean-forward="true" selection-start-line="249" selection-start-column="0" selection-end-line="249" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="34" lean-forward="false" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/user.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="397" column="53" lean-forward="false" selection-start-line="397" selection-start-column="53" selection-end-line="397" selection-end-column="53" />
         </state>
       </provider>
     </entry>
@@ -679,17 +662,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Entity/Denuncia.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3723">
-          <caret line="219" column="26" lean-forward="false" selection-start-line="219" selection-start-column="24" selection-end-line="219" selection-end-column="26" />
-          <folding>
-            <marker date="1510712822335" expanded="true" signature="4856:5555" ph="..." />
-            <marker date="1510712822335" expanded="true" signature="4881:5548" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bootstrap.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -726,14 +698,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Classes/UsuarioController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/Classes/AgilizaController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -746,33 +710,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="413">
           <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Classes/SolucaoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="30" lean-forward="false" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Classes/ComentarioController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <marker date="1510716746765" expanded="true" signature="753:792" ph="..." />
-            <marker date="1510716746765" expanded="true" signature="1008:1033" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Classes/DenunciaController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -793,18 +730,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/dashboard.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2200">
-          <caret line="138" column="15" lean-forward="false" selection-start-line="138" selection-start-column="15" selection-end-line="142" selection-end-column="22" />
-          <folding>
-            <element signature="e#45#91#0#PHP" expanded="true" />
-            <marker date="1510717503763" expanded="true" signature="3894:4090" ph="..." />
-            <marker date="1510717503763" expanded="true" signature="3944:4068" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/SubView/maps.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2562">
@@ -819,30 +744,6 @@
           <caret line="5" column="30" lean-forward="false" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
           <folding>
             <element signature="e#42#70#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/cadastrar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3859">
-          <caret line="227" column="32" lean-forward="true" selection-start-line="227" selection-start-column="32" selection-end-line="227" selection-end-column="32" />
-          <folding>
-            <element signature="e#38#95#0#PHP" expanded="true" />
-            <marker date="1510718401452" expanded="true" signature="3189:3385" ph="..." />
-            <marker date="1510718401452" expanded="true" signature="3239:3363" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/SubView/denuncia.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="e#47#104#0#PHP" expanded="true" />
-            <marker date="1510717587569" expanded="true" signature="3594:3790" ph="..." />
-            <marker date="1510717587569" expanded="true" signature="3644:3768" ph="..." />
           </folding>
         </state>
       </provider>
@@ -888,18 +789,147 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Entity/Solucao.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="97" column="0" lean-forward="false" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Classes/ComentarioController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="22" column="36" lean-forward="false" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+          <folding>
+            <marker date="1510720660418" expanded="true" signature="762:801" ph="..." />
+            <marker date="1510720660418" expanded="true" signature="1009:1034" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Entity/Denuncia.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="200" column="0" lean-forward="false" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/View/SubView/solucao.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state relative-caret-position="3410">
+          <caret line="201" column="24" lean-forward="false" selection-start-line="201" selection-start-column="24" selection-end-line="201" selection-end-column="24" />
           <folding>
-            <element signature="e#44#75#0#PHP" expanded="true" />
-            <marker date="1510712760398" expanded="true" signature="3899:4095" ph="..." />
-            <marker date="1510712760398" expanded="true" signature="3949:4073" ph="..." />
-            <marker date="1510712760398" expanded="true" signature="5168:5878" ph="..." />
-            <marker date="1510712760398" expanded="true" signature="5216:5878" ph="..." />
-            <marker date="1510712760398" expanded="true" signature="5310:5821" ph="..." />
-            <marker date="1510712760398" expanded="true" signature="5622:5788" ph="..." />
+            <element signature="e#44#90#0#PHP" expanded="true" />
+            <marker date="1510720893249" expanded="true" signature="3438:3634" ph="..." />
+            <marker date="1510720893249" expanded="true" signature="3488:3612" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/solucionadas.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2755">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="e#39#85#0#PHP" expanded="true" />
+            <marker date="1510720361151" expanded="true" signature="3072:3268" ph="..." />
+            <marker date="1510720361151" expanded="true" signature="3122:3246" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2661">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="e#38#84#0#PHP" expanded="true" />
+            <marker date="1510719591272" expanded="true" signature="2881:3077" ph="..." />
+            <marker date="1510719591272" expanded="true" signature="2931:3055" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Classes/UsuarioController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="231" column="0" lean-forward="true" selection-start-line="231" selection-start-column="0" selection-end-line="231" selection-end-column="0" />
+          <folding>
+            <element signature="e#43#73#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="279" column="6" lean-forward="true" selection-start-line="279" selection-start-column="6" selection-end-line="279" selection-end-column="6" />
+          <folding>
+            <element signature="e#44#74#0#PHP" expanded="true" />
+            <marker date="1510721449504" expanded="true" signature="3102:3298" ph="..." />
+            <marker date="1510721449504" expanded="true" signature="3152:3276" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/sair.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/cadastrar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3859">
+          <caret line="227" column="32" lean-forward="true" selection-start-line="227" selection-start-column="32" selection-end-line="227" selection-end-column="32" />
+          <folding>
+            <element signature="e#38#95#0#PHP" expanded="true" />
+            <marker date="1510718401452" expanded="true" signature="3189:3385" ph="..." />
+            <marker date="1510718401452" expanded="true" signature="3239:3363" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/denuncia.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="25" column="80" lean-forward="false" selection-start-line="25" selection-start-column="80" selection-end-line="25" selection-end-column="80" />
+          <folding>
+            <element signature="e#47#104#0#PHP" expanded="true" />
+            <marker date="1510719186786" expanded="true" signature="3616:3812" ph="..." />
+            <marker date="1510719186786" expanded="true" signature="3666:3790" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Classes/DenunciaController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="36" column="13" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Classes/SolucaoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="15" column="88" lean-forward="false" selection-start-line="15" selection-start-column="88" selection-end-line="15" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/SubView/dashboard.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3264">
+          <caret line="192" column="89" lean-forward="false" selection-start-line="192" selection-start-column="89" selection-end-line="192" selection-end-column="89" />
+          <folding>
+            <element signature="e#45#91#0#PHP" expanded="true" />
+            <marker date="1510721563352" expanded="true" signature="3894:4090" ph="..." />
+            <marker date="1510721563352" expanded="true" signature="3944:4068" ph="..." />
           </folding>
         </state>
       </provider>

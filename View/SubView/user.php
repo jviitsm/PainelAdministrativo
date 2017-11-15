@@ -3,105 +3,25 @@ require_once("../../bootstrap.php");
 
 use App\Models\Entity\Empresa;
 use App\Models\Entity\Login;
-use App\Models\Entity\Solicitacao;
+use App\Controller\Classes\SolicitacaoCadastroController;
+use App\Controller\Classes\UsuarioController;
+
 
 session_start();
-
 
 if (!isset($_SESSION['usuario'])) {
     header("Location: ../../index.php");
     session_destroy();
 }
 
-$solicitacaoInstance = new Solicitacao();
-$solicitacaoRepository = $entityManager->getRepository('App\Models\Entity\Solicitacao');
-$solicitacoes = $solicitacaoRepository->findBy(array("status_solicitacao" => 1));
-$numeroSolicitacoes = count($solicitacoes);
-$empresaRepository = $entityManager->getRepository('App\Models\Entity\Empresa');
-$empresa = $empresaRepository->findBy(array("fk_login_empresa" => $_SESSION["array"][0]->id_login));
+$solicitacaoController = new SolicitacaoCadastroController();
+$usuarioController = new UsuarioController();
 
+$usuario = $usuarioController->retornarUsuario();
+$id = $usuario[0] -> id_login;
+$empresa = $usuarioController->retornarEmpresa($entityManager,$id);
 
-if (isset($_POST['btnAtualizarPerfil'])) {
-    $id = $_SESSION["array"][0]->id_login;
-
-    $loginUser = new Login();
-    $empresaUser = new Empresa();
-
-    $loginRepository = $entityManager->getRepository('App\Models\Entity\Login');
-
-    $loginUser = $loginRepository->find($id);
-
-    $loginUser->setId_login($id);
-    if ($_POST['novaSenha']) {
-        $loginUser->setSenha($_POST['novaSenha']);
-    }
-    if($_SESSION['array'][0] -> login != $_POST['login']){
-        if ($_POST['login'] != ""){
-            if($loginRepository->findBy(array("login" => $_POST['login']))){
-                echo "<script type='text/javascript'>alert('Login Já Existe!');</script>";
-            }
-            else{
-                $loginUser->setLogin($_POST['login']);
-            }
-        }
-    }
-    if($_SESSION['array'][0] -> email != $_POST['email']){
-        if($_POST['email'] != ""){
-            if($loginRepository->findBy(array("email" => $_POST['email']))){
-                echo "<script type='text/javascript'>alert('Email Já Existe!');</script>";
-            }
-            else{
-                $loginUser->setEmail($_POST['email']);
-            }
-        }
-    }
-
-
-
-    $entityManager->merge($loginUser);
-    $entityManager->flush();
-
-
-    $loginNovoUser = $loginRepository->find($id);
-
-    $empresaUser = $empresaRepository->find($empresa[0]->id_empresa);
-
-    $empresaUser->setId_empresa($empresa[0]->id_empresa);
-    $empresaUser->setRazao_social($_POST['razaoSocial']);
-    $empresaUser->setFk_login_empresa($loginNovoUser);
-    $empresaUser->setCidade($_POST['cidade']);
-    $empresaUser->setEstado($_POST['estado']);
-
-    $imagem = $_FILES["fotoPerfil"];
-
-
-    if ($imagem["error"] == 0) {
-        $nome_temporario = $_FILES["fotoPerfil"]["tmp_name"];
-        $nome_real = uniqid('img-' . date('d-m-y') . '-');
-        $extensao = pathinfo($_FILES["fotoPerfil"]["name"], PATHINFO_EXTENSION);
-        $nome_real .= $_FILES["fotoPerfil"]["name"] . "";
-        if (strstr('.jpg;.jpeg;.gif;.png', $extensao)) {
-            copy($nome_temporario, "/home/citycare//public_html/Imgs/User/$nome_real");
-            $photoURL = "https://projetocitycare.com.br/Imgs/User/$nome_real";  #/home/citycare//public_html/Imgs/User/$nome_real
-            $empresaUser->setDir_foto_usuario($photoURL); #http://projetocitycare.com.br/Imgs/User/$nome_real"
-
-        } else {
-            echo "<script type='text/javascript'>alert('Tipo de arquivo invalido');</script>";
-        }
-
-
-    }
-    $loginNovaSession = $loginRepository->findBy(array('email' => $loginUser->getEmail()));
-
-    $_SESSION["array"] = $loginNovaSession;
-    $_SESSION["usuario"] = $loginUser->getEmail();
-
-    $entityManager->merge($empresaUser);
-    $entityManager->flush();
-
-
-}
-
+$usuarioController->atualizarPerfil($entityManager,$empresa);
 
 ?>
 <!doctype html>
@@ -201,30 +121,10 @@ if (isset($_POST['btnAtualizarPerfil'])) {
                     <a class="navbar-brand" href="#">Usuário</a>
                 </div>
                 <div class="collapse navbar-collapse">
-                    <!-- Mostrar noficiações de solicitações de cadastro -->
                     <?php
-                    #verificar se é admin
-                    if ($_SESSION['administrador'] == true) {
-                        echo " <ul class=\"nav navbar-nav navbar-left\">
-                        <li class=\"dropdown\">
-                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
-                                <i class=\"fa fa-globe\"></i>
-                                <b class=\"caret hidden-sm hidden-xs\"></b>
-                                <span class=\"notification hidden-sm hidden-xs\">$numeroSolicitacoes</span>
-                                <p class=\"hidden-lg hidden-md\">
-                                    $numeroSolicitacoes Notificações
-                                    <b class=\"caret\"></b>
-                                </p>
-                            </a>
-                            <ul class=\"dropdown-menu\">" ?>
-                        <?php
-                        $solicitacaoInstance->montarTask($solicitacoes, $_SESSION['administrador']); ?>
-                        <?php echo "
-                            </ul>
-                        </li>
-                    </ul>
-                            ";
-                    }
+                    #verificar se é admin e montar task
+                    $solicitacaoController->montarTaskSolicitacoes($entityManager,$solicitacaoController->contarSolicitacao($entityManager),
+                        $solicitacaoController->buscarSolicitacoes($entityManager),$_SESSION['administrador']);
                     ?>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -248,7 +148,6 @@ if (isset($_POST['btnAtualizarPerfil'])) {
 
 
         <?php
-
         $nomeFantasia = $empresa[0]->nome_fantasia;
         $login = $_SESSION["array"][0]->login;
         $email = $_SESSION["array"][0]->email;
@@ -256,7 +155,6 @@ if (isset($_POST['btnAtualizarPerfil'])) {
         $dirFoto = $empresa[0]->dir_foto_usuario;
         $cidade = $empresa[0]->cidade;
         $estado = $empresa[0]->estado;
-
 
         ?>
 

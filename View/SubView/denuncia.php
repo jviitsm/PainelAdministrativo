@@ -23,7 +23,7 @@ $comentarioController = new ComentarioController();
 $solucaoController = new SolucaoController();
 
 ##Buscando denuncia que foi clicada pelo usuario
-$denuncia=$denunciaController->buscarDenuncia($entityManager);
+$denuncia=$denunciaController->buscarDenuncia($entityManager,$_SESSION['denuncia']);
 $agilizas = $agilizaController->buscarAgilizas($entityManager,$denuncia);
 $comentarios = $comentarioController->buscarComentario($entityManager,$denuncia);
 

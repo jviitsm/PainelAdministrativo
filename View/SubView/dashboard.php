@@ -168,7 +168,7 @@ if (isset($_POST['btnChecar'])) {
                                 <i class="fa fa-map-marker fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge"><?php echo $denunciaController->contarDenuncias($entityManager); ?></div>
+                                <div class="huge"><?php echo count($denunciaController->buscarNaCidade($entityManager)); ?></div>
                                 <div>Denuncias <br> Ativas!</div>
                             </div>
                         </div>
