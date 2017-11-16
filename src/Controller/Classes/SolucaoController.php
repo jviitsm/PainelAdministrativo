@@ -41,7 +41,8 @@ class SolucaoController{
                     $extensao = pathinfo($_FILES["fotoSolucao"]["name"], PATHINFO_EXTENSION);
                     $nome_real .= $_FILES["fotoSolucao"]["name"] . "";
                     if (strstr('.jpg;.jpeg;.gif;.png', $extensao)) {
-                        copy($nome_temporario, "/home/citycare/public_html/Imgs/Solucao/$nome_real"); #"/home/citycare//public_html/Imgs/Solucao/$nome_real
+                        copy($nome_temporario, "../../assets/img/$nome_real"); #"/home/citycare//public_html/Imgs/Solucao/$nome_real
+                        ##../../assets/img/$nome_real
                         $photoURL = "https://projetocitycare.com.br/Imgs/Solucao/$nome_real"; #http://projetocitycare.com.br/Imgs/Solucao/$nome_real
                     } else {
                         echo "<script type='text/javascript'>alert('Tipo de arquivo invalido');</script>";
@@ -60,7 +61,11 @@ class SolucaoController{
 
                     $solucao->setDescricaoSolucao($descricao);
                     $solucao->setDirFotoSolucao($photoURL);
-                    $solucao->setDataSolucao(date('d/m/y'));
+
+                    $date = date("Y-n-j");
+                    $date .= "T";
+                    $date .= date("G:i:s.000P");
+                    $solucao->setDataSolucao($date);
 
                     $entityManager->persist($solucao);
                     $entityManager->flush();
@@ -87,7 +92,6 @@ class SolucaoController{
 
             $_SESSION["denuncia"] = $id;
             header("Location: solucao.php");
-
 
         }
     }

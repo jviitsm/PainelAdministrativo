@@ -8,6 +8,7 @@ use App\Controller\Classes\AgilizaController;
 use App\Controller\Classes\ComentarioController;
 use App\Controller\Classes\SolucaoController;
 use App\Controller\Classes\SolicitacaoCadastroController;
+use App\Controller\Classes\GerarPDF;
 
 session_start();
 if (!isset($_SESSION['usuario'])) {
@@ -23,6 +24,17 @@ $agilizaController = new AgilizaController();
 $comentarioController = new ComentarioController();
 $solucaoController = new SolucaoController();
 $solicitacaoController = new SolicitacaoCadastroController();
+
+
+
+
+if(isset($_POST['btnPDF'])){
+
+    $pdf = new GerarPDF("../../assets/css/estilo.css","Relatorio");
+    $pdf->BuildPDF($entityManager);
+    $pdf->Exibir("Relatório de Clientes");
+
+}
 
 $numeroInteracoes = count($agilizaController->contarAgiliza($entityManager)) + count($comentarioController->contarComentarios($entityManager));
 
@@ -142,7 +154,6 @@ if (isset($_POST['btnChecar'])) {
                         $solicitacaoController->buscarSolicitacoes($entityManager),$_SESSION['administrador']);
                     ?>
                     <ul class="nav navbar-nav navbar-right">
-
                         <li>
                             <a href="user.php">
                                 <p> <?php echo $_SESSION["usuario"]; ?></p>
@@ -153,6 +164,7 @@ if (isset($_POST['btnChecar'])) {
                                 <p>Sair</p>
                             </a>
                         </li>
+
                         <li class="separator hidden-lg hidden-md"></li>
                     </ul>
                 </div>
@@ -267,6 +279,11 @@ if (isset($_POST['btnChecar'])) {
                         <div class="stats">
                             <i class="fa fa-history" style="margin-left: 5px"></i> Atualizado as: <?php echo $hora ?>
                         </div>
+                            <a>
+                                <form method="post">
+                                    <center><input type="submit" class="btn btn-primary btn-fill" name="btnPDF" style="margin-bottom: 20px" value="Gerar Relatório"></center>
+                                </form>
+                            </a>
                     </div>
                 </div>
             </div>

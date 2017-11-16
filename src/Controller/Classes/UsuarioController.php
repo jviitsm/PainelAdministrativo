@@ -3,6 +3,7 @@
 
 namespace App\Controller\Classes;
 
+use PHPMailer\PHPMailer\PHPMailer;
 use App\Models\Entity\Empresa;
 use App\Models\Entity\Login;
 

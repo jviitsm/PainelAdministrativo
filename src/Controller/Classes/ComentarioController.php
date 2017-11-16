@@ -19,7 +19,6 @@ class ComentarioController{
     function montarComentarios($comentarios){
         foreach ($comentarios as $lista) {
 
-
             echo "<textarea readonly class='textarea'style='border: none;resize: none; width: 530px' >$lista->descricao_comentario</textarea>";
             echo "<hr>";
         }

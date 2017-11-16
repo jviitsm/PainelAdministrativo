@@ -6,7 +6,8 @@
         "doctrine/annotations": "1.4.*",
         "doctrine/dbal": "2.5.4",
         "phpmailer/phpmailer": "^6.0",
-        "neeckeloo/amcharts-php": " 1.*"
+        "neeckeloo/amcharts-php": " 1.*",
+        "mpdf/mpdf": "^7.0"
     },
 
     "autoload": {

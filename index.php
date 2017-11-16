@@ -2,6 +2,7 @@
 require 'bootstrap.php';
 
 
+
 use App\Controller\Classes\UsuarioController;
 use App\Controller\Classes\SolicitacaoCadastroController;
 
