@@ -61,7 +61,7 @@ class GerarPDF extends Mpdf
 
 
         }
-    return $arrayBairro;
+        return $arrayBairro;
     }
     private function gerarBairrosSolucionados($entityManager){
 
@@ -89,11 +89,11 @@ class GerarPDF extends Mpdf
         $denunciaRepository = $entityManager->getRepository('App\Models\Entity\Denuncia');
         $denuncias = $denunciaRepository->findBy(array("status_denuncia" => 1));
         $categoriaRepository = $entityManager->getRepository('App\Models\Entity\Categoria');
-
+        $retorno = "";
 
         if ($denuncias) {
             $totalDenuncias = count($denuncias);
-            $retorno = "";
+
             $arrayCategorias = array();
             $arrayFinal = array();
 
@@ -129,16 +129,17 @@ class GerarPDF extends Mpdf
 
                     $retorno .= " Categoria de nome: ";
                     $retorno .= $categoria['nome'];
-                    $retorno .= " representando ";
+                    $retorno .= ", representando ";
                     $retorno .= $categoria['porcentagem'];
-                   if($categoria == end($arrayFinal)){
-                       $retorno .= "% dos cadastros.";
-                   }
-                   else{
-                       $retorno .= "% dos cadastros,";
-                   }
+                    if($categoria == end($arrayFinal)){
+                        $retorno .= "% dos cadastros.";
+                    }
+                    else{
+                        $retorno .= "% dos cadastros,";
+                    }
+                    return $retorno;
                 }
-                return $retorno;
+
             }
             $retorno .= "<h6 style=' text-indent: 1.5em;'>Há um total de $totalDenuncias Denuncia(s) ativa(s) no sistema, cadastradas em $totalCategorias categorias distintas. Sendo elas: ";
             $retorno .= mostrarPorcentagem($arrayFinal);
@@ -154,7 +155,6 @@ class GerarPDF extends Mpdf
 
         $bairros = $this->gerarBairrosAtivos($entityManager);
 
-        $color = false;
         $retorno = "";
 
         $retorno .= "<h2 style=\"text-align:center\">Denuncias Ativas(Não Solucionadas)</h2>";
@@ -165,33 +165,39 @@ class GerarPDF extends Mpdf
             $retorno .= "</h2>";
 
             $denuncia = $bairro['Denuncia'];
-            $retorno .= "<h2 style='text-align: center' ><img style='width: 300px;height: 200px' src=";
+            $retorno .= "<h2 style='text-align: center' ><img style='width: 300px;height: 200px;  padding:1px;
+   border:1px solid #021a40;' src=";
             $retorno .= $denuncia->dir_foto_denuncia;
             $retorno .= "></h2>";
-            $retorno .= "<table border='1' width='1000' align='center'>  
-           <tr class='header'>  
-         <th>Descrição</th>
-         <th>Categoria</th>
-         <th>Endereço</th>
-         <th>Data Denuncia</th>
-           </tr>";
+            $retorno .= "<div class=\"content table-responsive table-full-width\">
+                                            <table id=\"customers\">
+                                               <tr>
+                                                <th>Descrição</th>
+                                                <th>Categoria</th>
+                                                <th>Endereço</th>
+                                                <th>Data</th>
+                                                </tr>
+                                                <tbody>";
 
-                ##Data da Denuncia
-                list($ano, $mes, $dia) = explode('-', $denuncia->data_denuncia);
-                list($diaDenuncia) = explode('T', $dia);
-                $dataDenuncia = "$diaDenuncia" . "/$mes" . "/$ano";
-
-
-                $retorno .= ($color) ? "<tr>" : "<tr class=\"zebra\">";
-                $retorno .= "<td class='destaque'>{$denuncia -> descricao_denuncia}</td>";
-                $retorno .= "<td>{$denuncia->fk_categoria_denuncia->descricao_categoria}</td>";
-                $retorno .= "<td>{$bairro['Endereco']}</td>";
-                $retorno .= "<td>{$dataDenuncia}</td>";
-                $retorno .= "<tr>";
-                $color = !$color;
+            ##Data da Denuncia
+            list($ano, $mes, $dia) = explode('-', $denuncia->data_denuncia);
+            list($diaDenuncia) = explode('T', $dia);
+            $dataDenuncia = "$diaDenuncia" . "/$mes" . "/$ano";
 
 
-            $retorno .= "</table>";
+            $retorno .= "<tr>";
+            $retorno .= "<td class='text-center'>{$denuncia -> descricao_denuncia}</td>";
+            $retorno .= "<td class='text-center'>{$denuncia->fk_categoria_denuncia->descricao_categoria}</td>";
+            $retorno .= "<td class='text-center'>{$bairro['Endereco']}</td>";
+            $retorno .= "<td class='text-center'>{$dataDenuncia}</td>";
+            $retorno .= "<tr>";
+
+
+
+            $retorno .= "   </tbody>
+                                            </table>
+
+                                        </div>";
         }
         return $retorno;
 
@@ -202,7 +208,6 @@ class GerarPDF extends Mpdf
 
         $bairros = $this->gerarBairrosSolucionados($entityManager);
 
-        $color = false;
         $retorno = "";
 
         $retorno .= "<h2 style=\"text-align:center\">Denuncias Solucionadas</h2>";
@@ -212,17 +217,20 @@ class GerarPDF extends Mpdf
             $retorno .= $bairro['Bairro'];
             $retorno .= "</h2>";
             $denuncia = $bairro['Denuncia'];
-            $retorno .= "<h2 style='text-align: center' ><img style='width: 300px;height: 200px' src=";
+            $retorno .= "<h2 style='text-align: center' ><img style='width: 300px;height: 200px;  padding:1px;
+   border:1px solid #021a40;' src=";
             $retorno .= $denuncia->dir_foto_denuncia;
             $retorno .= "></h2>";
-            $retorno .= "<table border='1' width='1000' align='center'>  
-           <tr class='header'>  
-         <th>Descrição</th>
-         <th>Categoria</th>
-         <th>Endereço</th>
-         <th>Data Denuncia</th>
-         <th>Data Solução</th>
-           </tr>";
+            $retorno .= "<div class=\"content table-responsive table-full-width\">
+                                            <table id=\"customers\">
+                                               <tr>
+                                                <th>Descrição</th>
+                                                <th>Categoria</th>
+                                                <th>Endereço</th>
+                                                <th>Data Denuncia</th>
+                                                <th>Data Solução</th>
+                                                </tr>
+                                                <tbody>";
 
             ##Data da Denuncia
             list($ano, $mes, $dia) = explode('-', $denuncia->data_denuncia);
@@ -236,17 +244,20 @@ class GerarPDF extends Mpdf
             list($diaSolucao) = explode('T', $day);
             $dataSolucao = "$diaSolucao" . "/$month" . "/$year";
 
-            $retorno .= ($color) ? "<tr>" : "<tr class=\"zebra\">";
-            $retorno .= "<td class='destaque'>{$denuncia -> descricao_denuncia}</td>";
+            $retorno .= "<tr>";
+            $retorno .= "<td>{$denuncia -> descricao_denuncia}</td>";
             $retorno .= "<td>{$denuncia->fk_categoria_denuncia->descricao_categoria}</td>";
             $retorno .= "<td>{$bairro['Endereco']}</td>";
             $retorno .= "<td>{$dataDenuncia}</td>";
             $retorno .= "<td>{$dataSolucao}</td>";
             $retorno .= "<tr>";
-            $color = !$color;
 
 
-            $retorno .= "</table>";
+
+            $retorno .= "   </tbody>
+                                            </table>
+
+                                        </div>";
         }
         return $retorno;
     }
@@ -288,9 +299,9 @@ class GerarPDF extends Mpdf
         $this->pdf->WriteHTML($this->css, 1);
         $this->pdf->SetHTMLHeader($this->getHeader());
         $this->pdf->SetHTMLFooter($this->getFooter());
-       $this->pdf->WriteHtml($this->gerarCategoria($entityManager));
-      $this->pdf->WriteHTML($this->getDenunciasAtivas($entityManager));
-       $this->pdf->WriteHTML($this->getDenunciasSolucionadas($entityManager));
+        $this->pdf->WriteHtml($this->gerarCategoria($entityManager));
+        $this->pdf->WriteHTML($this->getDenunciasAtivas($entityManager));
+        $this->pdf->WriteHTML($this->getDenunciasSolucionadas($entityManager));
     }
 
     /*

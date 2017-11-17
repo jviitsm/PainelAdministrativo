@@ -1,0 +1,14 @@
+[16-Nov-2017 13:41:02 America/Bahia] PHP Fatal error:  Uncaught exception 'ReflectionException' with message 'Class App\Models\Entity\Request does not exist' in /home/citycare/public_html/painel/vendor/doctrine/common/lib/Doctrine/Common/Proxy/ProxyGenerator.php:953
+Stack trace:
+#0 /home/citycare/public_html/painel/vendor/doctrine/common/lib/Doctrine/Common/Proxy/ProxyGenerator.php(953): ReflectionParameter->getClass()
+#1 /home/citycare/public_html/painel/vendor/doctrine/common/lib/Doctrine/Common/Proxy/ProxyGenerator.php(904): Doctrine\Common\Proxy\ProxyGenerator->getParameterType(Object(Doctrine\ORM\Mapping\ClassMetadata), Object(ReflectionMethod), Object(ReflectionParameter))
+#2 /home/citycare/public_html/painel/vendor/doctrine/common/lib/Doctrine/Common/Proxy/ProxyGenerator.php(780): Doctrine\Common\Proxy\ProxyGenerator->buildParametersString(Object(Doctrine\ORM\Mapping\ClassMetadata), Object(ReflectionMethod), Array)
+#3 [internal function]: Doctrine\Common\Proxy\ProxyGenerator->generateMethods(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#4 /home/citycare/pub in /home/citycare/public_html/painel/vendor/doctrine/common/lib/Doctrine/Common/Proxy/Exception/UnexpectedValueException.php on line 53
+[16-Nov-2017 13:42:08 America/Bahia] PHP Fatal error:  Uncaught ReflectionException: Class App\Models\Entity\Request does not exist in /home/citycare/public_html/painel/vendor/doctrine/common/lib/Doctrine/Common/Proxy/ProxyGenerator.php:953
+Stack trace:
+#0 /home/citycare/public_html/painel/vendor/doctrine/common/lib/Doctrine/Common/Proxy/ProxyGenerator.php(953): ReflectionParameter->getClass()
+#1 /home/citycare/public_html/painel/vendor/doctrine/common/lib/Doctrine/Common/Proxy/ProxyGenerator.php(904): Doctrine\Common\Proxy\ProxyGenerator->getParameterType(Object(Doctrine\ORM\Mapping\ClassMetadata), Object(ReflectionMethod), Object(ReflectionParameter))
+#2 /home/citycare/public_html/painel/vendor/doctrine/common/lib/Doctrine/Common/Proxy/ProxyGenerator.php(780): Doctrine\Common\Proxy\ProxyGenerator->buildParametersString(Object(Doctrine\ORM\Mapping\ClassMetadata), Object(ReflectionMethod), Array)
+#3 [internal function]: Doctrine\Common\Proxy\ProxyGenerator->generateMethods(Object(Doctrine\ORM\Mapping\ClassMetadata))
+#4 /home/citycare/public_html/painel/vendor/doc in /home/citycare/public_html/painel/vendor/doctrine/common/lib/Doctrine/Common/Proxy/Exception/UnexpectedValueException.php on line 53

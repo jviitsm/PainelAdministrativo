@@ -109,7 +109,7 @@ class UsuarioController
 
 
                     $mail = new PHPMailer(true);
-                    $mail->isSMTP();
+                 #   $mail->isSMTP();
                     $mail->SMTPDebug = 0;
                     $mail->Host = 'smtp.gmail.com';
                     $mail->Port = 587;

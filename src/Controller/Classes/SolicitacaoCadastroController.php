@@ -77,6 +77,7 @@ class SolicitacaoCadastroController{
 
         foreach ($solicitacoes as $index) {
 
+
             echo "<form id=\"form_denuncia\" method=\"post\">";
             echo "<tr>";
             echo "<td>$index->id_solicitacao</td>";
@@ -89,9 +90,13 @@ class SolicitacaoCadastroController{
             echo "<td><button type=\"submit\" name=\"btnSolicitado\" class=\"btn btn-info btn-fill pull\">Cadastrar</button></td>";
             echo "<td><button type=\"submit\" name=\"btnExcluir\" class=\"btn btn-info btn-fill pull\">Excluir</button></td>";
             echo "</form>";
-
-
+            }
+        if(!$solicitacoes){
+            echo "<h2  class='label-danger' style='text-align: center'>Nenhuma Solicitação</h2>";
         }
+
+
+
 
     }
 

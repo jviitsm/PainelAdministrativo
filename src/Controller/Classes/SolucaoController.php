@@ -41,7 +41,7 @@ class SolucaoController{
                     $extensao = pathinfo($_FILES["fotoSolucao"]["name"], PATHINFO_EXTENSION);
                     $nome_real .= $_FILES["fotoSolucao"]["name"] . "";
                     if (strstr('.jpg;.jpeg;.gif;.png', $extensao)) {
-                        copy($nome_temporario, "../../assets/img/$nome_real"); #"/home/citycare//public_html/Imgs/Solucao/$nome_real
+                        copy($nome_temporario, "/home/citycare/public_html/Imgs/Solucao/$nome_real"); #"/home/citycare//public_html/Imgs/Solucao/$nome_real
                         ##../../assets/img/$nome_real
                         $photoURL = "https://projetocitycare.com.br/Imgs/Solucao/$nome_real"; #http://projetocitycare.com.br/Imgs/Solucao/$nome_real
                     } else {
@@ -57,15 +57,23 @@ class SolucaoController{
             if ($controle) {
 
                 try {
+
                     $solucao = new Solucao();
+
+                    $loginRepository = $entityManager->getRepository('App\Models\Entity\Login');
+                    $login = $loginRepository->find($_SESSION['array'][0] -> id_login);
 
                     $solucao->setDescricaoSolucao($descricao);
                     $solucao->setDirFotoSolucao($photoURL);
 
+
+                    date_default_timezone_set('America/Bahia');
                     $date = date("Y-n-j");
                     $date .= "T";
                     $date .= date("G:i:s.000P");
+
                     $solucao->setDataSolucao($date);
+                    $solucao->setFkLoginSolucao($login);
 
                     $entityManager->persist($solucao);
                     $entityManager->flush();
@@ -118,7 +126,9 @@ class SolucaoController{
             echo "<td><button type=\"submit\" name=\"btn_solucao\" class=\"btn btn-info btn-fill pull-center\">Checar</button></td>";
             echo "<input type=\"hidden\" name=\"id\" value=\"$lista->id_denuncia\">";
             echo "</form>";
-
+        }
+        if(!$denuncias){
+            echo "<h2  class='label-danger' style='text-align: center'>Nenhuma Denuncia Solucionada</h2>";
         }
     }
 

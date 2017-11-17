@@ -192,7 +192,7 @@ $solucao = $denunciaController->retornarSolucao($denuncia);
                     <div class="row">
                         <div class="panel-thumbnail">
                             <center>
-                                <img src="<?php echo $solucao->getDirFotoSolucao() ?>" class="img-thumbnail img-responsive"></center>
+                                <img src="<?php echo $solucao->getDirFotoSolucao()?>" class="img-thumbnail img-responsive"></center>
                         </div>
                         <div class="panel-body">
                             <label class="text-center">Descrição</label>

@@ -147,48 +147,44 @@ $solicitacaoController->excluirSolicitacao($entityManager);
 
         <!--  Tabela De Denuncias    -->
 
-        <div class="row">
-            <div class="col-sm-12">
-                <section class="panel">
-                    <header class="panel-heading">
-                        Solicitações de Cadastro
-                    </header>
-                    <div class="panel-body">
-                        <section id="unseen">
-                            <div style="overflow-x:auto;">
-                                <table class="table table-bordered table-striped table-condensed">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title text-center">Solicitações de Cadastro</h4>
+
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped">
                                     <thead>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Email</th>
-                                        <th>Nome Fantasia</th>
-                                        <th>Cidade</th>
-                                        <th>Estado</th>
-                                        <th>Telefone</th>
-                                        <th>Cadastrar</th>
-                                        <th>Excluir</th>
-                                    </tr>
+                                    <th>Id</th>
+                                    <th>Email</th>
+                                    <th>Nome Fantasia</th>
+                                    <th>Cidade</th>
+                                    <th>Estado</th>
+                                    <th>Telefone</th>
+                                    <th>Cadastrar</th>
+                                    <th>Excluir</th>
                                     </thead>
                                     <tbody>
-                                    <div>
-                                        <?php
-                                        $solicitacaoController->montarTabela($solicitacaoController->buscarSolicitacoes($entityManager));
-                                        ?>
-                                    </div>
+                                    <?php $solicitacaoController->montarTabela($solicitacaoController->buscarSolicitacoes($entityManager))?>
                                     </tbody>
                                 </table>
+
                             </div>
-                        </section>
+                        </div>
                     </div>
-                </section>
+
+
+
+                </div>
             </div>
+
+
+
         </div>
-
-        </section>
-        </section>
-
-
-    </div>
 </div>
 
 

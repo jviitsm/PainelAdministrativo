@@ -1,36 +1,40 @@
-<?php 
+<?php
 
 namespace App\Models\Entity;
 
 /**
 
-* @Entity @Table(name="solucao")
+ * @Entity @Table(name="solucao")
 
-**/
+ **/
 
 class Solucao{
-     /** 
+    /**
      * @var int
      * @Id @Column(type="integer")
      * @GeneratedValue
      */
     public $id_solucao;
-    /** 
+    /**
      * @var string
      * @Column(type="string")
-     */ 
+     */
     public $descricao_solucao;
-    /** 
+    /**
      * @var string
      * @Column(type="string")
-     */ 
+     */
     public $dir_foto_solucao;
-    /** 
+    /**
      * @var string
      * @Column(type="string")
-     */ 
+     */
     public $data_solucao;
-
+    /**
+     * @OneToOne(targetEntity="Login", fetch="EAGER")
+     * @JoinColumn(name="fk_login_solucao", referencedColumnName="id_login")
+     */
+    public $fk_login_solucao;
     /**
      * @return int
      */
@@ -95,7 +99,21 @@ class Solucao{
         $this->data_solucao = $data_solucao;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getFkLoginSolucao()
+    {
+        return $this->fk_login_solucao;
+    }
 
+    /**
+     * @param mixed $fk_login_solucao
+     */
+    public function setFkLoginSolucao($fk_login_solucao)
+    {
+        $this->fk_login_solucao = $fk_login_solucao;
+    }
 
 
 }

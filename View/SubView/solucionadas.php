@@ -141,54 +141,44 @@ $solucaoController->redirecionar();
 
         <!--  Tabela De Denuncias    -->
 
-        <div class="row">
-            <div class="col-sm-12">
-                <section class="panel">
-                    <header class="panel-heading">
-                        Denuncias Solucionadas
-                    </header>
-                    <div class="panel-body">
-                        <section id="unseen">
-                            <div style="overflow-x:auto;">
-                                <table class="table table-bordered table-striped table-condensed">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title text-center">Denuncias Solucionadas</h4>
+                                <p class="category text-center"><?php echo $denunciaController->retornarCidade($entityManager)?></p>
+
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped">
                                     <thead>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Descrição</th>
-                                        <th>Categoria</th>
-                                        <th>Endereço</th>
-                                        <th>Data</th>
-                                        <th>Solução</th>
-                                    </tr>
+                                    <th>Id</th>
+                                    <th>Descrição</th>
+                                    <th>Categoria</th>
+                                    <th>Endereço</th>
+                                    <th>Data</th>
+                                    <th>Solução</th>
                                     </thead>
                                     <tbody>
-                                    <div>
-                                        <?php
-                                        //Recuperando dados do user logado
-                                       $user = $usuarioController->retornarUsuario();
-                                        $id = $user[0] -> id_login;
-                                        $empresa = $usuarioController->retornarEmpresa($entityManager,$id);
-                                        //Recuperando a cidade do user que esta logado
-                                        $cidade = $empresa[0] -> cidade;
-                                        $denuncias = $denunciaController->buscarSolucionadas($entityManager,$empresa[0] -> cidade);
-                                        $solucaoController->montarTabela($denuncias);
-                                        ?>
-                                    </div>
+                                    <?php
+                                    //Recuperando dados do user logado
+                                    $user = $usuarioController->retornarUsuario();
+                                    $id = $user[0] -> id_login;
+                                    $empresa = $usuarioController->retornarEmpresa($entityManager,$id);
+                                    //Recuperando a cidade do user que esta logado
+                                    $cidade = $empresa[0] -> cidade;
+                                    $denuncias = $denunciaController->buscarSolucionadas($entityManager,$empresa[0] -> cidade);
+                                    $solucaoController->montarTabela($denuncias);
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
-                        </section>
+                        </div>
                     </div>
-                </section>
+                </div>
             </div>
-        </div>
-
-        </section>
-        </section>
-
-
-
-
     </div>
 </div>
 

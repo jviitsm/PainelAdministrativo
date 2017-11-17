@@ -47,6 +47,19 @@ class DenunciaController{
         return $denuncias = $denunciaRepository->findBy(array('cidade' => $cidade, 'status_denuncia' =>1 ));
 
     }
+    function retornarCidade($entityManager){
+        $user = $_SESSION["array"];
+        $id = $user[0] -> id_login;
+        $empresaRepository = $entityManager->getRepository('App\Models\Entity\Empresa');
+        $empresa = $empresaRepository->findBy(array('fk_login_empresa' => $id));
+        //Recuperando a cidade do user que esta logado
+        $cidade = $empresa[0] -> cidade;
+        //BUscando denuncias  da cidade do user logado
+
+        return $cidade;
+
+    }
+
 
     function retornarCategoria($denuncia){
         $categoria = $denuncia->getFk_categoria_denuncia()->getDescricao_categoria();
@@ -93,7 +106,7 @@ class DenunciaController{
 
         }
         if(!$denuncias){
-            echo "<td>Nenhuma Denuncia</td>";
+            echo "<h2  class='label-danger' style='text-align: center'>Nenhuma Denuncia</h2>";
         }
     }
 

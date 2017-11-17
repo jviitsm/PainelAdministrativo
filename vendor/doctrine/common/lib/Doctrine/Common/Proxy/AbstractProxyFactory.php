@@ -57,7 +57,7 @@ abstract class AbstractProxyFactory
      *
      * @var integer
      */
-    const AUTOGENERATE_FILE_NOT_EXISTS = 2;
+    const AUTOGENERATE_FILE_NOT_EXISTS = 1;
 
     /**
      * Generate the proxy classes using eval().

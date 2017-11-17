@@ -36,7 +36,7 @@ class Solucao extends \App\Models\Entity\Solucao implements \Doctrine\ORM\Proxy\
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = ['descricao_solucao' => NULL, 'dir_foto_solucao' => NULL, 'data_solucao' => NULL];
+    public static $lazyPropertiesDefaults = ['descricao_solucao' => NULL, 'dir_foto_solucao' => NULL, 'data_solucao' => NULL, 'fk_login_solucao' => NULL];
 
 
 
@@ -46,7 +46,7 @@ class Solucao extends \App\Models\Entity\Solucao implements \Doctrine\ORM\Proxy\
      */
     public function __construct($initializer = null, $cloner = null)
     {
-        unset($this->descricao_solucao, $this->dir_foto_solucao, $this->data_solucao);
+        unset($this->descricao_solucao, $this->dir_foto_solucao, $this->data_solucao, $this->fk_login_solucao);
 
         $this->__initializer__ = $initializer;
         $this->__cloner__      = $cloner;
@@ -108,7 +108,7 @@ class Solucao extends \App\Models\Entity\Solucao implements \Doctrine\ORM\Proxy\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id_solucao', 'descricao_solucao', 'dir_foto_solucao', 'data_solucao'];
+            return ['__isInitialized__', 'id_solucao', 'descricao_solucao', 'dir_foto_solucao', 'data_solucao', 'fk_login_solucao'];
         }
 
         return ['__isInitialized__', 'id_solucao'];
@@ -133,7 +133,7 @@ class Solucao extends \App\Models\Entity\Solucao implements \Doctrine\ORM\Proxy\
                 }
             };
 
-            unset($this->descricao_solucao, $this->dir_foto_solucao, $this->data_solucao);
+            unset($this->descricao_solucao, $this->dir_foto_solucao, $this->data_solucao, $this->fk_login_solucao);
         }
     }
 
@@ -304,6 +304,28 @@ class Solucao extends \App\Models\Entity\Solucao implements \Doctrine\ORM\Proxy\
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDataSolucao', [$data_solucao]);
 
         return parent::setDataSolucao($data_solucao);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getFkLoginSolucao()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFkLoginSolucao', []);
+
+        return parent::getFkLoginSolucao();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setFkLoginSolucao($fk_login_solucao)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFkLoginSolucao', [$fk_login_solucao]);
+
+        return parent::setFkLoginSolucao($fk_login_solucao);
     }
 
 }

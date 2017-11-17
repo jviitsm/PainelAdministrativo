@@ -135,43 +135,38 @@ $denunciaController->redirecionar();
 
         <!--  Tabela De Denuncias    -->
 
-        <div class="row">
-            <div class="col-sm-12">
-                <section class="panel">
-                    <header class="panel-heading">
-                        Denuncias Ativas
-                    </header>
-                    <div class="panel-body">
-                        <section id="unseen">
-                            <div style="overflow-x:auto;">
-                                <table class="table table-bordered table-striped table-condensed">
-                                    <thead>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Descrição</th>
-                                        <th>Categoria</th>
-                                        <th>Endereço</th>
-                                        <th>Data</th>
-                                        <th>Ação</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <div>
-                                        <?php
-                                        $denunciaController->montarTabela($denunciaController->buscarNaCidade($entityManager));
-                                        ?>
-                                    </div>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </section>
-                    </div>
-                </section>
-            </div>
-        </div>
 
-        </section>
-        </section>
+                    <div class="content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="header">
+                                            <h4 class="title text-center">Denuncias Ativas</h4>
+                                            <p class="category text-center"><?php echo $denunciaController->retornarCidade($entityManager)?></p>
+                                        </div>
+                                        <div class="content table-responsive table-full-width">
+                                            <table class="table table-hover table-striped">
+                                                <thead>
+                                                <th>Id</th>
+                                                <th>Descrição</th>
+                                                <th>Categoria</th>
+                                                <th>Endereço</th>
+                                                <th>Data</th>
+                                                <th>Ação</th>
+                                                </thead>
+                                                <tbody>
+                                                <?php $denunciaController->montarTabela($denunciaController->buscarNaCidade($entityManager));?>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                </div>
+            </div>
 
 
     </div>

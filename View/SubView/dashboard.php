@@ -15,8 +15,9 @@ if (!isset($_SESSION['usuario'])) {
     header("Location: ../../index.php");
     session_destroy();
 }
+
 date_default_timezone_set('America/Bahia');
-$hora = date('h:i', time());
+$hora = date('H:i', time());
 
 $denunciaController = new DenunciaController();
 $cidadaoController = new CidadaoController();
